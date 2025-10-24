@@ -1,22 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/images/icon.png" />
+
+    <!-- CSS -->
+    <link href="./src/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/estilos/index.css" />
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Entrelinhas</title>
-    <link href="./src/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/estilos/index.css">
-</head>
-<body class="bg-branco flex">
-    <header>
-    </header>
-    <main>
+  </head>
+  <body class="bg-preto text-branco">
+    <div class="header flex items-center justify-between p-4">
+      <div class="flex items-center gap-3">
+        <img src="./assets/images/logo.png" alt="" class="pixel h-8" />
+        <h1 class="text-sm">Entrelinhas</h1>
+      </div>
 
-    </main>
-    <footer>
+      <div class="navbar flex items-center">
+        <button id="menu-btn" class="cursor-pointer">
+          <img src="./assets/images/menu.png" alt="menu" class="pixel h-5" />
+        </button>
+      </div>
+    </div>
 
-    </footer>
+    <hr class="border-cinza/40" />
+
+    <p class="p-4 text-2xl">Teste</p>
+
+    <div
+      id="sidebar"
+      class="text-branco fixed right-0 top-0 z-50 h-full w-64 translate-x-full transform bg-preto shadow-xl backdrop-blur-sm transition-transform duration-300 ease-in-out"
+    >
+      <button
+        id="close-btn"
+        class="hover:text-vermelho absolute right-4 top-4 text-xl"
+      >
+        ❌
+      </button>
+
+      <div class="mt-16 px-6">
+        <ul class="flex flex-col gap-6 text-sm">
+          <li><a href="/" class="hover:text-amarelo">Início</a></li>
+          <li>
+            <a href="/" class="hover:text-amarelo"
+              >Recomendações do psicólogo</a
+            >
+          </li>
+          <li><a href="/" class="hover:text-amarelo">Conta</a></li>
+          <li>
+            <a href="/" class="text-vermelho hover:text-rosa">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <script src="scripts/index.js" type="module"></script>
-</body>
+  </body>
 </html>
