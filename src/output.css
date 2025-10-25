@@ -562,16 +562,16 @@ video {
   position: absolute;
 }
 
-.right-0 {
-  right: 0px;
-}
-
-.top-0 {
-  top: 0px;
+.left-0 {
+  left: 0px;
 }
 
 .right-4 {
   right: 1rem;
+}
+
+.top-0 {
+  top: 0px;
 }
 
 .top-4 {
@@ -582,16 +582,16 @@ video {
   z-index: 50;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
 .mt-16 {
   margin-top: 4rem;
 }
 
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-5 {
@@ -610,8 +610,12 @@ video {
   width: 16rem;
 }
 
-.translate-x-full {
-  --tw-translate-x: 100%;
+.w-full {
+  width: 100%;
+}
+
+.-translate-x-full {
+  --tw-translate-x: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -627,8 +631,16 @@ video {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -639,16 +651,8 @@ video {
   gap: 0.75rem;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .gap-6 {
   gap: 1.5rem;
-}
-
-.self-end {
-  align-self: flex-end;
 }
 
 .bg-preto {
@@ -656,35 +660,13 @@ video {
   background-color: rgb(26 20 35 / var(--tw-bg-opacity, 1));
 }
 
-.bg-\[\#0c0a0f\]\/95 {
-  background-color: rgb(12 10 15 / 0.95);
-}
-
 .p-4 {
   padding: 1rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
 }
 
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.font-\[\'Press_Start_2P\'\] {
-  font-family: 'Press Start 2P';
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -719,8 +701,8 @@ video {
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
-.transition-transform {
-  transition-property: transform;
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -731,6 +713,11 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+  --background: #1a1423;
+  --foreground: #edede9;
 }
 
 @theme inline {
@@ -759,16 +746,9 @@ video {
   --color-lilas: #7f75b4;
 }
 
-* {
-  font-family: "Press Start 2P", monospace;
-  margin: 0;
-  padding: 0;
-}
-
-.pixel {
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  image-rendering: -moz-crisp-edges;
+body {
+  background: var(--background);
+  color: var(--foreground);
 }
 
 .hover\:text-amarelo:hover {
@@ -785,4 +765,3 @@ video {
   --tw-text-opacity: 1;
   color: rgb(224 49 49 / var(--tw-text-opacity, 1));
 }
-

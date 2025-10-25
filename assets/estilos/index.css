@@ -2,15 +2,40 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Press Start 2P", monospace;
 }
 
 body {
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
 }
 
-header{
-    min-height: 100px;
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+}
+
+.nuvem {
+  width: 500px;
+  height: 320px;
+  background-image: url("../images/nuvem.png"); /* <-- coloque sua arte aqui */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nuvem-texto {
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  color: #000;
+  text-align: center;
+  padding: 4px;
+  max-width: 250px;
 }

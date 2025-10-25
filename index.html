@@ -19,31 +19,32 @@
 
     <title>Entrelinhas</title>
   </head>
-  <body class="bg-preto text-branco">
-    <div class="header flex items-center justify-between p-4">
-      <div class="flex items-center gap-3">
-        <img src="./assets/images/logo.png" alt="" class="pixel h-8" />
-        <h1 class="text-sm">Entrelinhas</h1>
-      </div>
-
-      <div class="navbar flex items-center">
+  <body>
+    <div class="header flex items-center p-4">
+      <div class="flex w-full justify-between">
         <button id="menu-btn" class="cursor-pointer">
           <img src="./assets/images/menu.png" alt="menu" class="pixel h-5" />
         </button>
+
+        <div class="flex items-center gap-3">
+          <img src="./assets/images/logo.png" alt="" class="pixel h-8" />
+          <h1 class="text-sm">Entrelinhas</h1>
+        </div>
+
+        <img src="./assets/images/pontinhos.png" alt="" class="pixel h-8" />
       </div>
     </div>
 
     <hr class="border-cinza/40" />
 
-    <p class="p-4 text-2xl">Teste</p>
-
+    <!-- Menu -->
     <div
       id="sidebar"
-      class="text-branco fixed right-0 top-0 z-50 h-full w-64 translate-x-full transform bg-preto shadow-xl backdrop-blur-sm transition-transform duration-300 ease-in-out"
+      class="fixed left-0 top-0 z-50 hidden h-full w-64 -translate-x-full transform bg-preto text-branco shadow-xl backdrop-blur-sm transition-all duration-300 ease-in-out"
     >
       <button
         id="close-btn"
-        class="hover:text-vermelho absolute right-4 top-4 text-xl"
+        class="absolute right-4 top-4 text-xl hover:text-vermelho"
       >
         ❌
       </button>
@@ -64,6 +65,8 @@
       </div>
     </div>
 
-    <script src="scripts/index.js" type="module"></script>
+    <div class="content flex flex-wrap items-center justify-center"></div>
+
+    <script src="js/index.js" type="module"></script>
   </body>
 </html>
