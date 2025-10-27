@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="./assets/images/icon.png" />
+    <link rel="icon" type="image/png" href="/logo.png" />
 
     <!-- CSS -->
-    <link href="./src/output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/estilos/index.css" />
+    <link href="./src/styles/tailwind/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/index.css" />
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,53 +20,7 @@
     <title>Entrelinhas</title>
   </head>
   <body>
-    <div class="header flex items-center p-4">
-      <div class="flex w-full justify-between">
-        <button id="menu-btn" class="cursor-pointer">
-          <img src="./assets/images/menu.png" alt="menu" class="pixel h-5" />
-        </button>
-
-        <div class="flex items-center gap-3">
-          <img src="./assets/images/logo.png" alt="" class="pixel h-8" />
-          <h1 class="text-sm">Entrelinhas</h1>
-        </div>
-
-        <img src="./assets/images/pontinhos.png" alt="" class="pixel h-8" />
-      </div>
-    </div>
-
-    <hr class="border-cinza/40" />
-
-    <!-- Menu -->
-    <div
-      id="sidebar"
-      class="fixed left-0 top-0 z-50 hidden h-full w-64 -translate-x-full transform bg-preto text-branco shadow-xl backdrop-blur-sm transition-all duration-300 ease-in-out"
-    >
-      <button
-        id="close-btn"
-        class="absolute right-4 top-4 text-xl hover:text-vermelho"
-      >
-        ❌
-      </button>
-
-      <div class="mt-16 px-6">
-        <ul class="flex flex-col gap-6 text-sm">
-          <li><a href="/" class="hover:text-amarelo">Início</a></li>
-          <li>
-            <a href="/" class="hover:text-amarelo"
-              >Recomendações do psicólogo</a
-            >
-          </li>
-          <li><a href="/" class="hover:text-amarelo">Conta</a></li>
-          <li>
-            <a href="/" class="text-vermelho hover:text-rosa">Sair</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="content flex flex-wrap items-center justify-center"></div>
-
-    <script src="js/index.js" type="module"></script>
+    <div id="app"></div>
+    <script type="module" src="./src/js/index.js"></script>
   </body>
 </html>
