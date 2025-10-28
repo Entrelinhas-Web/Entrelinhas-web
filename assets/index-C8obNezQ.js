@@ -7,15 +7,15 @@
     <div class="header flex items-center p-4">
       <div class="flex w-full justify-between">
         <button id="menu-btn" class="cursor-pointer">
-          <img src="/public/menu.png" alt="menu" class="pixel h-5" />
+          <img src="./public/menu.png" alt="menu" class="pixel h-5" />
         </button>
 
         <div class="flex items-center gap-3">
-          <img src="/public/logo.png" alt="" class="pixel h-8" />
+          <img src="./public/logo.png" alt="" class="pixel h-8" />
           <h1 class="text-sm">Entrelinhas</h1>
         </div>
 
-        <img src="/public/pontinhos.png" alt="" class="pixel h-8" />
+        <img src="./public/pontinhos.png" alt="" class="pixel h-8" />
       </div>
     </div>
 
