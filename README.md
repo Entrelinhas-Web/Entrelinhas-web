@@ -9,18 +9,7 @@ cd Entrelinhas-web
 npm install
 ```
 
-### 2. Compilando o TailwindCSS
-Caso precise deseje fazer alterações e acompanhar as mudanças visualmente em tempo real, execute:
-```
-npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
-```
-
-Se precisar fazer alterações apenas uma vez, basta executar:
-```
-npx tailwindcss -i ./src/input.css -o ./src/output.css
-```
-
-### 3. Abrindo o Projeto
+### 2. Abrindo o Projeto
 Para visualizar o projeto, execute:
 ```
 npm run dev

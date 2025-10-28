@@ -10,15 +10,15 @@ app.insertAdjacentHTML(
     <div class="header flex items-center p-4">
       <div class="flex w-full justify-between">
         <button id="menu-btn" class="cursor-pointer">
-          <img src="/menu.png" alt="menu" class="pixel h-5" />
+          <img src="/Entrelinhas-web/menu.png" alt="menu" class="pixel h-5" />
         </button>
 
         <div class="flex items-center gap-3">
-          <img src="/logo.png" alt="" class="pixel h-8" />
+          <img src="/Entrelinhas-web/logo.png" alt="" class="pixel h-8" />
           <h1 class="text-sm">Entrelinhas</h1>
         </div>
 
-        <img src="/pontinhos.png" alt="" class="pixel h-8" />
+        <img src="/Entrelinhas-web/pontinhos.png" alt="" class="pixel h-8" />
       </div>
     </div>
 
@@ -33,7 +33,7 @@ app.insertAdjacentHTML(
         id="close-btn"
         class="absolute right-4 top-4 text-xl hover:text-vermelho"
       >
-        ❌
+        <img src="/Entrelinhas-web/sair.png" alt="" class="pixel h-8" />
       </button>
 
       <div class="mt-16 px-6">
