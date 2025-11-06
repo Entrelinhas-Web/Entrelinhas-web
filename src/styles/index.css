@@ -5,6 +5,18 @@
   --foreground: #edede9;
 }
 
+@theme {
+  --color-preto: #1A1423;
+  --color-branco: #EDEDE9;
+  --color-rosa: #CD4D5E;
+  --color-vermelho: #E03131;
+  --color-laranja: #D9A152;
+  --color-amarelo: #FFDF9A;
+  --color-verde: #4E6E58;
+  --color-azul: #1971C2;
+  --color-lilas: #7F75B4;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
