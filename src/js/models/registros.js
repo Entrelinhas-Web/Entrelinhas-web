@@ -1,5 +1,6 @@
 const registros = [
   {
+    titulo: "FINALMENTE FORMADO!!",
     emocao: "Felicidade",
     nivel: 5,
     causa: "Formatura",
@@ -8,14 +9,16 @@ const registros = [
     data: "12/10/2025",
   },
   {
+    titulo: "Saudades machuca, né?",
     emocao: "Tristeza",
     nivel: 3,
     causa: "Saudade",
     descricao:
-      "Senti muita falta dos meus amigos da faculdade hoje. É estranho pensar que cada um seguirá seu caminho.",
+      "Senti muita falta dos meus amigos da faculdade hoje. É estranho pensar que cada um seguiu seu caminho, rumos tão distantes que nem nos encontramos mais...",
     data: "14/10/2025",
   },
   {
+    titulo: "Não sei se vou conseguir...",
     emocao: "Ansiedade",
     nivel: 4,
     causa: "Entrevista de emprego",
@@ -24,6 +27,7 @@ const registros = [
     data: "15/10/2025",
   },
   {
+    titulo: "Conclui mais 1 projeto!",
     emocao: "Felicidade",
     nivel: 5,
     causa: "Projeto concluído",
@@ -32,52 +36,58 @@ const registros = [
     data: "17/10/2025",
   },
   {
+    titulo: "NINGUÉM SABE DIRIGIR NESSA CIDADE",
     emocao: "Raiva",
     nivel: 2,
     causa: "Trânsito",
     descricao:
-      "O trânsito hoje estava insuportável e acabei me atrasando para uma reunião importante.",
+      "O trânsito hoje estava insuportável e acabei me atrasando para uma reunião MUITO importante! Como essas pessoas passam na prova da CNH? O Detran já foi mais sério nessas avaliações...",
     data: "18/10/2025",
   },
   {
+    titulo: "Saudades machuca, né?",
     emocao: "Felicidade",
     nivel: 5,
     causa: "Amizade",
     descricao:
-      "Um amigo me ajudou em um momento difícil, e percebi o quanto sou sortudo por ter pessoas assim por perto.",
+      "Hoje eu tava passando por um situação muito difícil... Não era nada demais, mas me abalou muito. Contudo, graças ao Henrique (meu melhor amigo), que me ajudou a entender a situação melhor e a levar com mais leveza, percebi o quanto sou sortudo por ter pessoas assim por perto e aqueles sentimentos ruins foram embora!",
     data: "19/10/2025",
   },
   {
+    titulo: "QUE PRESENTE FOD4!",
     emocao: "Felicidade",
     nivel: 4,
     causa: "Presente inesperado",
     descricao:
-      "Recebi um presente lindo de um colega de trabalho, sem motivo aparente. Fiquei realmente tocado.",
+      "Recebi um presente LINDO de um colega de trabalho, sem motivo aparente. Fiquei genuinamente feliz!",
     data: "20/10/2025",
   },
   {
+    titulo: "Será que vai dar tudo certo?",
     emocao: "Medo",
     nivel: 3,
-    causa: "resultado médico",
+    causa: "Resultado médico",
     descricao:
-      "Fiquei apreensivo aguardando o resultado de um exame importante. Felizmente, deu tudo certo no fim.",
+      "Tive que essa consulta no último mês, sabe. Eu não tava dando muita bola pra isso, era pra ser só um exame de rotina, um mero check-up, mas com a chegada dos exames amanhã... Sempre me bate um medo do que pode aparecer.",
     data: "21/10/2025",
   },
   {
+    titulo: "Ás vezes, sair de casa é até bom...",
     emocao: "Tranquilidade",
     nivel: 4,
     causa: "Dia na natureza",
     descricao:
-      "Passei o dia em um parque, lendo e respirando ar puro. Senti uma paz enorme.",
-    data: "22/10/2025",
+      "Passei o dia em um parque, lendo e respirando ar puro. Foi uma paz tão grande... Apenas eu e o barulho dos passáros contra meu cansaço semanal. Será que devo fazer isso mais vezes?",
+    data: "02/11/2025",
   },
   {
+    titulo: "Gonna be a polyglot!",
     emocao: "Motivação",
     nivel: 5,
-    causa: "nova meta pessoal",
+    causa: "Meta pessoal",
     descricao:
-      "Decidi começar a aprender uma nova língua. Estou empolgado com o desafio e com as possibilidades que virão.",
-    data: "23/10/2025",
+      "Decidi começar a aprender uma nova língua! To super empolgado e com certeza o inglês não vai ser tão difícil assim... Que venham as novas possibilidades!",
+    data: "03/11/2025",
   },
 ];
 

@@ -36,25 +36,3 @@ body {
   image-rendering: crisp-edges;
   image-rendering: -moz-crisp-edges;
 }
-
-.nuvem {
-  width: 500px;
-  height: 320px;
-  background-image: url("../../public/nuvem.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  image-rendering: pixelated;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nuvem-texto {
-  font-size: 8px;
-  color: #000;
-  text-align: center;
-  padding: 4px;
-  max-width: 250px;
-}

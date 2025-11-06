@@ -1,3 +1,4 @@
+import desabafoCard from "../../components/desabafoCard.js";
 import registros from "../models/registros.js";
 
 export function showRegistros() {
@@ -6,11 +7,7 @@ export function showRegistros() {
   registros.map((registro) =>
     content.insertAdjacentHTML(
       "beforeend",
-      `
-        <div class="nuvem">
-            <div class="nuvem-texto">${registro.descricao}</div>
-        </div>
-        `,
+      desabafoCard(registro),
     ),
   );
 }
