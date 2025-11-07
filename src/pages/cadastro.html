@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/Entrelinhas-web/assets/logo-pkONN-KR.png" />
+
+    <!-- CSS -->
+
+    <!-- Fonte Pixel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Cadastro</title>
+    <script type="module" crossorigin src="/Entrelinhas-web/assets/cadastro-ych554MJ.js"></script>
+    <link rel="modulepreload" crossorigin href="/Entrelinhas-web/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="stylesheet" crossorigin href="/Entrelinhas-web/assets/index-DwInthxz.css">
+  </head>
+
+  <body
+    class="font-pixel from-preto to-branco text-branco flex min-h-screen items-center justify-center bg-gradient-to-b"
+  >
+    <div
+      class="border-branco shadow-pixel bg-preto w-80 border-4 p-8 text-center space-y-6 rounded-lg"
+    >
+      <h1 class="text-amarelo text-xl">CADASTRO</h1>
+
+      <form id="cadastroForm" class="flex flex-col gap-4">
+        <!-- Nome -->
+        <div class="text-left space-y-1">
+          <label class="block text-xs">Nome de usuário</label>
+          <input
+            type="text"
+            required
+            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="text-left space-y-1">
+          <label class="block text-xs">E-mail</label>
+          <input
+            type="email"
+            required
+            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+          />
+        </div>
+
+        <!-- Senha -->
+        <div class="text-left space-y-1">
+          <label class="block text-xs">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            required
+            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+          />
+        </div>
+
+        <!-- Confirmação -->
+        <div class="text-left space-y-1">
+          <label class="block text-xs">Confirmação de senha</label>
+          <input
+            type="password"
+            id="confirmar"
+            required
+            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+          />
+        </div>
+
+        <!-- Avatar -->
+        <div class="flex items-center justify-between mt-2 gap-3">
+          <img
+            id="preview"
+            src="https://i.imgur.com/3Hf4Q9U.png"
+            alt="Avatar"
+            class="border-branco bg-preto h-16 w-16 border-2 object-cover"
+            style="image-rendering: pixelated"
+          />
+
+          <label
+            class="bg-branco text-preto hover:bg-amarelo cursor-pointer px-3 py-2 text-[8px] transition border-2 border-preto hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+          >
+            Escolher avatar
+            <input
+              type="file"
+              id="avatarInput"
+              accept="image/*"
+              class="hidden"
+            />
+          </label>
+        </div>
+
+        <!-- Botão -->
+        <button
+          type="submit"
+          class="bg-branco border-preto text-preto hover:bg-amarelo w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+        >
+          Cadastrar
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
