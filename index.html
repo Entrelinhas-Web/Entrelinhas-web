@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/public/logo.png" />
 
     <!-- CSS -->
     <link href="/src/styles/index.css" rel="stylesheet" />
@@ -18,55 +18,46 @@
 
     <title>Entrelinhas</title>
   </head>
-  <body>
-    <div id="app">
-      <div class="header flex items-center p-4">
-        <div class="flex w-full justify-between">
-          <button id="menu-btn" class="cursor-pointer">
-            <img src="/public/menu.png" alt="menu" class="pixel h-5" />
-          </button>
+  <body
+    class="bg-background text-foreground font-pixel relative flex min-h-screen flex-col overflow-x-hidden"
+  >
+    <div class="stars"></div>
 
-          <div class="flex items-center gap-3">
-            <img src="/public/logo.png" alt="" class="pixel h-8" />
-            <h1 class="text-sm">Entrelinhas</h1>
-          </div>
+    <div class="relative z-20 flex h-screen w-full grow flex-col">
+      <header class="flex w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
+  <a href="#" class="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
+  <nav class="flex flex-col items-center gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+    <a href="./src/pages/desabafosFeed.html" class="text-foreground p-2 no-underline">Pensamentos</a>
+    <a href="#" class="text-foreground p-2 no-underline">Consultar</a>
+    
+    <a href="#" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+      Login
+    </a>
+  </nav>
+</header>
 
-          <img src="/public/pontinhos.png" alt="" class="pixel h-8" />
-        </div>
-      </div>
-
-      <hr class="border-branco/60" />
-
-      <!-- Menu -->
-      <div
-        id="sidebar"
-        class="bg-preto text-branco fixed top-0 left-0 z-50 hidden h-full w-64 -translate-x-full transform shadow-xl transition-all duration-300 ease-in-out"
+      <main
+        class="flex grow flex-col items-center justify-center pb-[150px] text-center md:pb-[200px]"
       >
-        <button
-          id="close-btn"
-          class="hover:text-vermelho absolute top-6 right-6 text-xl cursor-pointer"
+        <div
+          class="hidden sm:absolute sm:top-[30%] sm:left-[5%] sm:z-10 sm:block sm:scale-75 md:top-1/4 md:left-[10%] md:scale-100"
         >
-          <img src="/public/sair.png" alt="" class="pixel h-8" />
-        </button>
-
-        <div class="pt-8 px-6">
-          <ul class="flex flex-col gap-6 text-sm leading-relaxed">
-            <li><a href="/" class="hover:text-amarelo">Início</a></li>
-            <li>
-              <a href="/" class="hover:text-amarelo"
-                >Recomendações do psicólogo</a
-              >
-            </li>
-            <li><a href="/" class="hover:text-amarelo">Conta</a></li>
-            <li>
-              <a href="/" class="text-vermelho hover:text-rosa">Sair</a>
-            </li>
-          </ul>
+          <img
+            src="public/logo.png"
+            alt="Estrelas decorativas"
+            class="animate-float-stars h-auto w-[150px] max-w-full"
+          />
         </div>
-      </div>
 
-      <div class="content flex flex-wrap items-center justify-center"></div>
+        <div class="mb-8 px-2 text-base sm:px-0 sm:text-lg md:text-2xl max-w-[800px]">
+          Registre seus sentimentos e desabafos no Entrelinhas
+        </div>
+
+        <a href="#" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+      Registrar
+    </a>
+        
+      </main>
     </div>
-    <script type="module" src="./src/js/index.js"></script>
   </body>
 </html>
