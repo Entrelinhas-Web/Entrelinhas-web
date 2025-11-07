@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         desabafosFeed: 'src/pages/desabafosFeed.html',
+        cadastro: 'src/pages/cadastro.html',
       },
     },
   },
