@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/Entrelinhas-web/logo.png" />
+    <link rel="icon" type="image/png" href="/Entrelinhas-web/assets/logo-pkONN-KR.png" />
 
-    <!-- CSS -->
+    <!-- CSS -->
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,57 +16,48 @@
     />
 
     <title>Entrelinhas</title>
-    <script type="module" crossorigin src="/Entrelinhas-web/assets/index-Z3Ob9v2Q.js"></script>
-    <link rel="stylesheet" crossorigin href="/Entrelinhas-web/assets/index-DKWDldw9.css">
+    <link rel="stylesheet" crossorigin href="/Entrelinhas-web/assets/index-D_gMSubY.css">
   </head>
-  <body>
-    <div id="app">
-      <div class="header flex items-center p-4">
-        <div class="flex w-full justify-between">
-          <button id="menu-btn" class="cursor-pointer">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABECAYAAAB3TpBiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEcSURBVHhe7dqxTcNAGAXgHCukoLJncJEBYPIwAEVmsCuQkhVMAbYcE0BRlORZfF91/l0+3Ul3emU1sdu9bqffg7qu5yMu1LbtuG6azfOwLuP0M5B++j2oqmo+4kJd143rptmMOTyMUyKUr2Pqaf7DrridyW55sUPCCCRMORzet33ffzuyuL1SiiMrjUDCCCSMQMIIJMzR08l+/3by6YTjp46/nHupXq8fPZ2kEggAAAAAS6EodyeKcgshkDCaiwE0F4MJJIzmYhDNxUACCSOQMAIJI5Awmosz12wo/kRzMZhAAAAAAFgKzcU70VxcCIGE0VwMoLkYTCBhNBeDaC4GEkgYgYQRSBiBhPm3zcVzGoqrK1+UNReDCQR+8wG+b11eQ+L7zwAAAABJRU5ErkJggg==" alt="menu" class="pixel h-5" />
-          </button>
+  <body
+    class="bg-background text-foreground font-pixel relative flex min-h-screen flex-col overflow-x-hidden"
+  >
+    <div class="stars"></div>
 
-          <div class="flex items-center gap-3">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC5SURBVFhH7ZPRDcMgDETdzpBJOloGYTQmyQ7pl6PIsg2+mqpFPCk/JvYdBxAtFiBHLaesITxloQcWt0xYdY2HLLTQhm+v/ZpzX7/XUzlqOfmTa2SYTCci4pmF7gCNjFfDcp9BcxejL5U7UNt5tonmsNEJdKEl8RNkGIOfYQTPKHymWXfjKwl4QM61SNEUwk2aOIOY6G7whCURI90/Mp6RiDATbiDDBCJOqAGa6Rl+hHYUUf47gcUUvAGQV2VBl9OHEwAAAABJRU5ErkJggg==" alt="" class="pixel h-8" />
-            <h1 class="text-sm">Entrelinhas</h1>
-          </div>
+    <div class="relative z-20 flex h-screen w-full grow flex-col">
+      <header class="flex w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
+  <a href="#" class="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
+  <nav class="flex flex-col items-center gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+    <a href="src/pages/desabafosFeed" class="text-foreground p-2 no-underline">Pensamentos</a>
+    <a href="#" class="text-foreground p-2 no-underline">Consultar</a>
+    
+    <a href="#" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+      Login
+    </a>
+  </nav>
+</header>
 
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAVCAYAAACOuSR+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAwSURBVChTY2RgYGD4////fwYoYGRkZGREFoABJnQBBlyCjAxYzERRQTrAauZIdicAx3skCqgZL0cAAAAASUVORK5CYII=" alt="" class="pixel h-8" />
-        </div>
-      </div>
-
-      <hr class="border-branco/60" />
-
-      <!-- Menu -->
-      <div
-        id="sidebar"
-        class="bg-preto text-branco fixed top-0 left-0 z-50 hidden h-full w-64 -translate-x-full transform shadow-xl transition-all duration-300 ease-in-out"
+      <main
+        class="flex grow flex-col items-center justify-center pb-[150px] text-center md:pb-[200px]"
       >
-        <button
-          id="close-btn"
-          class="hover:text-vermelho absolute top-6 right-6 text-xl cursor-pointer"
+        <div
+          class="hidden sm:absolute sm:top-[30%] sm:left-[5%] sm:z-10 sm:block sm:scale-75 md:top-1/4 md:left-[10%] md:scale-100"
         >
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAADqUlEQVR4nO3cwW0bQRAAQdlQIE5B+QehFJSJ/TJg3MOfFTA77KoESHC4zX1w7u0NAAAAAAAAAAAAAAAAAAAAuM2P6Tfw9fHxe/L1f31+jn8GzKl//35OvjgwSwAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg7H36DUw73Qef3ueum97n384NAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMIEAMLW77Jv3wevP0/A/Ga5AUCYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAEDY6l3m72Af/YzPbzc3AAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAhL70J/h+378NvV9/lPuQFAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmF3qYfXnCdjnn+UGAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGF2sS9QfCaA5wDcwRAuUgiBg38Xw7jQK4bAwb+ToVzsFULg4N/NcBbYGAIHfwdDWmRDCBz8XQxroRtD4ODvZGhL3RQBh38vfwSCMOVe6KZf/7/cAnYytEVuPPhPQrCLYS2w4eA/CcEOhnSxjQf/SQjuZjgXeoWD/yQEdzKUi7ziwX8SgrsYxgUKB/9JCO5gCMOKh/9fQjDLH4EgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgzC72ofo+/zTPEzjjBgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBhAgBh+V3q7fv80/vwPr/d3AAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgbP0utH303cxvlhsAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhI3vMtsH54Tvzxk3AAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAh7n34D06b3sTlzOr/tzxM45QYAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8QfaQomMwcntkAAAAABJRU5ErkJggg==" alt="" class="pixel h-8" />
-        </button>
-
-        <div class="pt-8 px-6">
-          <ul class="flex flex-col gap-6 text-sm leading-relaxed">
-            <li><a href="/" class="hover:text-amarelo">Início</a></li>
-            <li>
-              <a href="/" class="hover:text-amarelo"
-                >Recomendações do psicólogo</a
-              >
-            </li>
-            <li><a href="/" class="hover:text-amarelo">Conta</a></li>
-            <li>
-              <a href="/" class="text-vermelho hover:text-rosa">Sair</a>
-            </li>
-          </ul>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAH/UlEQVR4nO3dwY2bUBhG0RBNCVRCaRRCaVRCD2Q1I2UZg/Lw9Tl7S08ae67+1ffrFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAo02jHwDv6ti388rn52X1+wNu83v0AwCA6wQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQAC7DHzka5umT+BPfV72LWnwoUOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAXZ8eUuFPfMnKGx5F74Lhb8D47nQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIMAGLx/Jhjbfrn4X/B14Chc6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABNjxhRfZ0abi6nf5Dn4P17nQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASDga/QD4F3NyzqNfgPANxc6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABNhz/kDHvp1XPm8HHOB5XOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQYNf6DV3dM38Cm+oA93KhA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQIBN6gEKe+aj2VMH+JsLHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAJsSr+hwp66PXOAe7nQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBgGv0A/r9j384rn5+X1fcG4GFc6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABBg1xoGsUsP3MmFDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAGCDgABgg4AAYIOAAFfox8AwFjHvp1XPj8v63TXW3idCx0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACbNjCi65uSD+BHWvocKEDQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0DANPoBMMKxb+foNxTMy+p/CDyECx0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACBB0AAgQdAAIEHQACbBnzluyZN9hTh/u40AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASDAFjH/zBY5JTbZqXChA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQICgA0CAoANAgKADQIAdYN6STfYGW+RwHxc6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AARMox8AIxz7do5+Q8G8rP6HwEO40AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASBA0AEgQNABIEDQASDAljG8qLCpbs8cOlzoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAg6AAQIOgAECDoABAwjX4AfKpj384rn5+X1e8X+OFCB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQeAAEEHgABBB4AAQQcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfvwB0HJjtRzkDiwAAAAASUVORK5CYII="
+            alt="Estrelas decorativas"
+            class="animate-float-stars h-auto w-[150px] max-w-full"
+          />
         </div>
-      </div>
 
-      <div class="content flex flex-wrap items-center justify-center"></div>
+        <div class="mb-8 px-2 text-base sm:px-0 sm:text-lg md:text-2xl max-w-[800px]">
+          Registre seus sentimentos e desabafos no Entrelinhas
+        </div>
+
+        <a href="#" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+      Registrar
+    </a>
+        
+      </main>
     </div>
   </body>
 </html>
