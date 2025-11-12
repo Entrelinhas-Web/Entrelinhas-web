@@ -1,4 +1,4 @@
-import{b as d}from"./bgParticles-Bh5POvDz.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
+import{b as d}from"./bgParticles-B7DeQa9F.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
         <div class="bg-rosa m-4 w-full max-w-md rounded-lg p-6 shadow-md">
           <h2 class="mb-4 text-center text-2xl font-semibold">
             Adicionar desabafo
