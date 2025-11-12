@@ -16,6 +16,7 @@ export function menu() {
         <ul class="flex flex-col gap-6 text-sm leading-relaxed">
             <li><a href="/" class="hover:text-amarelo">Início</a></li>
             <li><a href="/" class="hover:text-amarelo">Recomendações do psicólogo</a></li>
+            <li><a href="/Entrelinhas-web/src/pages/dashboard.html" class="hover:text-amarelo">Dashboard</a></li>
             <li><a href="/" class="hover:text-amarelo">Conta</a></li>
             <li><a href="/" class="text-vermelho hover:text-rosa">Sair</a></li>
         </ul>
