@@ -16,57 +16,65 @@
       rel="stylesheet"
     />
 
-    <title>Cadastro</title>
+    <title>Entrelinhas</title>
   </head>
 
   <body
-    class="font-pixel from-preto to-branco text-branco flex min-h-screen items-center justify-center bg-gradient-to-b"
+    class="font-pixel text-branco flex min-h-screen items-center justify-center"
   >
     <div
-      class="border-branco shadow-pixel bg-preto w-80 border-4 p-8 text-center space-y-6 rounded-lg"
+      class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
+    ></div>
+    <div
+      class="border-lilas shadow-pixel bg-roxo w-fit border-4 p-8  text-center space-y-6 rounded-lg lg:w-110"
     >
-      <h1 class="text-amarelo text-xl">CADASTRO</h1>
+      <h1 class="text-amarelo">Cadastre-se</h1>
+      <h2 class="text-amarelo pb-5 text-xs">e registre seus sentimentos</h2>
 
-      <form id="cadastroForm" class="flex flex-col gap-4">
+      <form id="cadastroForm" class="flex flex-col gap-6">
         <!-- Nome -->
         <div class="text-left space-y-1">
-          <label class="block text-xs">Nome de usuário</label>
+          <label class="block text-xs pb-1">Nome de usuário</label>
           <input
             type="text"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            placeholder="Digite seu usuário"
           />
         </div>
 
         <!-- Email -->
         <div class="text-left space-y-1">
-          <label class="block text-xs">E-mail</label>
+          <label class="block text-xs pb-1">E-mail</label>
           <input
             type="email"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            placeholder="Ex: email@exemplo.com"
           />
         </div>
 
         <!-- Senha -->
         <div class="text-left space-y-1">
-          <label class="block text-xs">Senha</label>
+          <label class="block text-xs pb-1">Senha</label>
           <input
             type="password"
             id="senha"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            placeholder="Digite sua senha (8+ dígitos)"
           />
         </div>
 
         <!-- Confirmação -->
-        <div class="text-left space-y-1">
-          <label class="block text-xs">Confirmação de senha</label>
+        <div class="text-left space-y-1 ">
+          <label class="block text-xs pb-1">Confirmação de senha</label>
           <input
             type="password"
             id="confirmar"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            placeholder="Confirme sua senha"
           />
         </div>
 
@@ -74,14 +82,13 @@
         <div class="flex items-center justify-between mt-2 gap-3">
           <img
             id="preview"
-            src="https://i.imgur.com/3Hf4Q9U.png"
+            src="/public/avatar.jpg"
             alt="Avatar"
-            class="border-branco bg-preto h-16 w-16 border-2 object-cover"
-            style="image-rendering: pixelated"
+            class="pixel border-lilas bg-preto h-16 w-16 border-2 object-cover"
           />
 
           <label
-            class="bg-branco text-preto hover:bg-amarelo cursor-pointer px-3 py-2 text-[8px] transition border-2 border-preto hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+            class="bg-lilas text-branco hover:bg-branco hover:text-lilas cursor-pointer px-3 py-2 text-[10px] transition border-2 border-lilas hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
           >
             Escolher avatar
             <input
@@ -96,12 +103,12 @@
         <!-- Botão -->
         <button
           type="submit"
-          class="bg-branco border-preto text-preto hover:bg-amarelo w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+          class="bg-lilas border-lilas text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
         >
           Cadastrar
         </button>
       </form>
     </div>
-    <script type="module" src="../../src/js/cadastro.js"></script>
+    <script type="module" src="/src/js/cadastro.js"></script>
   </body>
 </html>
