@@ -19,7 +19,6 @@ export default function addRegistros() {
       titulo: form.titulo.value,
       emocao: form.emocao.value,
       nivel: form.nivel.value,
-      causa: form.causa.value,
       descricao: form.descricao.value,
       data: `${dia}/${mes}/${ano}`,
     };
