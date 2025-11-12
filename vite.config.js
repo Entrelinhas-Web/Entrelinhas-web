@@ -10,6 +10,7 @@ export default defineConfig({
         main: 'index.html',
         desabafosFeed: 'src/pages/desabafosFeed.html',
         cadastro: 'src/pages/cadastro.html',
+        login: 'src/pages/login.html',
       },
     },
   },
