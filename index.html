@@ -21,7 +21,9 @@
   <body
     class="bg-background text-foreground font-pixel relative flex min-h-screen flex-col overflow-x-hidden"
   >
-    <div class="stars"></div>
+  <div
+      class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
+  ></div>
 
     <div class="relative z-20 flex h-screen w-full grow flex-col">
       <header class="flex w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
@@ -59,5 +61,6 @@
         
       </main>
     </div>
+    <script type="module" src="/src/js/index.js"></script>
   </body>
 </html>
