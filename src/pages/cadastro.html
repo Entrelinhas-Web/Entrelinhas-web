@@ -15,24 +15,23 @@
       rel="stylesheet"
     />
 
-    <title>Cadastro</title>
-    <script type="module" crossorigin src="/Entrelinhas-web/assets/cadastro-Bwg-in1Z.js"></script>
-    <link rel="modulepreload" crossorigin href="/Entrelinhas-web/assets/bgParticles-OvTM7wZo.js">
-    <link rel="stylesheet" crossorigin href="/Entrelinhas-web/assets/index-CNPCPV--.css">
+    <title>Entrelinhas</title>
+    <script type="module" crossorigin src="/Entrelinhas-web/assets/cadastro-uLiQIIy6.js"></script>
+    <link rel="modulepreload" crossorigin href="/Entrelinhas-web/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="stylesheet" crossorigin href="/Entrelinhas-web/assets/index-DhxV8QBc.css">
   </head>
 
   <body
     class="font-pixel text-branco flex min-h-screen items-center justify-center"
   >
-
-  <div
+    <div
       class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
     ></div>
-    
     <div
-      class="border-branco shadow-pixel bg-preto w-fit border-4 p-8  text-center space-y-6 rounded-lg lg:w-110"
+      class="border-lilas shadow-pixel bg-roxo w-fit border-4 p-8  text-center space-y-6 rounded-lg lg:w-110"
     >
-      <h1 class="text-amarelo text-xl pb-5">CADASTRO</h1>
+      <h1 class="text-amarelo">Cadastre-se</h1>
+      <h2 class="text-amarelo pb-5 text-xs">e registre seus sentimentos</h2>
 
       <form id="cadastroForm" class="flex flex-col gap-6">
         <!-- Nome -->
@@ -41,7 +40,7 @@
           <input
             type="text"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Digite seu usuário"
           />
         </div>
@@ -52,7 +51,7 @@
           <input
             type="email"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Ex: email@exemplo.com"
           />
         </div>
@@ -64,7 +63,7 @@
             type="password"
             id="senha"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Digite sua senha (8+ dígitos)"
           />
         </div>
@@ -76,7 +75,7 @@
             type="password"
             id="confirmar"
             required
-            class="bg-preto border-branco text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Confirme sua senha"
           />
         </div>
@@ -85,13 +84,13 @@
         <div class="flex items-center justify-between mt-2 gap-3">
           <img
             id="preview"
-            src="/public/avatar.jpg"
+            src="data:image/jpeg;base64,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"
             alt="Avatar"
-            class="pixel border-branco bg-preto h-16 w-16 border-2 object-cover"
+            class="pixel border-lilas bg-preto h-16 w-16 border-2 object-cover"
           />
 
           <label
-            class="bg-branco text-preto hover:bg-amarelo cursor-pointer px-3 py-2 text-[12px] transition border-2 border-preto hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+            class="bg-lilas text-branco hover:bg-branco hover:text-lilas cursor-pointer px-3 py-2 text-[10px] transition border-2 border-lilas hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
           >
             Escolher avatar
             <input
@@ -106,7 +105,7 @@
         <!-- Botão -->
         <button
           type="submit"
-          class="bg-branco border-preto text-preto hover:bg-amarelo w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+          class="bg-lilas border-lilas text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
         >
           Cadastrar
         </button>
