@@ -1,32 +1,33 @@
-import{b as d}from"./bgParticles-CJLKLwgA.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
-        <div class="bg-rosa m-4 w-full max-w-md rounded-lg p-6 shadow-md">
-          <h2 class="mb-4 text-center text-2xl font-semibold">
+import{b as d}from"./bgParticles-p4gHNo81.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
+        <div class="bg-roxo border-lilas border-4 w-full max-w-md rounded-lg p-6 shadow-md">
+          <h1 class="mb-4 text-amarelo text-center text-xl font-semibold">
             Adicionar desabafo
-          </h2>
+          </h1>
 
-          <form id="desabafoForm" class="flex flex-col gap-4">
+          <form id="desabafoForm" class="flex p-4 flex-col gap-4">
             <!-- Título -->
             <label for="titulo" class="flex flex-col gap-1">
-              <span>Título:</span>
+              <!-- <span>Título:</span> -->
               <input
                 type="text"
                 id="titulo"
                 name="titulo"
-                class="focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
+                placeholder="Título"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
                 required
               />
             </label>
 
             <!-- Emoção -->
             <label for="emocao" class="flex flex-col gap-1">
-              <span>Emoção:</span>
+              <!-- <span>Emoção:</span> -->
               <select
                 id="emocao"
                 name="emocao"
                 required
-                class="bg-rosa focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
               >
-                <option value="">Selecione</option>
+                <option value="" disabled selected hidden>Escolha a emoção</option>
                 <option value="Felicidade">Felicidade</option>
                 <option value="Tristeza">Tristeza</option>
                 <option value="Raiva">Raiva</option>
@@ -47,44 +48,33 @@ import{b as d}from"./bgParticles-CJLKLwgA.js";function l(){const e=document.quer
                 min="1"
                 max="5"
                 value="3"
-                class="accent-rosa w-full"
+                class="accent-amarelo w-full"
                 required
               />
-              <span id="valorNivel" class="text-center text-sm text-gray-600"
+              <span id="valorNivel" class="text-center text-sm text-amarelo"
                 >3 / 5</span
               >
             </label>
 
-            <!-- Causa -->
-            <label for="causa" class="flex flex-col gap-1">
-              <span>Causa:</span>
-              <input
-                type="text"
-                id="causa"
-                name="causa"
-                class="focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
-                required
-              />
-            </label>
-
             <!-- Descrição -->
             <label for="descricao" class="flex flex-col gap-1">
-              <span>Descrição:</span>
+              <!-- <span>Descrição:</span> -->
               <textarea
                 id="descricao"
                 name="descricao"
                 rows="4"
-                class="focus:border-rosa focus:ring-rosa resize-none rounded-md border-2 border-gray-300 p-2 outline-none"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa resize-none rounded-md border-2 border-gray-300 p-2 outline-none"
                 required
+                placeholder="Descrição"
               ></textarea>
             </label>
 
             <!-- Botão -->
             <button
               type="submit"
-              class="bg-rosa hover:bg-rosa/80 rounded-md py-2 font-semibold text-white transition-colors"
+              class="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
             >
-              Enviar desabafo
+              Adicionar
             </button>
           </form>
         </div>
@@ -121,4 +111,4 @@ import{b as d}from"./bgParticles-CJLKLwgA.js";function l(){const e=document.quer
                     </div>
                 </div>
             </a>
-        </div>`};function i(){const e=document.querySelector(".content");e.innerHTML="",r.map(a=>e.insertAdjacentHTML("afterbegin",g(a)))}function v(){const e=document.getElementById("desabafoForm");e.addEventListener("submit",a=>{a.preventDefault();const o=new Date,t=String(o.getDate()).padStart(2,"0"),A=String(o.getMonth()+1).padStart(2,"0"),s=o.getFullYear(),n={id:r[r.length-1].id+1,titulo:e.titulo.value,emocao:e.emocao.value,nivel:e.nivel.value,causa:e.causa.value,descricao:e.descricao.value,data:`${t}/${A}/${s}`};r.push(n),e.reset(),i()})}function p(){const e=document.getElementById("menu-btn"),a=document.getElementById("sidebar"),o=document.getElementById("close-btn");function t(){a.classList.remove("hidden"),setTimeout(()=>{a.classList.remove("translate-x-full"),a.classList.add("translate-x-0")},10)}function A(){a.classList.add("translate-x-full"),a.classList.remove("translate-x-0"),setTimeout(()=>{a.classList.add("hidden")},300)}e.addEventListener("click",s=>{s.stopPropagation(),t()}),o.addEventListener("click",A),document.addEventListener("click",s=>{!a.contains(s.target)&&!e.contains(s.target)&&A()})}document.addEventListener("DOMContentLoaded",()=>{d(),u(),p(),l(),i(),v()});
+        </div>`};function i(){const e=document.querySelector(".content");e.innerHTML="",r.map(a=>e.insertAdjacentHTML("afterbegin",g(a)))}function v(){const e=document.getElementById("desabafoForm");e.addEventListener("submit",a=>{a.preventDefault();const o=new Date,t=String(o.getDate()).padStart(2,"0"),s=String(o.getMonth()+1).padStart(2,"0"),A=o.getFullYear(),n={id:r[r.length-1].id+1,titulo:e.titulo.value,emocao:e.emocao.value,nivel:e.nivel.value,causa:e.causa.value,descricao:e.descricao.value,data:`${t}/${s}/${A}`};r.push(n),e.reset(),i()})}function p(){const e=document.getElementById("menu-btn"),a=document.getElementById("sidebar"),o=document.getElementById("close-btn");function t(){a.classList.remove("hidden"),setTimeout(()=>{a.classList.remove("translate-x-full"),a.classList.add("translate-x-0")},10)}function s(){a.classList.add("translate-x-full"),a.classList.remove("translate-x-0"),setTimeout(()=>{a.classList.add("hidden")},300)}e.addEventListener("click",A=>{A.stopPropagation(),t()}),o.addEventListener("click",s),document.addEventListener("click",A=>{!a.contains(A.target)&&!e.contains(A.target)&&s()})}document.addEventListener("DOMContentLoaded",()=>{d(),u(),p(),l(),i(),v()});
