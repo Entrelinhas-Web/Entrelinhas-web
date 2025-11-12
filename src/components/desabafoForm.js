@@ -4,34 +4,35 @@ export default function desabafoForm() {
   content.innerHTML = "";
 
   const form = `
-        <div class="bg-rosa m-4 w-full max-w-md rounded-lg p-6 shadow-md">
-          <h2 class="mb-4 text-center text-2xl font-semibold">
+        <div class="bg-roxo border-lilas border-4 w-full max-w-md rounded-lg p-6 shadow-md">
+          <h1 class="mb-4 text-amarelo text-center text-xl font-semibold">
             Adicionar desabafo
-          </h2>
+          </h1>
 
-          <form id="desabafoForm" class="flex flex-col gap-4">
+          <form id="desabafoForm" class="flex p-4 flex-col gap-4">
             <!-- Título -->
             <label for="titulo" class="flex flex-col gap-1">
-              <span>Título:</span>
+              <!-- <span>Título:</span> -->
               <input
                 type="text"
                 id="titulo"
                 name="titulo"
-                class="focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
+                placeholder="Título"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
                 required
               />
             </label>
 
             <!-- Emoção -->
             <label for="emocao" class="flex flex-col gap-1">
-              <span>Emoção:</span>
+              <!-- <span>Emoção:</span> -->
               <select
                 id="emocao"
                 name="emocao"
                 required
-                class="bg-rosa focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
               >
-                <option value="">Selecione</option>
+                <option value="" disabled selected hidden>Escolha a emoção</option>
                 <option value="Felicidade">Felicidade</option>
                 <option value="Tristeza">Tristeza</option>
                 <option value="Raiva">Raiva</option>
@@ -52,44 +53,33 @@ export default function desabafoForm() {
                 min="1"
                 max="5"
                 value="3"
-                class="accent-rosa w-full"
+                class="accent-amarelo w-full"
                 required
               />
-              <span id="valorNivel" class="text-center text-sm text-gray-600"
+              <span id="valorNivel" class="text-center text-sm text-amarelo"
                 >3 / 5</span
               >
             </label>
 
-            <!-- Causa -->
-            <label for="causa" class="flex flex-col gap-1">
-              <span>Causa:</span>
-              <input
-                type="text"
-                id="causa"
-                name="causa"
-                class="focus:border-rosa focus:ring-rosa rounded-md border-2 border-gray-300 p-2 outline-none"
-                required
-              />
-            </label>
-
             <!-- Descrição -->
             <label for="descricao" class="flex flex-col gap-1">
-              <span>Descrição:</span>
+              <!-- <span>Descrição:</span> -->
               <textarea
                 id="descricao"
                 name="descricao"
                 rows="4"
-                class="focus:border-rosa focus:ring-rosa resize-none rounded-md border-2 border-gray-300 p-2 outline-none"
+                class="bg-preto border-lilas focus:border-amarelo focus:ring-rosa resize-none rounded-md border-2 border-gray-300 p-2 outline-none"
                 required
+                placeholder="Descrição"
               ></textarea>
             </label>
 
             <!-- Botão -->
             <button
               type="submit"
-              class="bg-rosa hover:bg-rosa/80 rounded-md py-2 font-semibold text-white transition-colors"
+              class="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
             >
-              Enviar desabafo
+              Adicionar
             </button>
           </form>
         </div>
