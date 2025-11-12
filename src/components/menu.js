@@ -14,7 +14,7 @@ export function menu() {
 
         <div class="px-6 pt-8">
         <ul class="flex flex-col gap-6 text-sm leading-relaxed">
-            <li><a href="/" class="hover:text-amarelo">Início</a></li>
+            <li><a href="../../" class="hover:text-amarelo">Início</a></li>
             <li><a href="/" class="hover:text-amarelo">Recomendações do psicólogo</a></li>
             <li><a href="/" class="hover:text-amarelo">Conta</a></li>
             <li><a href="/" class="text-vermelho hover:text-rosa">Sair</a></li>
