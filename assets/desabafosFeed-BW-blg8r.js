@@ -1,4 +1,4 @@
-import{b as n}from"./bgParticles-DdfI2ZwG.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
+import{b as n}from"./bgParticles-BLn1Nnod.js";function l(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
   <div class="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
     <h1 class="mb-6 text-amarelo pb-5 text-center text-xl font-semibold">
       Adicionar desabafo
@@ -51,7 +51,8 @@ import{b as n}from"./bgParticles-DdfI2ZwG.js";function l(){const e=document.quer
           </div>
         </div>
 
-        <div class="dir w-[70%] flex flex-col">
+        <!-- Descrição -->
+        <div class="dir lg:w-[70%] flex flex-col">
           <textarea
             id="descricao"
             name="descricao"
