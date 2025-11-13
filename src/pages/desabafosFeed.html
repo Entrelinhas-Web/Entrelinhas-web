@@ -29,7 +29,9 @@
       >
         <nav class="flex w-full justify-between py-2">
           <div class="flex flex-col">
-            <a href="../../" class="text-foreground text-lg no-underline sm:text-xl"
+            <a
+              href="../../"
+              class="text-foreground text-lg no-underline sm:text-xl"
               >Entrelinhas</a
             >
           </div>
@@ -42,7 +44,30 @@
 
       <hr class="border-branco/60" />
 
-      <div class="form m-4 flex flex-col items-center justify-center py-4"></div>
+      <div class="search m-4 hidden flex-col items-center justify-center py-4">
+        <div class="searchBar w-[80%] rounded-lg lg:w-[55%]">
+          <div
+            class="bg-branco border-lilas flex items-center gap-3 rounded-3xl border-2 px-4 py-2"
+          >
+            <input
+              type="text"
+              name="titulo"
+              placeholder="Buscar desabafos"
+              class="text-preto placeholder:text-preto/70 lg:text-md border-preto/60 focus:border-lilas focus:ring-lilas w-full rounded-2xl border-2 p-2 text-sm outline-none focus:ring-2"
+              required
+            />
+            <img
+              src="/public/search.png"
+              alt="Pesquisar"
+              class="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="form m-4 flex flex-col items-center justify-center py-4"
+      ></div>
 
       <div class="content flex flex-wrap items-center justify-center"></div>
     </div>

@@ -28,6 +28,6 @@ export default function addRegistros() {
 
     form.reset();
 
-    showRegistros();
+    location.reload()
   });
 }
