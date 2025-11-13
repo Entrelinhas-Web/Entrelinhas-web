@@ -101,4 +101,7 @@ const registros = [
   },
 ];
 
-export default registros;
+export default function defaultRegistros() {
+  JSON.parse(localStorage.getItem("desabafos")) == 0 &&
+    localStorage.setItem("desabafos", JSON.stringify(registros));
+}
