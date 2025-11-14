@@ -49,13 +49,15 @@ const mostrarPopup = (objeto) => {
     modalElement.classList.remove('hidden');
 };
 
-export function showRegistros() {
+export function showRegistros(lista = null) {
     const content = document.querySelector(".content");
     if (!content) return;
 
     content.innerHTML = "";
 
-    const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
+    // se recebeu lista, usa. caso contrário, usa o localStorage como antes
+    const registros = lista ?? JSON.parse(localStorage.getItem("desabafos") || "[]");
+
     if (registros.length === 0) {
         content.insertAdjacentHTML("afterbegin", `<div class="text-center p-6">
           <p>Você pode fazer um desabafo agora!</p>  

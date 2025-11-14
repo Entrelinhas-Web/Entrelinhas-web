@@ -18,3 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   showRegistros();
   addRegistros();
 });
+
+window.addEventListener("search-desabafo", (e) => {
+  const texto = (e?.detail?.texto || "").toLowerCase();
+
+  const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+  if (!texto) {
+    showRegistros(registros);
+    return;
+  }
+
+  const filtrados = registros.filter((r) => {
+    const titulo = (r.titulo || "").toLowerCase();
+    const descricao = (r.descricao || "").toLowerCase(); // 👈 aqui está o texto do desabafo
+
+    return titulo.includes(texto) || descricao.includes(texto);
+  });
+
+  showRegistros(filtrados);
+});
