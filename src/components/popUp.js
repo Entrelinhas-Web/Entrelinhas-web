@@ -1,4 +1,4 @@
-const popupHtml = (modalId, objeto, border, text) => {
+const popUp = (modalId, objeto, border, text) => {
 
     const starImg = `<img 
                         src="../../public/star.png" 
@@ -58,4 +58,4 @@ const popupHtml = (modalId, objeto, border, text) => {
     `;
 }
 
-export default popupHtml;
+export default popUp;

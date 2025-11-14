@@ -1,4 +1,6 @@
-export default function searchBar() {
+import { showRegistros } from "./showRegistros";
+
+export default function search() {
   const content = document.querySelector(".search");
 
   const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
@@ -9,7 +11,6 @@ export default function searchBar() {
   })();
 
   const input = content.querySelector("input");
-  if (!input) return;
 
   input.addEventListener("input", () => {
     const texto = (input.value || "").trim().toLowerCase();
@@ -21,3 +22,18 @@ export default function searchBar() {
     window.dispatchEvent(event);
   });
 }
+
+window.addEventListener("search-desabafo", (e) => {
+  const texto = (e?.detail?.texto || "").toLowerCase();
+
+  const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+  const filtrados = registros.filter((r) => {
+    const titulo = (r.titulo || "").toLowerCase();
+    const descricao = (r.descricao || "").toLowerCase();
+
+    return titulo.includes(texto) || descricao.includes(texto);
+  });
+
+  showRegistros(filtrados);
+});
