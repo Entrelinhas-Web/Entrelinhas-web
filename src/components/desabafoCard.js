@@ -5,7 +5,7 @@ const desabafoCard = (objeto) => {
 
     return (
         `<div class="w-[85%] lg:w-[60%] p-4 gap-2">
-            <a class="flex rounded-2xl border-2 ${border} overflow-hidden cursor-pointer hover:scale-105" href="/">
+            <a class="flex rounded-2xl border-2 ${border} overflow-hidden cursor-pointer hover:scale-105">
                 <div class="lateral ${bg} w-3"></div>
                 <div class="content bg-preto flex flex-col flex-1 gap-3 p-2">
                     <div>
