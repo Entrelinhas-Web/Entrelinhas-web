@@ -25,6 +25,16 @@
     <div
       class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
     ></div>
+
+    <!-- Header -->
+    <header class="absolute flex top-0 w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
+      <a href="../../" class="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
+        <a href="../../src/pages/login.html"
+          class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+          Login
+        </a>
+    </header>
+
     <div
       class="border-lilas shadow-pixel bg-roxo w-fit border-4 p-8  text-center space-y-6 rounded-lg lg:w-110"
     >
@@ -38,7 +48,7 @@
           <input
             type="text"
             required
-            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Digite seu usuário"
           />
         </div>
@@ -49,7 +59,7 @@
           <input
             type="email"
             required
-            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Ex: email@exemplo.com"
           />
         </div>
@@ -61,7 +71,7 @@
             type="password"
             id="senha"
             required
-            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Digite sua senha (8+ dígitos)"
           />
         </div>
@@ -73,7 +83,7 @@
             type="password"
             id="confirmar"
             required
-            class="bg-preto border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
+            class="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
             placeholder="Confirme sua senha"
           />
         </div>
@@ -88,7 +98,7 @@
           />
 
           <label
-            class="bg-lilas text-branco hover:bg-branco hover:text-lilas cursor-pointer px-3 py-2 text-[10px] transition border-2 border-lilas hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
+            class="bg-lilas text-branco rounded-[5px] hover:bg-branco hover:text-lilas cursor-pointer px-3 py-2 text-[10px] transition border-2 border-lilas hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423]"
           >
             Escolher avatar
             <input
@@ -103,7 +113,7 @@
         <!-- Botão -->
         <button
           type="submit"
-          class="bg-lilas border-lilas text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
+          class="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
         >
           Cadastrar
         </button>

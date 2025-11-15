@@ -1,5 +1,6 @@
 const registros = [
   {
+    id: 1,
     titulo: "FINALMENTE FORMADO!!",
     emocao: "Felicidade",
     nivel: 5,
@@ -9,6 +10,7 @@ const registros = [
     data: "12/10/2025",
   },
   {
+    id: 2,
     titulo: "Saudades machuca, né?",
     emocao: "Tristeza",
     nivel: 3,
@@ -18,6 +20,7 @@ const registros = [
     data: "14/10/2025",
   },
   {
+    id: 3,
     titulo: "Não sei se vou conseguir...",
     emocao: "Ansiedade",
     nivel: 4,
@@ -27,6 +30,7 @@ const registros = [
     data: "15/10/2025",
   },
   {
+    id: 4,
     titulo: "Conclui mais 1 projeto!",
     emocao: "Felicidade",
     nivel: 5,
@@ -36,6 +40,7 @@ const registros = [
     data: "17/10/2025",
   },
   {
+    id: 5,
     titulo: "NINGUÉM SABE DIRIGIR NESSA CIDADE",
     emocao: "Raiva",
     nivel: 2,
@@ -45,6 +50,7 @@ const registros = [
     data: "18/10/2025",
   },
   {
+    id: 6,
     titulo: "Saudades machuca, né?",
     emocao: "Felicidade",
     nivel: 5,
@@ -54,6 +60,7 @@ const registros = [
     data: "19/10/2025",
   },
   {
+    id: 7,
     titulo: "QUE PRESENTE FOD4!",
     emocao: "Felicidade",
     nivel: 4,
@@ -63,6 +70,7 @@ const registros = [
     data: "20/10/2025",
   },
   {
+    id: 8,
     titulo: "Será que vai dar tudo certo?",
     emocao: "Medo",
     nivel: 3,
@@ -72,6 +80,7 @@ const registros = [
     data: "21/10/2025",
   },
   {
+    id: 9,
     titulo: "Ás vezes, sair de casa é até bom...",
     emocao: "Tranquilidade",
     nivel: 4,
@@ -81,6 +90,7 @@ const registros = [
     data: "02/11/2025",
   },
   {
+    id: 10,
     titulo: "Gonna be a polyglot!",
     emocao: "Motivação",
     nivel: 5,
@@ -91,4 +101,7 @@ const registros = [
   },
 ];
 
-export default registros;
+export default function defaultRegistros() {
+  JSON.parse(localStorage.getItem("desabafos")) == 0 &&
+    localStorage.setItem("desabafos", JSON.stringify(registros));
+}
