@@ -27,8 +27,8 @@ export function menuBar() {
   closeBtn.addEventListener("click", closeSidebar);
 
   document.addEventListener("click", (e) => {
-    if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+    !sidebar.contains(e.target) &&
+      !menuBtn.contains(e.target) &&
       closeSidebar();
-    }
   });
 }
