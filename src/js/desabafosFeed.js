@@ -6,16 +6,20 @@ import addRegistros from "./scripts/addRegistros.js";
 import bgParticles from "./scripts/bgParticles.js";
 import { menuBar } from "./scripts/menuBar.js";
 import { showRegistros } from "./scripts/showRegistros.js";
+import { filter } from "../components/filter.js";
+import { filterBar } from "./scripts/filterBar.js";
 
 // defaultRegistros();
 
 document.addEventListener("DOMContentLoaded", () => {
-  search();
   bgParticles();
-  menu();
-  menuBar();
   desabafoForm();
   showRegistros();
   addRegistros();
 });
 
+search();
+menu();
+menuBar();
+filter();
+filterBar();

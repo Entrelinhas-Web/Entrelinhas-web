@@ -44,23 +44,31 @@
 
       <hr class="border-branco/60" />
 
-      <div class="search m-4 hidden flex-col items-center justify-center py-4">
-        <div class="searchBar w-[80%] rounded-lg lg:w-[55%]">
-          <div
-            class="bg-roxo border-lilas flex items-center gap-3 rounded-3xl border-2 px-4 py-3"
-          >
-            <input
-              type="text"
-              name="titulo"
-              placeholder="Buscar desabafos"
-              class="bg-preto text-branco sm:border-lilas placeholder:text-branco/70 lg:text-md border-preto/60 focus:border-amarelo w-full rounded-2xl border-2 px-5 py-2 text-sm outline-none "
-              required
-            />
-            <img
-              src="/public/search.png"
-              alt="Pesquisar"
-              class="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7"
-            />
+      <div class="search py-4 hidden">
+        <div class="flex gap-3 items-center justify-center w-full">
+          <div class="searchBar lg:w-[51%] w-[78%] rounded-lg">
+            <div
+              class="bg-roxo border-lilas flex items-center gap-3 rounded-3xl border-2 px-3 py-3"
+            >
+              <input
+                type="text"
+                name="titulo"
+                placeholder="Buscar desabafos"
+                class="bg-preto text-branco sm:border-lilas placeholder:text-branco/70 lg:text-md border-preto/60 focus:border-amarelo w-full rounded-2xl border-2 px-4 py-2 text-xs outline-none "
+                required
+              />
+              <img
+                src="/public/search.png"
+                alt="Pesquisar"
+                class="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7"
+              />
+            </div>
+          </div>
+
+          <div class="filter hover:scale-105">
+            <button id="filter-btn" class="bg-roxo border-lilas flex items-center gap-3 rounded-3xl border-2 px-4 py-3 hover:bg-lilas/70">
+              <img src="/public/filter.png" alt="filter" class="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7">
+            </button>
           </div>
         </div>
       </div>
