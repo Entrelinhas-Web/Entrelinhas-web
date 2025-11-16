@@ -1,6 +1,6 @@
 import emocoes from "../js/models/emocoes.js";
 
-const dashboardCard = (emocao) => {
+const dashboardCard = (emocao, quant) => {
     const { bg, border, text } = emocoes[emocao];
 
     return (
@@ -9,7 +9,7 @@ const dashboardCard = (emocao) => {
                 <div class="lateral ${bg} w-3"></div>
                 <div class="content bg-preto flex flex-col flex-1 gap-3 p-2">
                     <div>
-                        <h1 class="${text} font-bold">0 Registro(s) de emoção</h1>
+                        <h1 class="${text} font-bold">${quant} Registro(s) de ${emocao}</h1>
                     </div>
                 </div>
             </a>

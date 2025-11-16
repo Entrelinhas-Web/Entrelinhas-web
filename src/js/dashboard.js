@@ -4,7 +4,7 @@ import { menuBar } from "./scripts/menuBar.js";
 import { gerarContadores } from "./scripts/funcoesDashboad.js";
 
 //Lista de desabafos no LocalStorage
-const listaDesabafos = JSON.parse(localStorage.getItem("desabafos" || "[]"));
+export const listaDesabafos = JSON.parse(localStorage.getItem("desabafos" || "[]"));
 
 //Elementos no HTML
 const desabafosRegistrados = document.querySelector('#desabafos-registrados');
