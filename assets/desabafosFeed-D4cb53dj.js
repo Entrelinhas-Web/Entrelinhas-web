@@ -165,7 +165,7 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
         </div>
   `),l.map(o=>{const s=b(o),a=document.createElement("div");a.innerHTML=s.trim();const r=a.firstElementChild;r&&r.addEventListener("click",()=>{x(o)}),e.prepend(r)})}function f(){const t=document.querySelector(".search");JSON.parse(localStorage.getItem("desabafos")||"[]").length>0&&(t.classList.remove("hidden"),t.classList.add("flex"));const l=t.querySelector("input");l.addEventListener("input",()=>{const o=(l.value||"").trim().toLowerCase(),s=new CustomEvent("search-desabafo",{detail:{texto:o}});window.dispatchEvent(s)})}window.addEventListener("search-desabafo",t=>{const e=(t?.detail?.texto||"").toLowerCase(),o=JSON.parse(localStorage.getItem("desabafos")||"[]").filter(s=>{const a=(s.titulo||"").toLowerCase(),r=(s.descricao||"").toLowerCase();return a.includes(e)||r.includes(e)});d(o)});function g(){const t=document.getElementById("desabafoForm"),e=JSON.parse(localStorage.getItem("desabafos")||"[]");t.addEventListener("submit",l=>{l.preventDefault();const o=new Date,s=String(o.getDate()).padStart(2,"0"),a=String(o.getMonth()+1).padStart(2,"0"),r=o.getFullYear(),i={id:e.length>0?e[e.length-1].id+1:1,titulo:t.titulo.value,emocao:t.emocao.value,nivel:t.nivel.value,descricao:t.descricao.value,data:`${s}/${a}/${r}`};e.push(i),localStorage.setItem("desabafos",JSON.stringify(e)),t.reset(),location.reload()})}function h(){const t=document.getElementById("menu-btn"),e=document.getElementById("sidebar"),l=document.getElementById("close-btn");function o(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function s(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",a=>{a.stopPropagation(),o()}),l.addEventListener("click",s),document.addEventListener("click",a=>{!e.contains(a.target)&&!t.contains(a.target)&&s()})}function y(){document.querySelector("#app").insertAdjacentHTML("beforeend",`
     <div
-      id="filter-info"
+      id="filter"
       class="bg-roxo border-lilas border-4 rounded-l-lg text-center p-6 shadow-xl fixed bottom-0 right-0 h-full w-85 hidden translate-x-full transform transition-all duration-300 ease-in-out z-50"
     >
         <button
@@ -211,11 +211,11 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
 
         <div class="flex justify-center pt-6">
             <button
-              id="filter-btn"
+              id="filter-submit"
               class="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco border-2 py-2 px-8 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas font-semibold"
             >
                 Filtrar
             </button>
         </div>
     </div>
-  `)}function w(){const t=document.getElementById("filter-btn"),e=document.getElementById("filter-info"),l=document.getElementById("filter-close-btn");function o(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function s(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",a=>{a.stopPropagation(),o()}),l.addEventListener("click",s),document.addEventListener("click",a=>{!e.contains(a.target)&&!t.contains(a.target)&&s()})}document.addEventListener("DOMContentLoaded",()=>{u(),p(),d(),g()});f();m();h();y();w();
+  `)}function L(){const t=document.getElementById("filter-btn"),e=document.getElementById("filter"),l=document.getElementById("filter-close-btn"),o=document.getElementById("filter-submit");function s(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function a(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",r=>{r.stopPropagation(),s()}),l.addEventListener("click",a),o.addEventListener("click",()=>{a()}),document.addEventListener("click",r=>{!e.contains(r.target)&&!t.contains(r.target)&&a()})}document.addEventListener("DOMContentLoaded",()=>{u(),p(),d(),g()});f();m();h();y();L();
