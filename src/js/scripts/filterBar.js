@@ -1,3 +1,5 @@
+import filterInfo from "./filterInfo";
+
 export function filterBar() {
   const filterBtn = document.getElementById("filter-btn");
   const filter = document.getElementById("filter");
@@ -28,6 +30,7 @@ export function filterBar() {
   closeBtn.addEventListener("click", closeFilter);
 
   filterSubmit.addEventListener("click", () => {
+    filterInfo();
     closeFilter();
   });
 

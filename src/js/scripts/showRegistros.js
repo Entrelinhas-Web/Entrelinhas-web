@@ -2,7 +2,7 @@ import desabafoCard from "../../components/desabafoCard.js";
 import popUp from "../../components/popUp.js";
 import emocoes from "../../js/models/emocoes.js";
 
-const mostrarPopup = (objeto) => {
+function mostrarPopup (objeto){
     const { border, text } = emocoes[objeto.emocao];
     const modalId = `modal-${objeto.id || Date.now() + Math.random()}`;
     const htmlString = popUp(modalId, objeto, border, text);
@@ -48,7 +48,7 @@ const mostrarPopup = (objeto) => {
     modalElement.classList.remove('hidden');
 };
 
-export function showRegistros(lista = null) {
+export function showRegistros(lista = null, mensagem = null) {
     const content = document.querySelector(".content");
 
     content.innerHTML = "";
@@ -59,7 +59,7 @@ export function showRegistros(lista = null) {
     (registros.length === 0) &&
     content.insertAdjacentHTML("afterbegin", `
         <div class="text-center p-6">
-        <p>Você pode fazer um desabafo agora!</p>
+        <p>${(mensagem) ? (mensagem) : ("Você pode fazer um desabafo agora!")}</p>
         </div>
   `);
 
