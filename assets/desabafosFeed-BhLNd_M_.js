@@ -1,4 +1,4 @@
-import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.querySelector(".form");t.innerHTML="",t.insertAdjacentHTML("beforeend",`
+import{b as m}from"./bgParticles-DnaNUedT.js";function p(){const t=document.querySelector(".form");t.innerHTML="",t.insertAdjacentHTML("beforeend",`
   <div class="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
     <h1 class="mb-6 text-amarelo pb-5 text-center text-xl font-semibold">
       Adicionar desabafo
@@ -75,7 +75,7 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
         </button>
       </div>
     </form>
-  </div>`),t.classList.remove("hidden"),t.classList.add("flex");const l=document.getElementById("nivel"),o=document.getElementById("valorNivel");l.addEventListener("input",()=>{o.textContent=`${l.value} / 5`})}function m(){document.querySelector("#app").insertAdjacentHTML("beforeend",`
+  </div>`),t.classList.remove("hidden"),t.classList.add("flex");const a=document.getElementById("nivel"),l=document.getElementById("valorNivel");a.addEventListener("input",()=>{l.textContent=`${a.value} / 5`})}function v(){document.querySelector("#app").insertAdjacentHTML("beforeend",`
     <div id="sidebar" class="bg-preto text-branco border-l-2 border-branco/80 fixed top-0 right-0 z-50 hidden h-full w-64 translate-x-full transform shadow-xl transition-all duration-300 ease-in-out">
         <button
         id="close-btn"
@@ -93,12 +93,12 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
         </ul>
         </div>
     </div>
-  `)}const n={Felicidade:{bg:"bg-amarelo",border:"border-amarelo",text:"text-amarelo"},Tristeza:{bg:"bg-azul",border:"border-azul",text:"text-azul"},Raiva:{bg:"bg-vermelho",border:"border-vermelho",text:"text-vermelho"},Ansiedade:{bg:"bg-laranja",border:"border-laranja",text:"text-laranja"},Motivação:{bg:"bg-rosa",border:"border-rosa",text:"text-rosa"},Tranquilidade:{bg:"bg-verde",border:"border-verde",text:"text-verde"},Medo:{bg:"bg-lilas",border:"border-lilas",text:"text-lilas"}},b=t=>{const{bg:e,border:l,text:o}=n[t.emocao];return`<div class="w-[85%] lg:w-[60%] p-4 gap-2">
-            <a class="flex rounded-2xl border-2 ${l} overflow-hidden cursor-pointer hover:scale-105">
+  `)}const d={Felicidade:{bg:"bg-amarelo",border:"border-amarelo",text:"text-amarelo"},Tristeza:{bg:"bg-azul",border:"border-azul",text:"text-azul"},Raiva:{bg:"bg-vermelho",border:"border-vermelho",text:"text-vermelho"},Ansiedade:{bg:"bg-laranja",border:"border-laranja",text:"text-laranja"},Motivação:{bg:"bg-rosa",border:"border-rosa",text:"text-rosa"},Tranquilidade:{bg:"bg-verde",border:"border-verde",text:"text-verde"},Medo:{bg:"bg-lilas",border:"border-lilas",text:"text-lilas"}},b=t=>{const{bg:e,border:a,text:l}=d[t.emocao];return`<div class="w-[85%] lg:w-[60%] p-4 gap-2">
+            <a class="flex rounded-2xl border-2 ${a} overflow-hidden cursor-pointer hover:scale-105">
                 <div class="lateral ${e} w-3"></div>
                 <div class="content bg-preto flex flex-col flex-1 gap-3 p-2">
                     <div>
-                        <h1 class="${o} font-bold">${t.titulo}</h1>
+                        <h1 class="${l} font-bold">${t.titulo}</h1>
             
                         <p>${t.data}</p>
                     </div>
@@ -108,7 +108,7 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
                     </div>
                 </div>
             </a>
-        </div>`},v=(t,e,l,o)=>{const a=`<img 
+        </div>`},f=(t,e,a,l)=>{const o=`<img 
                         src="../../public/star.png" 
                         alt="Estrela de intensidade" 
                         class="w-5 h-5"
@@ -118,7 +118,7 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
         class="hidden fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/30"
     >
         <div 
-            class="bg-preto p-6 rounded-2xl shadow-xl w-full max-w-5xl relative border-2 ${l}"
+            class="bg-preto p-6 rounded-2xl shadow-xl w-full max-w-5xl relative border-2 ${a}"
         >
             
             <div class="absolute top-3 right-4 flex items-center gap-x-3">
@@ -145,10 +145,10 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
                 </button>
             </div>
             
-            <h1 class="${o} font-bold text-2xl mb-2">${e.titulo}</h1>
+            <h1 class="${l} font-bold text-2xl mb-2">${e.titulo}</h1>
             
             <div class="flex flex-row gap-x-1 mb-2">
-                ${a}
+                ${o}
             </div>
 
             <p class="text-sm text-gray-400 mb-4">${e.data}</p>
@@ -159,11 +159,11 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
 
         </div>
     </div>
-    `},x=t=>{const{border:e,text:l}=n[t.emocao],o=`modal-${t.id||Date.now()+Math.random()}`,s=v(o,t,e,l);document.body.insertAdjacentHTML("beforeend",s);const a=document.getElementById(o);a.querySelector(".js-close-popup"),a.querySelector(".js-edit-popup"),a.querySelector(".js-remove-popup");const r=a.querySelector(".bg-preto"),i=()=>{a.classList.add("hidden"),a.remove()};a.addEventListener("click",i),r.addEventListener("click",c=>c.stopPropagation()),a.classList.remove("hidden")};function d(t=null){const e=document.querySelector(".content");e.innerHTML="";const l=t??JSON.parse(localStorage.getItem("desabafos")||"[]");l.length===0&&e.insertAdjacentHTML("afterbegin",`
+    `},x=t=>{const{border:e,text:a}=d[t.emocao],l=`modal-${t.id||Date.now()+Math.random()}`,s=f(l,t,e,a);document.body.insertAdjacentHTML("beforeend",s);const o=document.getElementById(l);o.querySelector(".js-close-popup"),o.querySelector(".js-edit-popup"),o.querySelector(".js-remove-popup");const r=o.querySelector(".bg-preto"),n=()=>{o.classList.add("hidden"),o.remove()};o.addEventListener("click",n),r.addEventListener("click",u=>u.stopPropagation()),o.classList.remove("hidden")};function c(t=null){const e=document.querySelector(".content");e.innerHTML="";const a=t??JSON.parse(localStorage.getItem("desabafos")||"[]");a.length===0&&e.insertAdjacentHTML("afterbegin",`
         <div class="text-center p-6">
         <p>Você pode fazer um desabafo agora!</p>
         </div>
-  `),l.map(o=>{const s=b(o),a=document.createElement("div");a.innerHTML=s.trim();const r=a.firstElementChild;r&&r.addEventListener("click",()=>{x(o)}),e.prepend(r)})}function f(){const t=document.querySelector(".search");JSON.parse(localStorage.getItem("desabafos")||"[]").length>0&&(t.classList.remove("hidden"),t.classList.add("flex"));const l=t.querySelector("input");l.addEventListener("input",()=>{const o=(l.value||"").trim().toLowerCase(),s=new CustomEvent("search-desabafo",{detail:{texto:o}});window.dispatchEvent(s)})}window.addEventListener("search-desabafo",t=>{const e=(t?.detail?.texto||"").toLowerCase(),o=JSON.parse(localStorage.getItem("desabafos")||"[]").filter(s=>{const a=(s.titulo||"").toLowerCase(),r=(s.descricao||"").toLowerCase();return a.includes(e)||r.includes(e)});d(o)});function g(){const t=document.getElementById("desabafoForm"),e=JSON.parse(localStorage.getItem("desabafos")||"[]");t.addEventListener("submit",l=>{l.preventDefault();const o=new Date,s=String(o.getDate()).padStart(2,"0"),a=String(o.getMonth()+1).padStart(2,"0"),r=o.getFullYear(),i={id:e.length>0?e[e.length-1].id+1:1,titulo:t.titulo.value,emocao:t.emocao.value,nivel:t.nivel.value,descricao:t.descricao.value,data:`${s}/${a}/${r}`};e.push(i),localStorage.setItem("desabafos",JSON.stringify(e)),t.reset(),location.reload()})}function h(){const t=document.getElementById("menu-btn"),e=document.getElementById("sidebar"),l=document.getElementById("close-btn");function o(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function s(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",a=>{a.stopPropagation(),o()}),l.addEventListener("click",s),document.addEventListener("click",a=>{!e.contains(a.target)&&!t.contains(a.target)&&s()})}function y(){document.querySelector("#app").insertAdjacentHTML("beforeend",`
+  `),a.map(l=>{const s=b(l),o=document.createElement("div");o.innerHTML=s.trim();const r=o.firstElementChild;r&&r.addEventListener("click",()=>{x(l)}),e.prepend(r)})}function g(){const t=document.querySelector(".search");JSON.parse(localStorage.getItem("desabafos")||"[]").length>0&&(t.classList.remove("hidden"),t.classList.add("flex"));const a=t.querySelector("input");a.addEventListener("input",()=>{const l=(a.value||"").trim().toLowerCase(),s=new CustomEvent("state-change",{detail:{searchText:l}});window.dispatchEvent(s)})}function h(){const t=document.getElementById("desabafoForm"),e=JSON.parse(localStorage.getItem("desabafos")||"[]");t.addEventListener("submit",a=>{a.preventDefault();const l=new Date,s=String(l.getDate()).padStart(2,"0"),o=String(l.getMonth()+1).padStart(2,"0"),r=l.getFullYear(),n={id:e.length>0?e[e.length-1].id+1:1,titulo:t.titulo.value,emocao:t.emocao.value,nivel:t.nivel.value,descricao:t.descricao.value,data:`${s}/${o}/${r}`};e.push(n),localStorage.setItem("desabafos",JSON.stringify(e)),t.reset(),location.reload()})}function y(){const t=document.getElementById("menu-btn"),e=document.getElementById("sidebar"),a=document.getElementById("close-btn");function l(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function s(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",o=>{o.stopPropagation(),l()}),a.addEventListener("click",s),document.addEventListener("click",o=>{!e.contains(o.target)&&!t.contains(o.target)&&s()})}function w(){document.querySelector("#app").insertAdjacentHTML("beforeend",`
     <div
       id="filter"
       class="bg-roxo border-lilas border-4 rounded-l-lg text-center p-6 shadow-xl fixed bottom-0 right-0 h-full w-85 hidden translate-x-full transform transition-all duration-300 ease-in-out z-50"
@@ -218,4 +218,4 @@ import{b as u}from"./bgParticles-DnaNUedT.js";function p(){const t=document.quer
             </button>
         </div>
     </div>
-  `)}function L(){const t=document.getElementById("filter-btn"),e=document.getElementById("filter"),l=document.getElementById("filter-close-btn"),o=document.getElementById("filter-submit");function s(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function a(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",r=>{r.stopPropagation(),s()}),l.addEventListener("click",a),o.addEventListener("click",()=>{a()}),document.addEventListener("click",r=>{!e.contains(r.target)&&!t.contains(r.target)&&a()})}document.addEventListener("DOMContentLoaded",()=>{u(),p(),d(),g()});f();m();h();y();L();
+  `)}function E(){const t=document.querySelector(".emocoes-filter"),e=document.querySelector(".data-filter"),a=[...t.querySelectorAll('input[name="emocao"]:checked')].map(n=>n.value),l=e.querySelector("#date-start").value||null,s=e.querySelector("#date-end").value||null,o={emocoes:a,dateStart:l,dateEnd:s},r=new CustomEvent("state-change",{detail:{filter:o}});window.dispatchEvent(r)}function S(){const t=document.getElementById("filter-btn"),e=document.getElementById("filter"),a=document.getElementById("filter-close-btn"),l=document.getElementById("filter-submit");function s(){e.classList.remove("hidden"),setTimeout(()=>{e.classList.remove("translate-x-full"),e.classList.add("translate-x-0")},10)}function o(){e.classList.add("translate-x-full"),e.classList.remove("translate-x-0"),setTimeout(()=>{e.classList.add("hidden")},300)}t.addEventListener("click",r=>{r.stopPropagation(),s()}),a.addEventListener("click",o),l.addEventListener("click",()=>{E(),o()}),document.addEventListener("click",r=>{!e.contains(r.target)&&!t.contains(r.target)&&o()})}const i={searchText:"",filter:{emocoes:[],dateStart:null,dateEnd:null}};function L(){let e=JSON.parse(localStorage.getItem("desabafos")||"[]");i.filter.emocoes&&i.filter.emocoes.length>0&&(e=e.filter(a=>i.filter.emocoes.includes(a.emocao))),(i.filter.dateStart||i.filter.dateEnd)&&(e=e.filter(a=>(new Date(a.data.split("/")[2],a.data.split("/")[1],a.data.split("/")[0]),i.filter.dateStart&&new Date(appState.filtro.dateStart.year,appState.filtro.dateStart.month,appState.filtro.dateStart.day),i.filter.dateEnd&&new Date(appState.filtro.dateEnd.year,appState.filtro.dateEnd.month,appState.filtro.dateEnd.day),!0))),i.searchText&&i.searchText.trim()!==""&&(e=e.filter(a=>a.titulo.toLowerCase().includes(i.searchText.toLowerCase().trim())||a.descricao.toLowerCase().includes(i.searchText.toLowerCase().trim()))),c(e)}window.addEventListener("state-change",t=>{Object.assign(i,{...i,...t.detail}),L()});document.addEventListener("DOMContentLoaded",()=>{m(),p(),c(),h()});g();v();y();w();S();
