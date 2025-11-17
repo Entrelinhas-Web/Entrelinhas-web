@@ -1,4 +1,4 @@
-import{b as f}from"./bgParticles-DnaNUedT.js";function x(){const t=document.querySelector(".form");t.innerHTML="",t.insertAdjacentHTML("beforeend",`
+import{b as f}from"./bgParticles-BU-5_Lnt.js";function x(){const t=document.querySelector(".form");t.innerHTML="",t.insertAdjacentHTML("beforeend",`
   <div class="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
     <h1 class="mb-6 text-amarelo pb-5 text-center text-xl font-semibold">
       Adicionar desabafo
@@ -109,7 +109,7 @@ import{b as f}from"./bgParticles-DnaNUedT.js";function x(){const t=document.quer
                 </div>
             </a>
         </div>`};function w(t,e,a,o){const s=`<img 
-                        src="../../public/star.png" 
+                        src="/Entrelinhas-web/star.png" 
                         alt="Estrela de intensidade" 
                         class="w-5 h-5"
                     >`.repeat(e.nivel||0);return`
@@ -121,25 +121,25 @@ import{b as f}from"./bgParticles-DnaNUedT.js";function x(){const t=document.quer
             class="bg-preto p-6 rounded-2xl shadow-xl w-full max-w-5xl relative border-2 ${a}"
         >
             
-            <div class="absolute top-3 right-4 flex items-center gap-x-3">
+            <div class="absolute top-3 right-4 flex items-center gap-3 text-center">
                 
                 <button 
                     title="Editar"
                     class="text-gray-400 hover:opacity-80 transition-opacity edit-popup"
                 >
-                    <img src="../../public/edit.png" alt="Editar" class="w-5 h-5">
+                    <img src="/Entrelinhas-web//edit.png" alt="Editar" class="w-5 h-5">
                 </button>
                 
                 <button 
                     title="Remover"
                     class="text-gray-400 hover:opacity-80 transition-opacity remove-popup"
                 >
-                    <img src="../../public/trash.png" alt="Remover" class="w-5 h-5">
+                    <img src="/Entrelinhas-web/trash.png" alt="Remover" class="w-5 h-5">
                 </button>
 
                 <button 
                     title="Fechar"
-                    class="text-gray-400 hover:text-white text-2xl font-bold close-popup"
+                    class="text-gray-400 hover:text-white text-2xl font-bold close-popup pt-1"
                 >
                     &times;
                 </button>
