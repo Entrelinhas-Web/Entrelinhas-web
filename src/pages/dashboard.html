@@ -43,7 +43,6 @@
       
     </div>
     
-    
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 p-8">
         <div class="bg-white rounded-lg shadow-md p-6">
             <p id="desabafos-registrados" class="text-3xl font-bold text-lilas mt-2 inline">0</p>
@@ -52,12 +51,19 @@
 
         <div class="bg-white rounded-lg shadow-md p-6">
             <p id="emocoes-registradas" class="text-3xl font-bold text-lilas mt-2 inline"><span>0</span></p>
-            <p class="text-preto text-sm font-semibold uppercase inline">Emoções Registrada(s)</p>
+            <p class="text-preto text-sm font-semibold uppercase inline">Emoç(ões) Diferente(s)</p>
         </div>
+    </div>
+
+    <div class="w-full pb-[4%] h-[500px] flex justify-center items-center">
+      <canvas id="graficoDashboard"></canvas>
     </div>
 
     <div class="content flex flex-wrap items-center justify-center"></div>
 
+
     <script type="module" src="/src/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../js/scripts/grafico.js"></script>
 </body>
 </html>
