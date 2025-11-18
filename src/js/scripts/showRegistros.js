@@ -2,79 +2,95 @@ import desabafoCard from "../../components/desabafoCard.js";
 import popUp from "../../components/popUp.js";
 import emocoes from "../../js/models/emocoes.js";
 
-const mostrarPopup = (objeto) => {
-    const { border, text } = emocoes[objeto.emocao];
-    const modalId = `modal-${objeto.id || Date.now() + Math.random()}`;
-    const htmlString = popUp(modalId, objeto, border, text);
+function mostrarPopup(objeto) {
+  const { border, text } = emocoes[objeto.emocao];
+  const modalId = `modal-${objeto.id || Date.now() + Math.random()}`;
 
-    document.body.insertAdjacentHTML('beforeend', htmlString);
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    popUp(modalId, objeto, border, text),
+  );
 
-    const modalElement = document.getElementById(modalId);
+  const modalElement = document.getElementById(modalId);
 
-    const closeButton = modalElement.querySelector('.js-close-popup');
-    const editButton = modalElement.querySelector('.js-edit-popup');
-    const removeButton = modalElement.querySelector('.js-remove-popup');
+  const closeBtn = modalElement.querySelector(".close-popup");
+  const editBtn = modalElement.querySelector(".edit-popup");
+  const removeBtn = modalElement.querySelector(".remove-popup");
 
-    const modalContent = modalElement.querySelector('.bg-preto');
+  const modalContent = modalElement.querySelector(".bg-preto");
 
-    const fecharModal = () => {
-        modalElement.classList.add('hidden');
-        modalElement.remove();//pra não acumular
-    };
-    
-    modalElement.addEventListener('click', fecharModal);
+  function fecharModal() {
+    modalElement.remove();
+  }
 
-    closeButton && (() => {
-        closeButton.addEventListener('click', fecharModal);
-    })
+  modalElement.addEventListener("click", fecharModal);
 
-    modalContent.addEventListener('click', (event) => event.stopPropagation());
+  modalContent.addEventListener("click", (e) => {
+    const clicked = e.target.closest(
+      ".close-popup, .edit-popup, .remove-popup",
+    );
+    !clicked && e.stopPropagation();
+  });
 
-    editButton && (() => {
-        editButton.addEventListener('click', () => {
-            console.log("Clicou em EDITAR o item:", objeto.id);
-            // js pra edit
-
-        });
-     })
-
-    removeButton && (() => {
-        removeButton.addEventListener('click', () => {
-            console.log("Clicou em REMOVER o item:", objeto.id);
-            // js pra remover
-        });
-    })
-
-    modalElement.classList.remove('hidden');
-};
-
-export function showRegistros(lista = null) {
-    const content = document.querySelector(".content");
-
-    content.innerHTML = "";
-
-    // se recebeu lista, usa. caso contrário, usa o localStorage como antes
-    const registros = lista ?? JSON.parse(localStorage.getItem("desabafos") || "[]");
-
-    (registros.length === 0) &&
-    content.insertAdjacentHTML("afterbegin", `
-        <div class="text-center p-6">
-        <p>Você pode fazer um desabafo agora!</p>
-        </div>
-  `);
-
-
-    registros.map((registro) => {
-        const cardHtmlString = desabafoCard(registro);
-
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cardHtmlString.trim();
-        const cardElement = tempDiv.firstElementChild;
-
-        (cardElement) && 
-        cardElement.addEventListener('click', () => {
-            mostrarPopup(registro);
-        });
-        content.prepend(cardElement);
+  closeBtn &&
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      fecharModal();
     });
+
+  editBtn &&
+    editBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      console.log("Editar:", objeto.id);
+    });
+
+  removeBtn &&
+    removeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      let registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+      registros = registros.filter((r) => {
+        return r.id !== objeto.id;
+      });
+
+      localStorage.setItem("desabafos", JSON.stringify(registros));
+
+      fecharModal();
+      showRegistros(registros);
+    });
+}
+
+export function showRegistros(lista = null, mensagem = null) {
+  const content = document.querySelector(".content");
+
+  content.innerHTML = "";
+
+  // se recebeu lista, usa. caso contrário, usa o localStorage como antes
+  const registros =
+    lista ?? JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+  registros.length === 0 &&
+    content.insertAdjacentHTML(
+      "afterbegin",
+      `
+        <div class="text-center p-6">
+        <p>${mensagem ? mensagem : "Você pode fazer um desabafo agora!"}</p>
+        </div>
+  `,
+    );
+
+  registros.map((registro) => {
+    const cardHtmlString = desabafoCard(registro);
+
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = cardHtmlString.trim();
+    const cardElement = tempDiv.firstElementChild;
+
+    cardElement &&
+      cardElement.addEventListener("click", () => {
+        mostrarPopup(registro);
+      });
+    content.prepend(cardElement);
+  });
 }

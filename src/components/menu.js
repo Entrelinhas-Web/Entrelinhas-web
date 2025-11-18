@@ -1,5 +1,3 @@
-import sair from '/public/sair.png';
-
 export function menu() {
   const app = document.querySelector("#app");
 
@@ -7,9 +5,9 @@ export function menu() {
     <div id="sidebar" class="bg-preto text-branco border-l-2 border-branco/80 fixed top-0 right-0 z-50 hidden h-full w-64 translate-x-full transform shadow-xl transition-all duration-300 ease-in-out">
         <button
         id="close-btn"
-        class="hover:text-vermelho absolute top-6 right-6 cursor-pointer text-xl"
+        class="text-vermelho absolute top-6 right-6 cursor-pointer text-4xl"
         >
-        <img src="${sair}" alt="sair" class="pixel h-8" />
+          &times;
         </button>
 
         <div class="px-6 pt-8">
