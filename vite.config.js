@@ -11,6 +11,7 @@ export default defineConfig({
         desabafosFeed: 'src/pages/desabafosFeed.html',
         cadastro: 'src/pages/cadastro.html',
         login: 'src/pages/login.html',
+        dashboard: 'src/pages/dashboard.html',
       },
     },
   },

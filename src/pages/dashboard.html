@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <title>Dashboard - Emoções</title>
+
+    <!-- CSS -->
+    <link href="/src/styles/index.css" rel="stylesheet" />
+
+    <!-- Fonte Pixel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+
+</head>
+<body>
+    <div
+      class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
+    ></div>
+
+    <div id="app">
+      <header
+        class="flex w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6"
+      >
+        <nav class="flex w-full justify-between py-2">
+          <div class="flex flex-col">
+            <a href="/" class="text-foreground text-lg no-underline sm:text-xl"
+              >Entrelinhas</a
+            >
+          </div>
+
+          <button id="menu-btn" class="cursor-pointer">
+            <img src="/public/menu.png" alt="menu" class="pixel h-5" />
+          </button>
+        </nav>
+      </header>
+
+      <hr class="border-branco/60" />
+
+      <div class="form m-4 flex flex-col items-center justify-center"></div>
+      
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 p-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <p id="desabafos-registrados" class="text-3xl font-bold text-lilas mt-2 inline">0</p>
+            <h1 class="text-preto text-sm font-semibold uppercase inline">Desabafo(s) Registrado(s)</h1>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <p id="emocoes-registradas" class="text-3xl font-bold text-lilas mt-2 inline"><span>0</span></p>
+            <p class="text-preto text-sm font-semibold uppercase inline">Emoç(ões) Diferente(s)</p>
+        </div>
+    </div>
+
+    <div class="w-full pb-[4%] h-[500px] flex justify-center items-center">
+      <canvas id="graficoDashboard"></canvas>
+    </div>
+
+    <div class="content flex flex-wrap items-center justify-center"></div>
+
+
+    <script type="module" src="/src/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../js/scripts/grafico.js"></script>
+</body>
+</html>
