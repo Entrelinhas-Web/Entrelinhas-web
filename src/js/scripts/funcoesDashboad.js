@@ -11,8 +11,6 @@ listaEmocoesRegistradas.forEach((emocao) => {
     ? quantidades[emocao] = 1  
     : quantidades[emocao] += 1
 })
-console.log(listaEmocoesRegistradas)
-console.log(quantidades)
 
 export function gerarContadores(){
 
@@ -30,4 +28,29 @@ export function gerarContadores(){
         const cardHtmlDashboard = cardDashboard(emocao, count);
         content.insertAdjacentHTML('beforeend', cardHtmlDashboard.trim()); 
     })
+}
+
+export function gerarGrafico(){
+    const ctx = document.getElementById('graficoDashboard');
+    const arrayChaves = Object.keys(quantidades);
+    const arrayQuantidades = Object.values(quantidades);
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: arrayChaves,
+            datasets: [{
+            label: 'Desabafos Registrados',
+            data: arrayQuantidades,
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+    });
 }
