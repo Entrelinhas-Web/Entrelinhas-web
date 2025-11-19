@@ -1,7 +1,7 @@
 import cardDashboard from "../../components/cardDashboard.js" 
 import emocoes from "../models/emocoes.js";
-import { listaDesabafos } from "../dashboard.js";
 
+export const listaDesabafos = JSON.parse(localStorage.getItem("desabafos" || "[]"));
 export const listaEmocoesRegistradas = listaDesabafos.map((registro) => registro.emocao)
 
 //Dicionário com quantidade de emoções registradas
