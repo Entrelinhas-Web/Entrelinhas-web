@@ -3,23 +3,19 @@ export function cadastro() {
     const preview = document.getElementById('preview');
     avatarInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
-      if (file) {
+      file && (() => {
         const reader = new FileReader();
         reader.onload = (event) => {
           preview.src = event.target.result;
         };
         reader.readAsDataURL(file);
-      }
+      })()
     });
 
     document.getElementById('cadastroForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const senha = document.getElementById('senha').value;
       const confirmar = document.getElementById('confirmar').value;
-      if (senha !== confirmar) {
-        alert('As senhas não coincidem!');
-        return;
-      }
-      alert('Cadastro realizado com sucesso!');
+      (senha !== confirmar) ? alert('As senhas não coincidem!') : alert('Cadastro realizado com sucesso!');
     });
 }
