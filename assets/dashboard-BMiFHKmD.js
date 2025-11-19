@@ -1,4 +1,4 @@
-import{b as c}from"./bgParticles-Cp8vO3Rx.js";import{e as n,m as l,a as i}from"./menuBar-BdiGnDjp.js";const b=(e,o)=>{const{bg:t,border:s,text:r}=n[e];return`<div class="w-[85%] lg:w-[60%] p-4 gap-2">
+import{b as c}from"./bgParticles-C6tZodVL.js";import{e as n,m as l,a as i}from"./menuBar-BdiGnDjp.js";const b=(e,o)=>{const{bg:t,border:s,text:r}=n[e];return`<div class="w-[85%] lg:w-[60%] p-4 gap-2">
             <a class="flex rounded-2xl border-2 ${s} overflow-hidden hover:scale-105">
                 <div class="lateral ${t} w-3"></div>
                 <div class="content bg-preto flex flex-col flex-1 gap-3 p-2">

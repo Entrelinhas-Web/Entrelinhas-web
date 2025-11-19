@@ -1,4 +1,4 @@
-import{b}from"./bgParticles-Cp8vO3Rx.js";import{e as v,m as x,a as g}from"./menuBar-BdiGnDjp.js";function h(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
+import{b}from"./bgParticles-C6tZodVL.js";import{e as v,m as x,a as g}from"./menuBar-BdiGnDjp.js";function h(){const e=document.querySelector(".form");e.innerHTML="",e.insertAdjacentHTML("beforeend",`
   <div class="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
     <h1 class="mb-6 text-amarelo pb-5 text-center text-xl font-semibold">
       Adicionar desabafo
