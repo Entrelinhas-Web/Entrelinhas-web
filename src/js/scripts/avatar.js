@@ -16,6 +16,7 @@ export function cadastro() {
       e.preventDefault();
       const senha = document.getElementById('senha').value;
       const confirmar = document.getElementById('confirmar').value;
-      (senha !== confirmar) ? alert('As senhas não coincidem!') : alert('Cadastro realizado com sucesso!');
-    });
-}
+      
+      (senha.length < 8) ? alert('Sua senha deve possuir no mínimo 8 caracteres!') : (senha !== confirmar) ? alert('As senhas não coincidem!') : alert('Cadastro realizado com sucesso!');
+      })
+    };
