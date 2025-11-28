@@ -1,0 +1,94 @@
+"use client"
+
+import { ChangeEvent, useState } from "react";
+
+export default function Form() {
+    const [nivel, setNivel] = useState(3);
+
+    const handleNivelChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setNivel(parseInt(e.target.value));
+    };
+
+    return (
+        <div className="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
+            <h1 className="mb-6 text-amarelo pb-5 text-center text-xl font-semibold">
+                Adicionar desabafo
+            </h1>
+
+            <form id="desabafoForm" className="flex flex-col gap-6 w-full">
+                <div className="lg:flex gap-6">
+
+                    <div className="esquerda flex flex-col lg:w-[30%] gap-12">
+
+                        {/* Título */}
+                        <input
+                            type="text"
+                            name="titulo"
+                            placeholder="Título"
+                            className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
+                            required
+                        />
+
+                        {/* Emoção */}
+                        <select
+                            name="emocao"
+                            required
+                            className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
+                        >
+                            <option value="" disabled selected hidden>Emoção</option>
+                            <option value="Felicidade" >Felicidade</option>
+                            <option value="Tristeza">Tristeza</option>
+                            <option value="Raiva">Raiva</option>
+                            <option value="Ansiedade">Ansiedade</option>
+                            <option value="Motivação">Motivação</option>
+                            <option value="Tranquilidade">Tranquilidade</option>
+                            <option value="Medo">Medo</option>
+                        </select>
+
+                        {/* Nível */}
+                        <div className="flex flex-col gap-2">
+                            <span className="text-amarelo font-medium">Nível da emoção:</span>
+
+                            <input
+                                type="range"
+                                id="nivel"
+                                name="nivel"
+                                min="1"
+                                max="5"
+                                onInput={handleNivelChange}
+                                value={nivel}
+                                className="accent-amarelo w-full"
+                                required
+                            />
+
+                            <span id="valorNivel" className="text-center text-sm text-amarelo">{nivel} / 5</span>
+                        </div>
+                    </div>
+
+                    {/* Descrição */}
+                    <div className="dir lg:w-[70%] flex flex-col">
+                        <textarea
+                            id="descricao"
+                            name="descricao"
+                            rows="10"
+                            placeholder="Aqui vai seu desabafo..."
+                            className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa resize-none rounded-md border-2 p-2 outline-none w-full h-full"
+                            required
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                {/* Botão */}
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco border-2 py-2 px-8 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas font-semibold"
+                    >
+                        Adicionar
+                    </button>
+                </div>
+            </form>
+        </div>
+    )
+}
