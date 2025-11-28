@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/public/logo.png" />
+          <!-- CSS -->
+    <link href="/src/styles/index.css" rel="stylesheet" />
+        <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>Entrelinhas</title>
+  </head>
+  <body
+   class="bg-background text-foreground font-pixel relative flex flex-col overflow-x-hidden"
+  >
+
+  <div
+      class="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
+  ></div>
+    
+    <div class="relative flex w-full min-h-[100svh] flex-col justify-between z-10">
+      
+      <header class="relative flex w-full items-center justify-between p-4 text-sm sm:px-8 sm:py-6 z-50">
+        <a href="#" class="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
+
+        <button id="menu-btn" class="block sm:hidden focus:outline-none">
+          <img src="/public/menu.png" alt="Menu" class="h-8 w-8 object-contain" />
+        </button>
+
+        <nav id="mobile-nav" class="hidden absolute right-0 top-full mt-2 min-w-[200px] flex-col items-center gap-4 rounded-xl border-2 border-foreground bg-preto p-4 shadow-xl sm:static sm:mt-0 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:gap-8 sm:border-none sm:p-0 sm:shadow-none">
+          <a href="./src/pages/desabafosFeed.html" class="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Pensamentos</a>
+          <a href="/" class="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Consultar</a>
+          <a href="./src/pages/login.html" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</a>
+        </nav>
+      </header>
+
+      <main class="flex grow flex-col items-center justify-center text-center px-4 z-20 pb-[150px]">
+        <img src="public/logo.png" alt="Estrelas decorativas" class="animate-float-stars h-auto w-[100px] mb-4 sm:w-[150px] max-w-full" />
+        <div class="p-4 px-2 text-base sm:px-0 sm:text-lg md:text-2xl max-w-[800px] mb-6">
+          Registre seus sentimentos e desabafos no Entrelinhas
+        </div>
+        <a href="src/pages/cadastro.html" class="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+          Registrar
+        </a>
+      </main>
+
+      <div class="absolute bottom-0 left-0 w-full h-[120px] sm:h-[200px] z-20 pointer-events-none overflow-hidden">
+        <img src="/public/cloud.png" class="absolute -left-[10%] top-[20%] w-[60%] max-w-none opacity-90" alt="" />
+        <img src="/public/cloud.png" class="absolute left-[20%] top-[40%] w-[50%] max-w-none opacity-50" alt="" />
+        <img src="/public/cloud.png" class="absolute -right-[10%] top-[10%] w-[65%] max-w-none opacity-80" alt="" />
+        <img src="/public/cloud.png" class="absolute right-[30%] top-[60%] w-[40%] max-w-none opacity-40" alt="" />
+      </div>
+
+    </div>
+    
+    <footer class="flex w-full flex-col items-center justify-center p-8 text-center sm:p-12 z-30 relative bg-branco text-white min-h-[80vh]">
+      
+      <div class="absolute -top-32 left-0 w-full h-32 bg-gradient-to-b from-transparent to-branco pointer-events-none"></div>
+
+      <div class="max-w-3xl relative z-10">
+        <h2 class="mb-4 text-xl font-pixel sm:text-2xl text-preto">
+          Bem vindo ao Entrelinhas!!!
+        </h2>
+        <p class="text-sm leading-relaxed sm:text-base mb-6 text-preto">
+          Aqui, você pode registrar seus desabafos diários, expressar o que sente e graduar a intensidade das suas emoções. 
+          O Entrelinhas ajuda você a criar um histórico do seu humor, facilitando o cuidado com a sua saúde mental.
+        </p>
+        <a href="src/pages/desabafosFeed.html" class="text-lilas font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+              Criar meu diário
+        </a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/js/index.js"></script>
+  </body>
+</html>
