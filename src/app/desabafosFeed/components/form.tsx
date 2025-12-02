@@ -1,13 +1,44 @@
 "use client"
 
 import { ChangeEvent, useState } from "react";
+import { desabafoObject } from "./desabafoCard";
 
 export default function Form() {
-    const [nivel, setNivel] = useState(3);
+    const [ titulo, setTitulo ] = useState("");
+    const [ emocao, setEmocao ] = useState("");
+    const [ nivel, setNivel ] = useState(3);
+    const [ descricao, setDescricao ] = useState("");
 
     const handleNivelChange = (e: ChangeEvent<HTMLInputElement>) => {
         setNivel(parseInt(e.target.value));
     };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+        const data = new Date()
+
+        const dia = String(data.getDate()).padStart(2, "0");
+        const mes = String(data.getMonth() + 1).padStart(2, "0");
+        const ano = data.getFullYear();
+        
+        const desabafo = {
+            id: (registros.length > 0) ? (registros[registros.length - 1].id + 1) : (1),
+            titulo: titulo,
+            emocao: emocao,
+            nivel: nivel,
+            descricao: descricao,
+            data: `${dia}/${mes}/${ano}`,
+        }
+
+        registros.push(desabafo);
+
+        localStorage.setItem("desabafos", JSON.stringify(registros));
+
+        location.reload()
+    }
 
     return (
         <div className="bg-roxo border-lilas border-4 w-[80%] lg:w-[55%] rounded-lg p-6 shadow-md mx-auto">
@@ -15,7 +46,7 @@ export default function Form() {
                 Adicionar desabafo
             </h1>
 
-            <form id="desabafoForm" className="flex flex-col gap-6 w-full">
+            <form id="desabafoForm" className="flex flex-col gap-6 w-full" onSubmit={(e) => handleSubmit(e)}>
                 <div className="lg:flex gap-6">
 
                     <div className="esquerda flex flex-col lg:w-[30%] gap-12">
@@ -24,16 +55,20 @@ export default function Form() {
                         <input
                             type="text"
                             name="titulo"
+                            value={titulo}
                             placeholder="Título"
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
                             required
+                            onChange={(e) => setTitulo(e.target.value.trim().toLowerCase())}
                         />
 
                         {/* Emoção */}
                         <select
                             name="emocao"
-                            required
+                            value={emocao}
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
+                            required
+                            onChange={(e) => setEmocao(e.target.value)}
                         >
                             <option value="" disabled selected hidden>Emoção</option>
                             <option value="Felicidade" >Felicidade</option>
@@ -70,10 +105,12 @@ export default function Form() {
                         <textarea
                             id="descricao"
                             name="descricao"
-                            rows="10"
+                            value={descricao}
+                            rows={10}
                             placeholder="Aqui vai seu desabafo..."
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa resize-none rounded-md border-2 p-2 outline-none w-full h-full"
                             required
+                            onChange={(e) => setDescricao(e.target.value.trim().toLowerCase())}
                         ></textarea>
                     </div>
 

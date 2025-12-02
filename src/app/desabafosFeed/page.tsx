@@ -1,11 +1,32 @@
+"use client"
+
 import SearchBar from "./components/searchBar";
 import MenuBar from "@/src/components/menuBar";
-import Filter from "./components/filter";
+import FilterBar from "./components/filterBar";
 import Header from "@/src/components/header";
 import Form from "./components/form";
-import DesabafoCard from "./components/desabafoCard";
+import DesabafoCard, { desabafoObject } from "./components/desabafoCard";
+import { useEffect, useState } from "react";
+import PopUp from "./components/popUp";
 
 export default function DesabafosFeed() {
+    const [registros, setRegistros] = useState<desabafoObject[]>([]);
+    const [popUpData, setPopUpData] = useState<desabafoObject | null>(null);
+
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem("desabafos") || "[]");
+
+        setRegistros(data);
+    }, []);
+
+    function onDelete(id: number) {
+        setRegistros(registros.filter((registro) => registro.id != id));
+
+        localStorage.setItem("desabafos", JSON.stringify(registros));
+
+        setPopUpData(null);
+    }
+
     return (
         <>
             <div className="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"></div>
@@ -15,7 +36,7 @@ export default function DesabafosFeed() {
 
                 <hr className="border-branco/60" />
 
-                <div className="search py-4 hidden">
+                <div className={`search py-4 ${registros.length === 0 ? "hidden" : ""}`}>
                     <SearchBar />
                 </div>
 
@@ -24,16 +45,26 @@ export default function DesabafosFeed() {
                 </div>
 
                 <div className="content flex flex-wrap items-center justify-center">
-                    <DesabafoCard objeto={{id: 1,
-      titulo: "string",
-      emocao: "Felicidade",
-      nivel: "string",
-      descricao: "string",
-      data: "string",}}/>
+                    {registros.map((registro) => (
+                        <DesabafoCard 
+                            key={registro.id}
+                            objeto={registro}
+                            onClick={() => setPopUpData(registro)} 
+                        />
+                    ))}
                 </div>
 
+                {popUpData && (
+                    <PopUp 
+                        objeto={popUpData}
+                        onClose={() => setPopUpData(null)}
+                        onDelete={onDelete}
+                        onEdit={(registro) => console.log("Edição: ", registro)}
+                    />
+                )}
+
                 <MenuBar />
-                <Filter />
+                <FilterBar />
             </div>
         </>
     );

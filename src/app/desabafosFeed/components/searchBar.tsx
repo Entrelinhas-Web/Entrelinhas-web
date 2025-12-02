@@ -1,13 +1,18 @@
 "use client"
 
-import search from "@/src/utils/search";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function SearchBar() {
+    const [ input, setInput ] = useState("");
+
     useEffect(() => {
-        search();
-    }, [])
+        const event = new CustomEvent("state-change", {
+            detail: { searchText: input }
+        });
+        window.dispatchEvent(event);
+        console.log(input)
+    }, [input]);
 
     return (
         <div className="flex gap-3 items-center justify-center w-full">
@@ -17,8 +22,9 @@ export default function SearchBar() {
                         type="text"
                         name="titulo"
                         placeholder="Buscar desabafos"
-                        className="bg-preto text-branco sm:border-lilas placeholder:text-branco/70 lg:text-md border-preto/60 focus:border-amarelo w-full rounded-2xl border-2 px-4 py-2 text-xs outline-none "
+                        className="bg-preto text-branco sm:border-lilas placeholder:text-branco/70 lg:text-md border-preto/60 focus:border-amarelo w-full rounded-2xl border-2 px-4 py-2 text-xs outline-none"
                         required
+                        onChange={(e) => setInput(e.target.value.trim().toLowerCase())}
                     />
 
                     <Image

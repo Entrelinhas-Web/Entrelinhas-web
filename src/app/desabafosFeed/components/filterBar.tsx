@@ -1,4 +1,13 @@
-export default function Filter() {
+"use client"
+
+import { filter } from "@/src/utils/filter";
+import { useEffect } from "react";
+
+export default function FilterBar() {
+    useEffect(() => {
+            filter();
+        }, [])
+    
     return (
         <div
             id="filter"
