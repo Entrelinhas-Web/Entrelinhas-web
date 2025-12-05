@@ -109,7 +109,7 @@ export default function Form() {
                             placeholder="Aqui vai seu desabafo..."
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa resize-none rounded-md border-2 p-2 outline-none w-full h-full"
                             required
-                            onChange={(e) => setDescricao(e.target.value.trim().toLowerCase())}
+                            onChange={(e) => setDescricao(e.target.value)}
                         ></textarea>
                     </div>
 
