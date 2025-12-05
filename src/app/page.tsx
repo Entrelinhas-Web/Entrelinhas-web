@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         <div className="relative flex w-full min-h-svh flex-col justify-between z-10">
           
           <header className="relative flex w-full items-center justify-between p-4 text-sm sm:px-8 sm:py-6 z-50">
-            <a href="#" className="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
+            <Link href="#" className="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</Link>
 
             <button id="menu-btn" className="block sm:hidden focus:outline-none">
               <Image
@@ -24,9 +25,9 @@ export default function Home() {
             </button>
 
             <nav id="mobile-nav" className="hidden absolute right-0 top-full mt-2 min-w-[200px] flex-col items-center gap-4 rounded-xl border-2 border-foreground bg-preto p-4 shadow-xl sm:static sm:mt-0 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:gap-8 sm:border-none sm:p-0 sm:shadow-none">
-              <a href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Pensamentos</a>
-              <a href="/pag" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Consultar</a>
-              <a href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</a>
+              <Link href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Pensamentos</Link>
+              <Link href="/pag" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Consultar</Link>
+              <Link href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</Link>
             </nav>
           </header>
 
@@ -43,9 +44,9 @@ export default function Home() {
               Registre seus sentimentos e desabafos no Entrelinhas
             </div>
 
-            <a href="/cadastro" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+            <Link href="/cadastro" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
               Registrar
-            </a>
+            </Link>
           </main>
 
           <div className="absolute bottom-0 left-0 w-full h-[120px] sm:h-[200px] z-20 pointer-events-none overflow-hidden">
@@ -96,9 +97,9 @@ export default function Home() {
               Aqui, você pode registrar seus desabafos diários, expressar o que sente e graduar a intensidade das suas emoções. 
               O Entrelinhas ajuda você a criar um histórico do seu humor, facilitando o cuidado com a sua saúde mental.
             </p>
-            <a href="/desabafosFeed" className="text-lilas font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+            <Link href="/desabafosFeed" className="text-lilas font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
                   Criar meu diário
-            </a>
+            </Link>
           </div>
         </footer>
         

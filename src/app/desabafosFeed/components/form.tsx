@@ -1,7 +1,6 @@
 "use client"
 
 import { ChangeEvent, useState } from "react";
-import { desabafoObject } from "./desabafoCard";
 
 export default function Form() {
     const [ titulo, setTitulo ] = useState("");
@@ -13,7 +12,7 @@ export default function Form() {
         setNivel(parseInt(e.target.value));
     };
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");

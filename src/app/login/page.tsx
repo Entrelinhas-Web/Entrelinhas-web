@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Login() {
     return (
         <div className="font-pixel text-branco flex min-h-screen items-center justify-center">
@@ -5,11 +7,11 @@ export default function Login() {
 
             {/* Header */}
             <header className="absolute flex top-0 w-full flex-col gap-4 p-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
-                <a href="./" className="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</a>
-                    <a href="/cadastro"
+                <Link href="./" className="text-foreground text-lg no-underline sm:text-xl">Entrelinhas</Link>
+                    <Link href="/cadastro"
                     className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
                     Cadastro
-                </a>
+                </Link>
             </header>
             
             <div
@@ -50,12 +52,12 @@ export default function Login() {
                     </button>
                 </form>
 
-                <a href="#" className="text-branco hover:underline text-xs cursor-pointer">
+                <Link href="#" className="text-branco hover:underline text-xs cursor-pointer">
                     Esqueceu sua senha?
-                </a>
+                </Link>
 
                 <div className="pt-6 text-[10px] flex flex-row justify-center">
-                    <p>Não tem uma conta? <a href="#" className="hover:underline cursor-pointer"><strong>Cadastre-se</strong></a></p>
+                    <p>Não tem uma conta? <Link href="#" className="hover:underline cursor-pointer"><strong>Cadastre-se</strong></Link></p>
                 </div>
             </div>
         </div>

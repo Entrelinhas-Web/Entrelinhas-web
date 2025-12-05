@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
     return (
@@ -7,9 +8,9 @@ export default function Header() {
         >
             <nav className="flex w-full justify-between py-2">
                 <div className="flex flex-col">
-                    <a href="./" className="text-foreground text-lg no-underline sm:text-xl">
+                    <Link href="./" className="text-foreground text-lg no-underline sm:text-xl">
                         Entrelinhas
-                    </a>
+                    </Link>
                 </div>
 
                 <button id="menu-btn" className="cursor-pointer">
