@@ -8,15 +8,19 @@ import Form from "./components/form";
 import DesabafoCard, { desabafoObject } from "./components/desabafoCard";
 import { useEffect, useState } from "react";
 import PopUp from "./components/popUp";
+import { getDesabafos } from "@/src/services/storage";
 
 export default function DesabafosFeed() {
     const [registros, setRegistros] = useState<desabafoObject[]>([]);
     const [popUpData, setPopUpData] = useState<desabafoObject | null>(null);
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem("desabafos") || "[]");
+        async function loadDesabafos() {
+            const data = await getDesabafos();
+            setRegistros(data);
+        }
 
-        setRegistros(data);
+        loadDesabafos();
     }, []);
 
     function onDelete(id: number) {
@@ -45,13 +49,19 @@ export default function DesabafosFeed() {
                 </div>
 
                 <div className="content flex flex-wrap items-center justify-center">
-                    {registros.map((registro) => (
-                        <DesabafoCard 
-                            key={registro.id}
-                            objeto={registro}
-                            onClick={() => setPopUpData(registro)} 
-                        />
-                    ))}
+                    {registros.length > 0 ? (
+                        registros.map((registro) => (
+                            <DesabafoCard 
+                                key={registro.id}
+                                objeto={registro}
+                                onClick={() => setPopUpData(registro)} 
+                            />
+                        ))
+                    ) : (
+                        <p className="text-branco text-sm">
+                            Faça seu desabafo!
+                        </p>
+                    )}
                 </div>
 
                 {popUpData && (

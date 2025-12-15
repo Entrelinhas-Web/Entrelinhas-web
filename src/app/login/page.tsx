@@ -1,6 +1,32 @@
+"use client"
+
 import Link from "next/link";
+import { useState } from "react";
+import storage from "@/src/services/storage"
 
 export default function Login() {
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const data = storage.loginUser(email, password);
+
+        alert("Cadastro realizado com sucesso!");
+
+        try {
+            const data = await storage.loginUser(email, password);
+
+            console.log('Usuário:', data.user)
+            console.log('Sessão:', data.session)
+
+            alert('Login realizado com sucesso!')
+        } catch (err: any) {
+            alert(err.message ?? 'Email ou senha inválidos')
+        }
+    };
+
     return (
         <div className="font-pixel text-branco flex min-h-screen items-center justify-center">
             <div className="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"></div>
@@ -20,12 +46,18 @@ export default function Login() {
                 <h1 className="text-amarelo">Faça seu login</h1>
                 <h2 className="text-amarelo pb-5 text-xs">suas Entrelinhas te esperam</h2>
 
-                <form id="cadastroForm" className="flex flex-col gap-6 pb-2">
+                <form 
+                    id="cadastroForm" 
+                    className="flex flex-col gap-6 pb-2" 
+                    onSubmit={handleSubmit}
+                >
 
                     {/* Email */}
                     <div className="text-left space-y-1">
                         <input
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value.trim())}
                             required
                             className="bg-preto rounded-[5px] border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="E-mail"
@@ -37,6 +69,8 @@ export default function Login() {
                         <input
                             type="password"
                             id="senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                             className="bg-preto rounded-[5px] border-lilas text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="Senha"

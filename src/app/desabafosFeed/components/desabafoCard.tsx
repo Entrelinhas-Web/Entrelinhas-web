@@ -4,7 +4,7 @@ export interface desabafoObject {
     emocao: keyof typeof emocoes;
     nivel: string;
     descricao: string;
-    data: string;
+    created_at: string;
 }
 
 const emocoes = {
@@ -20,6 +20,10 @@ const emocoes = {
 export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject; onClick: () => void}) {
     const { bg, border, text } = emocoes[objeto.emocao];
 
+    const dia = objeto.created_at.slice(8, 10);
+    const mes = objeto.created_at.slice(5, 7);
+    const ano = objeto.created_at.slice(0, 4);
+
     return (
         <div 
             className="w-[85%] lg:w-[60%] p-4 gap-2"
@@ -32,7 +36,7 @@ export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject
                     <div>
                         <h1 className={`${text} font-bold`}>{objeto.titulo}</h1>
             
-                        <p>{objeto.data}</p>
+                        <p>{`${dia}/${mes}/${ano}`}</p>
                     </div>
             
                     <div className="text-sm">

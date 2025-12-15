@@ -3,32 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import storage from "@/src/services/storage"
 
 export default function Cadastro() {
-    const [preview, setPreview] = useState("/avatar.jpg");
+    const [ username, setUsername ] = useState("");
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ confirmPassword, setConfirmPassword ] = useState("");
+    const [ avatar, setAvatar ] = useState("/avatar.jpg");
 
     const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = (ev) => setPreview(ev.target.result);
+        reader.onload = (ev) => setAvatar(ev.target.result);
         reader.readAsDataURL(file);
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const form = new FormData(e.currentTarget);
-        const senha = form.get("senha") as string;
-        const confirmar = form.get("confirmar") as string;
+        if (password.length < 8)
+            return alert("Sua senha deve possuir no mínimo 8 caracteres!");
+        if (password !== confirmPassword)
+            return alert("As senhas não coincidem!");
 
-        if (senha.length < 8)
-        return alert("Sua senha deve possuir no mínimo 8 caracteres!");
-        if (senha !== confirmar)
-        return alert("As senhas não coincidem!");
-
-        alert("Cadastro realizado com sucesso!");
+        try {
+            await storage.createUser(username, email, password, avatar);
+            alert("Cadastro realizado com sucesso!");
+        } catch (err: any) {
+            alert(err.message ?? "Erro ao cadastrar");
+        }
     };
 
     return (
@@ -62,6 +68,8 @@ export default function Cadastro() {
                         <input
                             type="text"
                             name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value.trim())}
                             required
                             className="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="Digite seu usuário"
@@ -74,6 +82,8 @@ export default function Cadastro() {
                         <input
                             type="email"
                             name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value.trim())}
                             required
                             className="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="Ex: email@exemplo.com"
@@ -87,6 +97,8 @@ export default function Cadastro() {
                             type="password"
                             id="senha"
                             name="senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                             className="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="Digite sua senha (8+ dígitos)"
@@ -100,6 +112,8 @@ export default function Cadastro() {
                             type="password"
                             id="confirmar"
                             name="confirmar"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                             className="bg-preto border-lilas rounded-[5px] text-branco focus:border-amarelo w-full border-2 px-2 py-2 text-[10px] focus:bg-[#221B2F] focus:outline-none"
                             placeholder="Confirme sua senha"
@@ -110,7 +124,7 @@ export default function Cadastro() {
                     <div className="flex items-center justify-between mt-2 gap-3">
                         <Image
                             id="peview"
-                            src={preview}
+                            src={avatar}
                             alt="Avatar"
                             width={10000}
                             height={10000}

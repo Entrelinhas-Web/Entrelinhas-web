@@ -3,11 +3,25 @@
 import { useEffect } from "react"
 import { menu } from "@/src/utils/menu"
 import Link from "next/link";
+import { logOutUser } from "../services/storage";
 
 export default function MenuBar() {
     useEffect(() => {
         menu();
     }, [])
+
+    async function logOut(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        try {
+            await logOutUser();
+
+            alert("LogOut realizado com sucesso!");
+            location.reload()
+        } catch (err: any) {
+            alert(err.message ?? "Erro ao fazer logOut");
+        }
+    }
 
     return (
         <div 
@@ -28,7 +42,10 @@ export default function MenuBar() {
                     <li><Link href="/dashboard" className="hover:text-amarelo">Dashboard</Link></li>
                     <li><Link href="./" className="hover:text-amarelo">Recomendações do psicólogo</Link></li>
                     <li><Link href="./" className="hover:text-amarelo">Conta</Link></li>
-                    <li><Link href="./" className="text-vermelho hover:text-rosa">Sair</Link></li>
+                    <li 
+                        className="text-vermelho cursor-pointer hover:text-rosa"
+                        onClick={logOut}
+                    >Sair</li>
                 </ul>
             </div>
         </div>

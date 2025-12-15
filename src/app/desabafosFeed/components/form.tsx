@@ -1,5 +1,6 @@
 "use client"
 
+import { createDesabafo } from "@/src/services/storage";
 import { ChangeEvent, useState } from "react";
 
 export default function Form() {
@@ -12,31 +13,24 @@ export default function Form() {
         setNivel(parseInt(e.target.value));
     };
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
-        const registros = JSON.parse(localStorage.getItem("desabafos") || "[]");
-
-        const data = new Date()
-
-        const dia = String(data.getDate()).padStart(2, "0");
-        const mes = String(data.getMonth() + 1).padStart(2, "0");
-        const ano = data.getFullYear();
         
         const desabafo = {
-            id: (registros.length > 0) ? (registros[registros.length - 1].id + 1) : (1),
             titulo: titulo,
             emocao: emocao,
             nivel: nivel,
             descricao: descricao,
-            data: `${dia}/${mes}/${ano}`,
         }
 
-        registros.push(desabafo);
+        try {
+            await createDesabafo(desabafo);
 
-        localStorage.setItem("desabafos", JSON.stringify(registros));
-
-        location.reload()
+            alert("Cadastro realizado com sucesso!");
+            location.reload()
+        } catch (err: any) {
+            alert(err.message ?? "Erro ao cadastrar");
+        }
     }
 
     return (
