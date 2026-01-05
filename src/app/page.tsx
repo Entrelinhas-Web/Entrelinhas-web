@@ -26,7 +26,6 @@ export default function Home() {
 
             <nav id="mobile-nav" className="hidden absolute right-0 top-full mt-2 min-w-[200px] flex-col items-center gap-4 rounded-xl border-2 border-foreground bg-preto p-4 shadow-xl sm:static sm:mt-0 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:gap-8 sm:border-none sm:p-0 sm:shadow-none">
               <Link href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Pensamentos</Link>
-              <Link href="/pag" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Consultar</Link>
               <Link href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</Link>
             </nav>
           </header>
@@ -89,14 +88,18 @@ export default function Home() {
           
           <div className="absolute -top-32 left-0 w-full h-32 bg-linear-to-b from-transparent to-branco pointer-events-none"></div>
 
-          <div className="max-w-3xl relative z-10">
-            <h2 className="mb-4 text-xl font-pixel sm:text-2xl text-preto">
-              Bem vindo ao Entrelinhas!!!
-            </h2>
-            <p className="text-sm leading-relaxed sm:text-base mb-6 text-preto">
-              Aqui, você pode registrar seus desabafos diários, expressar o que sente e graduar a intensidade das suas emoções. 
-              O Entrelinhas ajuda você a criar um histórico do seu humor, facilitando o cuidado com a sua saúde mental.
-            </p>
+          <div className="flex flex-col gap-3 max-w-3xl z-10">
+            <div className="flex flex-col gap-1">
+              <h2 className="mb-4 text-xl font-pixel sm:text-2xl text-preto">
+                Bem vindo ao Entrelinhas!!!
+              </h2>
+
+              <p className="text-sm leading-relaxed sm:text-base mb-6 text-preto">
+                Aqui, você pode registrar seus desabafos diários, expressar o que sente e graduar a intensidade das suas emoções. 
+                O Entrelinhas ajuda você a criar um histórico do seu humor, facilitando o cuidado com a sua saúde mental.
+              </p>
+            </div>
+
             <Link href="/desabafosFeed" className="text-lilas font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
                   Criar meu diário
             </Link>

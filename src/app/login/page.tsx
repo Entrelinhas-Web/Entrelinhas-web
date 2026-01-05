@@ -13,8 +13,6 @@ export default function Login() {
 
         const data = storage.loginUser(email, password);
 
-        alert("Cadastro realizado com sucesso!");
-
         try {
             const data = await storage.loginUser(email, password);
 

@@ -17,19 +17,18 @@ export default function Form() {
         e.preventDefault();
         
         const desabafo = {
-            titulo: titulo,
+            titulo: titulo.trim(),
             emocao: emocao,
             nivel: nivel,
-            descricao: descricao,
+            descricao: descricao.trim(),
         }
 
         try {
             await createDesabafo(desabafo);
 
-            alert("Cadastro realizado com sucesso!");
             location.reload()
         } catch (err: any) {
-            alert(err.message ?? "Erro ao cadastrar");
+            alert(err.message ?? "Erro ao adicionar desabafo.");
         }
     }
 
@@ -52,7 +51,7 @@ export default function Form() {
                             placeholder="Título"
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
                             required
-                            onChange={(e) => setTitulo(e.target.value.trim().toLowerCase())}
+                            onChange={(e) => setTitulo(e.target.value.toLowerCase())}
                         />
 
                         {/* Emoção */}
