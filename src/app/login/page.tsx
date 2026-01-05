@@ -3,25 +3,25 @@
 import Link from "next/link";
 import { useState } from "react";
 import storage from "@/src/services/storage"
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+    const router = useRouter();
+
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const data = storage.loginUser(email, password);
-
         try {
             const data = await storage.loginUser(email, password);
 
-            console.log('Usuário:', data.user)
-            console.log('Sessão:', data.session)
+            alert('Login realizado com sucesso!');
 
-            alert('Login realizado com sucesso!')
+            router.push("/desabafosFeed");
         } catch (err: any) {
-            alert(err.message ?? 'Email ou senha inválidos')
+            alert(err.message ?? 'Email ou senha inválidos');
         }
     };
 
