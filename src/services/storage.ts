@@ -43,6 +43,13 @@ export async function loginUser(email: string, password: string) {
     return data
 }
 
+export async function logOutUser() {
+    const { error } = await supabase.auth.signOut()
+
+    if (error) throw error
+    return null
+}
+
 async function getUsuarioAtual() {
     const { data: { session } } = await supabase.auth.getSession()
 
@@ -55,17 +62,43 @@ async function getUsuarioAtual() {
         .single()
 
     if (error) throw error
-    return usuario
+    return usuario.id
+}
+
+async function getPerfil() {
+    const { data: { session } } = await supabase.auth.getSession()
+
+    if (!session) return null
+
+    const { data: usuario, error } = await supabase
+        .from('Usuario')
+        .select('id, nome, email, avatar')
+        .eq('auth_id', session.user.id)
+        .single()
+
+    if (error) throw error
+
+    const { data: countDesabafos, error: countError } = await supabase
+        .from('Desabafo')
+        .select('*', { count: 'exact', head: true })
+        .eq('id_usuario', usuario.id)
+
+    if (countError) throw countError
+
+    return {
+        ...usuario,
+        qtdDesabafos: countDesabafos ?? 0
+    }
 }
 
 export async function getDesabafos() {
-    const usuario = await getUsuarioAtual()
-    if (!usuario) return []
+    const id_usuario = await getUsuarioAtual()
+    if (!id_usuario) return []
 
     const { data, error } = await supabase
         .from('Desabafo')
         .select('*')
-        .eq('id_usuario', usuario.id)
+        .eq('id_usuario', id_usuario)
         .order('created_at', { ascending: false })
 
     if (error) throw error
@@ -88,11 +121,4 @@ export async function createDesabafo(info) {
     return result
 }
 
-export async function logOutUser() {
-    const { error } = await supabase.auth.signOut()
-
-    if (error) throw error
-    return null
-}
- 
-export default { createUser, loginUser, getDesabafos, logOutUser };
+export default { createUser, loginUser, logOutUser, getUsuarioAtual, getPerfil, getDesabafos, createDesabafo };
