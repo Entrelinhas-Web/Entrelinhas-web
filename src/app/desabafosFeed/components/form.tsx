@@ -51,7 +51,7 @@ export default function Form() {
                             placeholder="Título"
                             className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
                             required
-                            onChange={(e) => setTitulo(e.target.value.toLowerCase())}
+                            onChange={(e) => setTitulo(e.target.value)}
                         />
 
                         {/* Emoção */}
