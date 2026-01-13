@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import storage from "@/src/services/storage"
+import { useRouter } from "next/navigation";
 
 export default function Cadastro() {
+    const router = useRouter();
+
     const [ username, setUsername ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
@@ -31,7 +34,10 @@ export default function Cadastro() {
 
         try {
             await storage.createUser(username, email, password, avatar);
+
             alert("Cadastro realizado com sucesso!");
+
+            router.push("/login");
         } catch (err: any) {
             alert(err.message ?? "Erro ao cadastrar");
         }
