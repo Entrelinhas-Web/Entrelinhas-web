@@ -39,9 +39,8 @@ export default function MenuBar() {
                 <ul className="flex flex-col gap-6 text-sm leading-relaxed">
                     <li><Link href="./" className="hover:text-amarelo">Início</Link></li>
                     <li><Link href="/desabafosFeed" className="hover:text-amarelo">Desabafos</Link></li>
-                    <li><Link href="/dashboard" className="hover:text-amarelo">Dashboard</Link></li>
-                    <li><Link href="./" className="hover:text-amarelo">Recomendações do psicólogo</Link></li>
-                    <li><Link href="./" className="hover:text-amarelo">Conta</Link></li>
+                    <li><Link href="/dashboard" className="hover:text-amarelo">Dashboard de Emoções</Link></li>
+                    <li><Link href="/perfil" className="hover:text-amarelo">Conta</Link></li>
                     <li 
                         className="text-vermelho cursor-pointer hover:text-rosa"
                         onClick={logOut}
