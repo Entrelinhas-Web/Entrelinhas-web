@@ -25,7 +25,7 @@ export default function Home() {
             </button>
 
             <nav id="mobile-nav" className="hidden absolute right-0 top-full mt-2 min-w-[200px] flex-col items-center gap-4 rounded-xl border-2 border-foreground bg-preto p-4 shadow-xl sm:static sm:mt-0 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:gap-8 sm:border-none sm:p-0 sm:shadow-none">
-              <Link href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Pensamentos</Link>
+              <Link href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Desabafos</Link>
               <Link href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</Link>
             </nav>
           </header>
