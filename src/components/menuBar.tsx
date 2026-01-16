@@ -30,7 +30,7 @@ export default function MenuBar() {
         >
             <button
                 id="close-btn"
-                className="text-vermelho absolute top-6 right-6 cursor-pointer text-4xl"
+                className="text-vermelho absolute top-6 right-6 cursor-pointer text-3xl"
             >
                 &times;
             </button>
