@@ -1,28 +1,7 @@
-export interface desabafoObject {
-    id: number;
-    titulo: string;
-    emocao: keyof typeof emocoes;
-    nivel: string;
-    descricao: string;
-    created_at: string;
-}
-
-const emocoes = {
-  Felicidade: { bg: "bg-amarelo", border: "border-amarelo", text: "text-amarelo" },
-  Tristeza: { bg: "bg-azul", border: "border-azul", text: "text-azul" },
-  Raiva: { bg: "bg-vermelho", border: "border-vermelho", text: "text-vermelho" },
-  Ansiedade: { bg: "bg-laranja", border: "border-laranja", text: "text-laranja" },
-  Motivação: { bg: "bg-rosa", border: "border-rosa", text: "text-rosa" },
-  Tranquilidade: { bg: "bg-verde", border: "border-verde", text: "text-verde" },
-  Medo: { bg: "bg-lilas", border: "border-lilas", text: "text-lilas" },
-};
+import { desabafoObject, emocoes } from "../page";
 
 export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject; onClick: () => void}) {
     const { bg, border, text } = emocoes[objeto.emocao];
-
-    const dia = objeto.created_at.slice(8, 10);
-    const mes = objeto.created_at.slice(5, 7);
-    const ano = objeto.created_at.slice(0, 4);
 
     return (
         <div 
@@ -36,7 +15,7 @@ export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject
                     <div>
                         <h1 className={`${text} font-bold`}>{objeto.titulo}</h1>
             
-                        <p>{`${dia}/${mes}/${ano}`}</p>
+                        <p>{objeto.date}</p>
                     </div>
             
                     <div className="text-sm">
