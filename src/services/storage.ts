@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
- 
+
 const API_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY;
- 
+
 const supabase = createClient(API_URL, API_KEY);
- 
+
 async function createUser(
     nome: string,
     email: string,
@@ -106,11 +106,12 @@ export async function getDesabafos() {
 }
 
 export async function createDesabafo(info) {
-    const usuario = await getUsuarioAtual()
+    const id_usuario = await getUsuarioAtual()
+    if (!id_usuario) throw new Error('Usuário não autenticado.')
 
     const desabafo = { 
         ...info, 
-        id_usuario: usuario.id
+        id_usuario
     }
 
     const { data: result, error } = await supabase
@@ -121,4 +122,33 @@ export async function createDesabafo(info) {
     return result
 }
 
-export default { createUser, loginUser, logOutUser, getUsuarioAtual, getPerfil, getDesabafos, createDesabafo };
+export async function updateDesabafo(info) {
+    const id_usuario = await getUsuarioAtual()
+    if (!id_usuario) throw new Error('Usuário não autenticado.')
+
+    const { data: result, error } = await supabase
+        .from("Desabafo")
+        .update(info)
+        .eq("id", info.id)
+        .eq("id_usuario", id_usuario)
+        .select()
+
+    if (error) throw error
+    return result
+}
+
+export async function deleteDesabafo(id: number) {
+    const id_usuario = await getUsuarioAtual()
+    if (!id_usuario) throw new Error('Usuário não autenticado.')
+
+    const { error } = await supabase
+        .from("Desabafo")
+        .delete()
+        .eq("id", id)
+        .eq("id_usuario", id_usuario)
+
+    if (error) throw error
+    return true
+}
+
+export default { createUser, loginUser, logOutUser, getUsuarioAtual, getPerfil, getDesabafos, createDesabafo, updateDesabafo, deleteDesabafo };
