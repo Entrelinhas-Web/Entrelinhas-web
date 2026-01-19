@@ -35,7 +35,7 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
 
     return (
         <div
-            className="fixed inset-0 z-100 flex items-center justify-center backdrop-blur-sm bg-black/30"
+            className="fixed inset-0 z-100 p-2 flex items-center justify-center backdrop-blur-sm bg-black/30"
         >
             <div className={`bg-preto p-6 rounded-2xl shadow-xl w-full max-w-5xl relative border-2 ${border}`}>
                 <div className="absolute top-3 right-4 flex items-center gap-3 text-center">
@@ -76,7 +76,7 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
                     </button>
                 </div>
                 
-                <h1 className={`${text} font-bold text-2xl pb-2`}>{objeto.titulo}</h1>
+                <h1 className={`${text} font-bold text-2xl pb-2 max-w-[75%] lg:max-w-full`}>{objeto.titulo}</h1>
                 
                 <div className="flex flex-row gap-x-1 pb-2">
                     {stars.map((_, i) => (
