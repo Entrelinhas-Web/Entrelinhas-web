@@ -15,7 +15,7 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
     const [ viewForm, setViewForm ] = useState(false);
     const { bg, border, text } = emocoes[objeto.emocao];
 
-    const stars = Array(objeto.nivel).fill("");
+    const stars = Array(objeto.nivel).fill("").concat(Array(5 - objeto.nivel).fill("."));
 
     async function editDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoObject) {
         e.preventDefault();
@@ -79,15 +79,26 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
                 <h1 className={`${text} font-bold text-2xl pb-2 max-w-[75%] lg:max-w-full`}>{objeto.titulo}</h1>
                 
                 <div className="flex flex-row gap-x-1 pb-2">
-                    {stars.map((_, i) => (
-                        <Image 
-                            key={i} 
-                            src="/star.png" 
-                            alt="Estrela de intensidade" 
-                            width={10} 
-                            height={10} 
-                            className="pixel w-5 h-5 object-contain"
-                        />
+                    {stars.map((item, i) => (
+                        (item === "") ? (
+                            <Image 
+                                key={i} 
+                                src="/star.png" 
+                                alt="Estrela de intensidade" 
+                                width={10} 
+                                height={10} 
+                                className="pixel w-5 h-5 object-contain"
+                            />
+                        ) : (
+                            <Image 
+                                key={i} 
+                                src="/star-outline.png" 
+                                alt="Estrela de intensidade" 
+                                width={10} 
+                                height={10} 
+                                className="pixel w-5 h-5 object-contain"
+                            />
+                        )
                     ))}
                 </div>
 
