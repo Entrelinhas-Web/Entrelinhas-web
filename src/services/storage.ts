@@ -91,18 +91,26 @@ async function getPerfil() {
     }
 }
 
-export async function getDesabafos() {
+export async function getDesabafos(page = 1) {
     const id_usuario = await getUsuarioAtual()
     if (!id_usuario) return []
 
-    const { data, error } = await supabase
+    const from = (page - 1) * 10
+    const to = from + 10 - 1
+
+    const { data, count, error } = await supabase
         .from('Desabafo')
-        .select('*')
+        .select('*', { count: 'exact' })
         .eq('id_usuario', id_usuario)
         .order('created_at', { ascending: false })
+        .range(from, to)
 
     if (error) throw error
-    return data
+
+    return {
+        data,
+        qtdDesabafos: count ?? 0
+    }
 }
 
 export async function createDesabafo(info) {

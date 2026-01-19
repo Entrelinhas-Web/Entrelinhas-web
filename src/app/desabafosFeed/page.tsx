@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import PopUp from "./components/popUp";
 import { createDesabafo, getDesabafos } from "@/src/services/storage";
 import Image from "next/image";
+import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
 
 export interface desabafoObject {
     id: number;
@@ -19,6 +20,7 @@ export interface desabafoObject {
     descricao: string;
     created_at: string;
     date?: string;
+    qtdDesabafos?: number;
 }
 
 export const emocoes = {
@@ -32,18 +34,36 @@ export const emocoes = {
 };
 
 export default function DesabafosFeed() {
-    const [registros, setRegistros] = useState<desabafoObject[]>([]);
+    const [ registros, setRegistros ] = useState<desabafoObject[]>([]);
+    const [ currentPage, setCurrentPage ] = useState(1);
+    const [ pages, setPages ] = useState(0);
     const [ viewForm, setViewForm ] = useState(false);
-    const [popUpData, setPopUpData] = useState<desabafoObject | null>(null);
+    const [ popUpData, setPopUpData ] = useState<desabafoObject | null>(null);
 
     useEffect(() => {
         async function loadDesabafos() {
-            const data = await getDesabafos();
-            setRegistros(data);
+            const res = await getDesabafos(currentPage);
+
+            setRegistros(res.data || []);
+            setPages(Math.ceil(res.qtdDesabafos / 10));
         }
 
         loadDesabafos();
-    }, []);
+    }, [currentPage]);
+
+    function rangePages(current: number, steps = 1) { 
+        const range: (number | string)[] = [];
+
+        for (let i = 1; i <= pages; i++) {
+            if(i === 1 || i === pages || (i >= current - steps && i <= current + steps)) {
+                range.push(i);
+            } else if(range[range.length - 1] !== '...') {
+                range.push('...');
+            }
+        }
+
+        return range;
+    }
 
     function desabafo(registro: desabafoObject) {
         const dia = registro.created_at.slice(8, 10);
@@ -89,19 +109,76 @@ export default function DesabafosFeed() {
                     </div>
                 )}
 
-                <div className="content flex flex-wrap items-center justify-center">
-                    {registros.length > 0 ? (
-                        registros.map((registro) => (
-                            <DesabafoCard 
-                                key={registro.id}
-                                objeto={desabafo(registro)}
-                                onClick={() => setPopUpData(desabafo(registro))} 
-                            />
-                        ))
-                    ) : (
-                        <p className="text-branco text-2xl p-10 text-center">
-                            Faça seu desabafo!
-                        </p>
+                <div className="">
+                    <div className="cards flex flex-wrap items-center justify-center">
+                        {registros.length > 0 ? (
+                            registros.map((registro) => (
+                                <DesabafoCard 
+                                    key={registro.id}
+                                    objeto={desabafo(registro)}
+                                    onClick={() => setPopUpData(desabafo(registro))} 
+                                />
+                            ))
+                        ) : (
+                            <p className="text-branco text-2xl p-10 text-center">
+                                Faça seu desabafo!
+                            </p>
+                        )}
+                    </div>
+
+                    {(pages > 0) && (
+                        <div className="pagination flex flex-col justify-center items-center gap-5 p-10 text-sm lg:text-lg">
+                            <div className="flex flex-wrap items-center">
+                                {(currentPage !== 1) ? (
+                                    <IoIosArrowBack 
+                                        className="cursor-pointer"
+                                        onClick={() => setCurrentPage(currentPage - 1)} 
+                                    />
+                                ) : (
+                                    <IoIosArrowBack 
+                                        className="text-gray-500" 
+                                    />
+                                )}
+
+                                <div className="flex flex-wrap items-center justify-center gap-1.5 p-3">
+                                    {rangePages(currentPage).map((n, i) => (
+                                        n === '...' ? (
+                                            <p key={i} className="px-3 py-1 text-branco/70">...</p>
+                                        ) : (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentPage(n as number)}
+                                                className={`
+                                                    px-2 py-1 rounded-md border text-sm font-medium cursor-pointer
+                                                    transition-all duration-200
+                                                    ${
+                                                        (n === currentPage)
+                                                        ? ("bg-roxo text-branco border-roxo cursor-default")
+                                                        : ("bg-transparent text-branco border-branco/40 hover:bg-branco/10")
+                                                    }`
+                                                }
+                                            >
+                                                {n}
+                                            </button>
+                                        )
+                                    ))}
+                                </div>
+
+
+                                {(currentPage !== pages) ? (
+                                    <IoIosArrowForward 
+                                        className="cursor-pointer"
+                                        onClick={() => setCurrentPage(currentPage + 1)} 
+                                    />
+                                ) : (
+                                    <IoIosArrowForward 
+                                        className="text-gray-500" 
+                                    />
+                                )}
+                            </div>
+
+                            <p>Página {currentPage} de {pages}</p>
+                        </div>
                     )}
                 </div>
 
