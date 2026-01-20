@@ -1,4 +1,5 @@
-import { desabafoObject, emocoes } from "../page";
+import { desabafoObject } from "@/src/types/desabafo";
+import { emocoes } from "../page";
 
 export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject; onClick: () => void}) {
     const { bg, border, text } = emocoes[objeto.emocao];
