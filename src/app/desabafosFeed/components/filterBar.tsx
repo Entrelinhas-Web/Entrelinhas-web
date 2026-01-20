@@ -21,6 +21,14 @@ export default function FilterBar() {
         });
     }
 
+    function limparFiltros() {
+        setFiltros({
+            emocoes: [],
+            dataInicio: undefined,
+            dataFim: undefined
+        });
+    }
+
     return (
         <div
             id="filter"
@@ -113,9 +121,10 @@ export default function FilterBar() {
             <div className="flex justify-center pt-6">
                 <button
                     id="filter-submit"
+                    onClick={limparFiltros}
                     className="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco border-2 py-2 px-8 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas font-semibold"
                 >
-                    Filtrar
+                    Limpar Filtros
                 </button>
             </div>
         </div>
