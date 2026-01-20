@@ -1,10 +1,10 @@
 "use client"
 
 import { ChangeEvent, useState } from "react";
-import { desabafoObject } from "../page";
+import { desabafoObject } from "@/src/types/desabafo";
 
 interface FormProps {
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>, objeto) => Promise<void>;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>, objeto: desabafoObject) => Promise<void>;
     onClose: () => void;
     text: string;
     objeto?: desabafoObject;
