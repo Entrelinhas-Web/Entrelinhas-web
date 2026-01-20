@@ -15,13 +15,15 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const data = await storage.loginUser(email, password);
+            await storage.loginUser(email, password);
 
             alert('Login realizado com sucesso!');
 
-            router.push("/desabafosFeed");
-        } catch (err: any) {
-            alert(err.message ?? 'Email ou senha inválidos');
+            window.location.href = "/desabafosFeed";
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Email ou senha inválidos");
+
+            alert(message);
         }
     };
 

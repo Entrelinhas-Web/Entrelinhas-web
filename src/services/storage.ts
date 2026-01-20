@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
+import { desabafoInput, desabafoObject } from '../types/desabafo';
 
-const API_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+const API_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY || "";
 
 const supabase = createClient(API_URL, API_KEY);
 
@@ -93,19 +94,29 @@ async function getPerfil() {
 
 export async function getDesabafos() {
     const id_usuario = await getUsuarioAtual()
-    if (!id_usuario) return []
+    
+    if (!id_usuario) {
+        return {
+            data: [],
+            qtdDesabafos: 0
+        }
+    }
 
-    const { data, error } = await supabase
+    const { data, count, error } = await supabase
         .from('Desabafo')
-        .select('*')
+        .select('*', { count: 'exact' })
         .eq('id_usuario', id_usuario)
         .order('created_at', { ascending: false })
 
     if (error) throw error
-    return data
+
+    return {
+        data,
+        qtdDesabafos: count ?? 0
+    }
 }
 
-export async function createDesabafo(info) {
+export async function createDesabafo(info: desabafoInput) {
     const id_usuario = await getUsuarioAtual()
     if (!id_usuario) throw new Error('Usuário não autenticado.')
 
@@ -122,14 +133,14 @@ export async function createDesabafo(info) {
     return result
 }
 
-export async function updateDesabafo(info) {
+export async function updateDesabafo(info: desabafoInput, info_id: number) {
     const id_usuario = await getUsuarioAtual()
     if (!id_usuario) throw new Error('Usuário não autenticado.')
 
     const { data: result, error } = await supabase
         .from("Desabafo")
         .update(info)
-        .eq("id", info.id)
+        .eq("id", info_id)
         .eq("id_usuario", id_usuario)
         .select()
 

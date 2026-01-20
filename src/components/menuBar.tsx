@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { menu } from "@/src/utils/menu"
+import { menu } from "../utils/menu";
 import Link from "next/link";
 import { logOutUser } from "../services/storage";
 
@@ -10,16 +10,16 @@ export default function MenuBar() {
         menu();
     }, [])
 
-    async function logOut(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-
+    async function logOut() {
         try {
             await logOutUser();
 
             alert("LogOut realizado com sucesso!");
             location.reload()
-        } catch (err: any) {
-            alert(err.message ?? "Erro ao fazer logOut");
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Erro ao fazer logOut");
+
+            alert(message);
         }
     }
 

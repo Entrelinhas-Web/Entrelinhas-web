@@ -6,67 +6,61 @@ import FilterBar from "./components/filterBar";
 import Header from "@/src/components/header";
 import Form from "./components/form";
 import DesabafoCard from "./components/desabafoCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PopUp from "./components/popUp";
-import { createDesabafo, getDesabafos } from "@/src/services/storage";
+import { createDesabafo } from "@/src/services/storage";
 import Image from "next/image";
-
-export interface desabafoObject {
-    id: number;
-    titulo: string;
-    emocao: keyof typeof emocoes;
-    nivel: string | number;
-    descricao: string;
-    created_at: string;
-    date?: string;
-}
-
-export const emocoes = {
-  Felicidade: { bg: "bg-amarelo", border: "border-amarelo", text: "text-amarelo" },
-  Tristeza: { bg: "bg-azul", border: "border-azul", text: "text-azul" },
-  Raiva: { bg: "bg-vermelho", border: "border-vermelho", text: "text-vermelho" },
-  Ansiedade: { bg: "bg-laranja", border: "border-laranja", text: "text-laranja" },
-  Motivação: { bg: "bg-rosa", border: "border-rosa", text: "text-rosa" },
-  Tranquilidade: { bg: "bg-verde", border: "border-verde", text: "text-verde" },
-  Medo: { bg: "bg-lilas", border: "border-lilas", text: "text-lilas" },
-};
+import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
+import { useDesabafos } from "@/src/contexts/desabafosContext";
+import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
 
 export default function DesabafosFeed() {
-    const [registros, setRegistros] = useState<desabafoObject[]>([]);
-    const [ viewForm, setViewForm ] = useState(false);
-    const [popUpData, setPopUpData] = useState<desabafoObject | null>(null);
+    const { filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
 
-    useEffect(() => {
-        async function loadDesabafos() {
-            const data = await getDesabafos();
-            setRegistros(data);
+    const start = (currentPage - 1) * 10;
+    const end = start + 10;
+
+    const [ viewForm, setViewForm ] = useState(false);
+    const [ popUpData, setPopUpData ] = useState<desabafoObject | null>(null);
+
+    function rangePages(current: number, steps = 1) { 
+        const range: (number | string)[] = [];
+
+        for (let i = 1; i <= pages; i++) {
+            if(i === 1 || i === pages || (i >= current - steps && i <= current + steps)) {
+                range.push(i);
+            } else if(range[range.length - 1] !== '...') {
+                range.push('...');
+            }
         }
 
-        loadDesabafos();
-    }, []);
+        return range;
+    }
 
     function desabafo(registro: desabafoObject) {
         const dia = registro.created_at.slice(8, 10);
         const mes = registro.created_at.slice(5, 7);
         const ano = registro.created_at.slice(0, 4);
 
-        const objeto = {
+        return {
             ...registro,
             date: `${dia}/${mes}/${ano}`
         }
-
-        return objeto
     }
 
-    async function addDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoObject) {
+    async function addDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoInput) {
         e.preventDefault();
 
         try {
             await createDesabafo(desabafo);
+            
+            setCurrentPage(1);
+            setViewForm(false);
+            await recarregar();
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Erro ao adicionar desabafo.");
 
-            location.reload()
-        } catch (err: any) {
-            alert(err.message ?? "Erro ao adicionar desabafo.");
+            alert(message);
         }
     }
 
@@ -79,7 +73,7 @@ export default function DesabafosFeed() {
 
                 <hr className="border-branco/60" />
 
-                <div className={`search py-4 ${registros.length === 0 ? "hidden" : ""}`}>
+                <div className="search py-4">
                     <SearchBar />
                 </div>
 
@@ -89,19 +83,75 @@ export default function DesabafosFeed() {
                     </div>
                 )}
 
-                <div className="content flex flex-wrap items-center justify-center">
-                    {registros.length > 0 ? (
-                        registros.map((registro) => (
-                            <DesabafoCard 
-                                key={registro.id}
-                                objeto={desabafo(registro)}
-                                onClick={() => setPopUpData(desabafo(registro))} 
-                            />
-                        ))
-                    ) : (
-                        <p className="text-branco text-2xl p-10 text-center">
-                            Faça seu desabafo!
-                        </p>
+                <div className="">
+                    <div className="cards flex flex-wrap items-center justify-center">
+                        {filtrados.length > 0 ? (
+                            filtrados.slice(start, end).map((registro) => (
+                                <DesabafoCard 
+                                    key={registro.id}
+                                    objeto={desabafo(registro)}
+                                    onClick={() => setPopUpData(desabafo(registro))} 
+                                />
+                            ))
+                        ) : (
+                            <p className="text-branco text-2xl p-10 text-center">
+                                Faça seu desabafo!
+                            </p>
+                        )}
+                    </div>
+
+                    {(pages > 0) && (
+                        <div className="pagination flex flex-col justify-center items-center gap-5 p-10 text-sm lg:text-lg">
+                            <div className="flex flex-wrap items-center">
+                                {(currentPage !== 1) ? (
+                                    <IoIosArrowBack 
+                                        className="cursor-pointer"
+                                        onClick={() => setCurrentPage(currentPage - 1)} 
+                                    />
+                                ) : (
+                                    <IoIosArrowBack 
+                                        className="text-gray-500" 
+                                    />
+                                )}
+
+                                <div className="flex flex-wrap items-center justify-center gap-1.5 p-3">
+                                    {rangePages(currentPage).map((n, i) => (
+                                        n === '...' ? (
+                                            <p key={i} className="px-3 py-1 text-branco/70">...</p>
+                                        ) : (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentPage(n as number)}
+                                                className={`
+                                                    px-2 py-1 rounded-md border text-sm font-medium cursor-pointer
+                                                    transition-all duration-200
+                                                    ${
+                                                        (n === currentPage)
+                                                        ? ("bg-roxo text-branco border-roxo cursor-default")
+                                                        : ("bg-transparent text-branco border-branco/40 hover:bg-branco/10")
+                                                    }`
+                                                }
+                                            >
+                                                {n}
+                                            </button>
+                                        )
+                                    ))}
+                                </div>
+
+                                {(currentPage !== pages) ? (
+                                    <IoIosArrowForward 
+                                        className="cursor-pointer"
+                                        onClick={() => setCurrentPage(currentPage + 1)} 
+                                    />
+                                ) : (
+                                    <IoIosArrowForward 
+                                        className="text-gray-500" 
+                                    />
+                                )}
+                            </div>
+
+                            <p>Página {currentPage} de {pages}</p>
+                        </div>
                     )}
                 </div>
 
@@ -114,7 +164,7 @@ export default function DesabafosFeed() {
 
                 <div className="fixed z-50 right-4 bottom-4">
                     <button 
-                        title="Editar"
+                        title="Adicionar desabafo"
                         className="hover:opacity-80 transition-opacity cursor-pointer"
                         onClick={() => setViewForm(true)}
                     >

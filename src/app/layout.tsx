@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import BgParticles from "../components/bgParticles";
+import { DesabafosProvider } from "@/src/contexts/desabafosContext";
 
 export const metadata: Metadata = {
   title: "Entrelinhas Web",
@@ -25,7 +26,9 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         className={`antialiased`}
       >
         <BgParticles />
-        {children}
+        <DesabafosProvider>
+          {children}
+        </DesabafosProvider>
       </body>
     </html>
   );

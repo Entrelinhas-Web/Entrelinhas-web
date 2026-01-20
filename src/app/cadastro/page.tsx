@@ -20,7 +20,15 @@ export default function Cadastro() {
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = (ev) => setAvatar(ev.target.result);
+        
+        reader.onload = (ev: ProgressEvent<FileReader>) => {
+            const result = ev.target?.result;
+            
+            if (typeof result === "string") {
+                setAvatar(result);
+            }
+        };
+
         reader.readAsDataURL(file);
     };
 
@@ -37,9 +45,11 @@ export default function Cadastro() {
 
             alert("Cadastro realizado com sucesso!");
 
-            router.push("/login");
-        } catch (err: any) {
-            alert(err.message ?? "Erro ao cadastrar");
+            window.location.href = "/login";
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Erro ao cadastrar");
+
+            alert(message);
         }
     };
 
