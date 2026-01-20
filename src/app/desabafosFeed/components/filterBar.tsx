@@ -2,12 +2,25 @@
 
 import { filter } from "@/src/utils/filter";
 import { useEffect } from "react";
+import { useDesabafos } from "@/src/contexts/desabafosContext";
 
 export default function FilterBar() {
+    const { filtros, setFiltros } = useDesabafos();
+
     useEffect(() => {
-            filter();
-        }, [])
-    
+        filter();
+    }, [])
+
+    function toggleEmocao(valor: string, checked: boolean) {
+        setFiltros((prev) => {
+            if (checked) {
+                return { ...prev, emocoes: [...prev.emocoes, valor] };
+            } else {
+                return { ...prev, emocoes: prev.emocoes.filter((e) => e !== valor) };
+            }
+        });
+    }
+
     return (
         <div
             id="filter"
@@ -27,13 +40,40 @@ export default function FilterBar() {
                 <h2 className="font-semibold mb-2 text-amarelo">Emoções</h2>
 
                 <ul className="flex flex-col gap-2 p-2 pl-4">
-                    <li><label><input type="checkbox" name="emocao" value="Felicidade"/> Felicidade</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Tristeza"/> Tristeza</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Raiva"/> Raiva</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Ansiedade"/> Ansiedade</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Motivação"/> Motivação</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Tranquilidade"/> Tranquilidade</label></li>
-                    <li><label><input type="checkbox" name="emocao" value="Medo"/> Medo</label></li>
+                    <li><label><input type="checkbox" value="Felicidade"
+                        checked={filtros.emocoes.includes("Felicidade")}
+                        onChange={(e) => toggleEmocao("Felicidade", e.target.checked)}
+                    /> Felicidade</label></li>
+
+                    <li><label><input type="checkbox" value="Tristeza"
+                        checked={filtros.emocoes.includes("Tristeza")}
+                        onChange={(e) => toggleEmocao("Tristeza", e.target.checked)}
+                    /> Tristeza</label></li>
+
+                    <li><label><input type="checkbox" value="Raiva"
+                        checked={filtros.emocoes.includes("Raiva")}
+                        onChange={(e) => toggleEmocao("Raiva", e.target.checked)}
+                    /> Raiva</label></li>
+
+                    <li><label><input type="checkbox" value="Ansiedade"
+                        checked={filtros.emocoes.includes("Ansiedade")}
+                        onChange={(e) => toggleEmocao("Ansiedade", e.target.checked)}
+                    /> Ansiedade</label></li>
+
+                    <li><label><input type="checkbox" value="Motivação"
+                        checked={filtros.emocoes.includes("Motivação")}
+                        onChange={(e) => toggleEmocao("Motivação", e.target.checked)}
+                    /> Motivação</label></li>
+
+                    <li><label><input type="checkbox" value="Tranquilidade"
+                        checked={filtros.emocoes.includes("Tranquilidade")}
+                        onChange={(e) => toggleEmocao("Tranquilidade", e.target.checked)}
+                    /> Tranquilidade</label></li>
+
+                    <li><label><input type="checkbox" value="Medo"
+                        checked={filtros.emocoes.includes("Medo")}
+                        onChange={(e) => toggleEmocao("Medo", e.target.checked)}
+                    /> Medo</label></li>
                 </ul>
             </div>
 
@@ -44,12 +84,28 @@ export default function FilterBar() {
                 <div className="flex flex-col gap-4 p-2">
                     <div className="flex flex-col">
                         <span className="text-lilas">Data inicial:</span>
-                        <input id="date-start" type="date" className="p-2 rounded bg-branco text-preto"/>
+                        <input
+                            id="date-start"
+                            type="date"
+                            className="p-2 rounded bg-branco text-preto"
+                            value={filtros.dataInicio || ""}
+                            onChange={(e) =>
+                                setFiltros((p) => ({ ...p, dataInicio: e.target.value }))
+                            }
+                        />
                     </div>
 
                     <div className="flex flex-col">
                         <span className="text-lilas">Data final:</span>
-                        <input id="date-end" type="date" className="p-2 rounded bg-branco text-preto"/>
+                        <input
+                            id="date-end"
+                            type="date"
+                            className="p-2 rounded bg-branco text-preto"
+                            value={filtros.dataFim || ""}
+                            onChange={(e) =>
+                                setFiltros((p) => ({ ...p, dataFim: e.target.value }))
+                            }
+                        />
                     </div>
                 </div>
             </div>

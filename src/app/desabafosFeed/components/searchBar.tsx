@@ -1,18 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useDesabafos } from "@/src/contexts/desabafosContext";
 
 export default function SearchBar() {
-    const [ input, setInput ] = useState("");
-
-    useEffect(() => {
-        const event = new CustomEvent("state-change", {
-            detail: { searchText: input }
-        });
-        window.dispatchEvent(event);
-        console.log(input)
-    }, [input]);
+    const { input, setInput } = useDesabafos();
 
     return (
         <div className="flex gap-3 items-center justify-center w-full">
@@ -23,8 +15,8 @@ export default function SearchBar() {
                         name="titulo"
                         placeholder="Buscar desabafos"
                         className="bg-preto text-branco sm:border-lilas placeholder:text-branco/70 lg:text-md border-preto/60 focus:border-amarelo w-full rounded-2xl border-2 px-4 py-2 text-xs outline-none"
-                        required
-                        onChange={(e) => setInput(e.target.value.trim().toLowerCase())}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value.toLowerCase())}
                     />
 
                     <Image
@@ -38,14 +30,17 @@ export default function SearchBar() {
             </div>
 
             <div className="filter hover:scale-105">
-                <button id="filter-btn" className="bg-roxo border-lilas flex items-center gap-3 rounded-3xl border-2 px-4 py-3 hover:bg-lilas/70">
-                <Image
-                    src="/filter.png"
-                    alt="Filter"
-                    width={10}
-                    height={10}
-                    className="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7"
-                />
+                <button
+                  id="filter-btn"
+                  className="bg-roxo border-lilas flex items-center gap-3 rounded-3xl border-2 px-4 py-3 hover:bg-lilas/70"
+                >
+                  <Image
+                      src="/filter.png"
+                      alt="Filter"
+                      width={10}
+                      height={10}
+                      className="pixel h-5 w-5 cursor-pointer lg:h-7 lg:w-7"
+                  />
                 </button>
             </div>
         </div>

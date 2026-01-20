@@ -1,10 +1,11 @@
 "use client"
 
 import Image from "next/image";
-import { desabafoObject, emocoes } from "../page";
+import { emocoes } from "../page";
 import Form from "./form";
 import { updateDesabafo } from "@/src/services/storage";
 import { useState } from "react";
+import { desabafoObject } from "@/src/types/desabafo";
 
 interface PopUpProps {
   objeto: desabafoObject;

@@ -6,22 +6,13 @@ import FilterBar from "./components/filterBar";
 import Header from "@/src/components/header";
 import Form from "./components/form";
 import DesabafoCard from "./components/desabafoCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PopUp from "./components/popUp";
-import { createDesabafo, getDesabafos } from "@/src/services/storage";
+import { createDesabafo } from "@/src/services/storage";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
-
-export interface desabafoObject {
-    id: number;
-    titulo: string;
-    emocao: keyof typeof emocoes;
-    nivel: string | number;
-    descricao: string;
-    created_at: string;
-    date?: string;
-    qtdDesabafos?: number;
-}
+import { useDesabafos } from "@/src/contexts/desabafosContext";
+import { desabafoObject } from "@/src/types/desabafo";
 
 export const emocoes = {
   Felicidade: { bg: "bg-amarelo", border: "border-amarelo", text: "text-amarelo" },
@@ -34,22 +25,9 @@ export const emocoes = {
 };
 
 export default function DesabafosFeed() {
-    const [ registros, setRegistros ] = useState<desabafoObject[]>([]);
-    const [ currentPage, setCurrentPage ] = useState(1);
-    const [ pages, setPages ] = useState(0);
+    const { registros, filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
     const [ viewForm, setViewForm ] = useState(false);
     const [ popUpData, setPopUpData ] = useState<desabafoObject | null>(null);
-
-    useEffect(() => {
-        async function loadDesabafos() {
-            const res = await getDesabafos(currentPage);
-
-            setRegistros(res.data || []);
-            setPages(Math.ceil(res.qtdDesabafos / 10));
-        }
-
-        loadDesabafos();
-    }, [currentPage]);
 
     function rangePages(current: number, steps = 1) { 
         const range: (number | string)[] = [];
@@ -70,12 +48,10 @@ export default function DesabafosFeed() {
         const mes = registro.created_at.slice(5, 7);
         const ano = registro.created_at.slice(0, 4);
 
-        const objeto = {
+        return {
             ...registro,
             date: `${dia}/${mes}/${ano}`
         }
-
-        return objeto
     }
 
     async function addDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoObject) {
@@ -83,8 +59,7 @@ export default function DesabafosFeed() {
 
         try {
             await createDesabafo(desabafo);
-
-            location.reload()
+            await recarregar();
         } catch (err: any) {
             alert(err.message ?? "Erro ao adicionar desabafo.");
         }
@@ -99,7 +74,8 @@ export default function DesabafosFeed() {
 
                 <hr className="border-branco/60" />
 
-                <div className={`search py-4 ${registros.length === 0 ? "hidden" : ""}`}>
+                {/* Sempre mostrar a searchBar, mesmo quando não há registros */}
+                <div className="search py-4">
                     <SearchBar />
                 </div>
 
@@ -111,8 +87,8 @@ export default function DesabafosFeed() {
 
                 <div className="">
                     <div className="cards flex flex-wrap items-center justify-center">
-                        {registros.length > 0 ? (
-                            registros.map((registro) => (
+                        {filtrados.length > 0 ? (
+                            filtrados.map((registro) => (
                                 <DesabafoCard 
                                     key={registro.id}
                                     objeto={desabafo(registro)}
@@ -163,7 +139,6 @@ export default function DesabafosFeed() {
                                         )
                                     ))}
                                 </div>
-
 
                                 {(currentPage !== pages) ? (
                                     <IoIosArrowForward 
