@@ -1,10 +1,11 @@
 "use client"
 
 import { ChangeEvent, useState } from "react";
-import { desabafoObject } from "@/src/types/desabafo";
+import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
+import { Emocao } from "@/src/types/emocoes";
 
 interface FormProps {
-    handleSubmit: (e: React.FormEvent<HTMLFormElement>, objeto: desabafoObject) => Promise<void>;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>, objeto: desabafoInput) => Promise<void>;
     onClose: () => void;
     text: string;
     objeto?: desabafoObject;
@@ -12,7 +13,7 @@ interface FormProps {
 
 export default function Form({ handleSubmit, onClose, text, objeto }: FormProps) {
     const [ titulo, setTitulo ] = useState(objeto?.titulo || "");
-    const [ emocao, setEmocao ] = useState(objeto?.emocao || "");
+    const [ emocao, setEmocao ] = useState<Emocao | "">(objeto?.emocao || "");
     const [ nivel, setNivel ] = useState(objeto?.nivel || 3);
     const [ descricao, setDescricao ] = useState(objeto?.descricao || "");
 
@@ -37,15 +38,17 @@ export default function Form({ handleSubmit, onClose, text, objeto }: FormProps)
                     </button>
                 </div>
 
-                <form id="desabafoForm" className="flex flex-col gap-6 w-full" onSubmit={(e) => handleSubmit(
-                    e, {
+                <form id="desabafoForm" className="flex flex-col gap-6 w-full" onSubmit={(e) => {
+                    if(!emocao) return;
+
+                    handleSubmit(e, {
                         titulo: titulo.trim(),
-                        emocao: emocao,
-                        nivel: nivel,
+                        emocao,
+                        nivel,
                         descricao: descricao.trim(),
                         }
                     )
-                }>
+                }}>
                     <div className="lg:flex gap-6">
 
                         <div className="esquerda flex flex-col lg:w-[30%] gap-12">
@@ -67,7 +70,7 @@ export default function Form({ handleSubmit, onClose, text, objeto }: FormProps)
                                 value={emocao}
                                 className="bg-preto border-lilas focus:border-amarelo focus:ring-rosa rounded-md border-2 p-2 outline-none w-full"
                                 required
-                                onChange={(e) => setEmocao(e.target.value)}
+                                onChange={(e) => setEmocao(e.target.value as Emocao)}
                             >
                                 <option value="" disabled selected hidden>Emoção</option>
                                 <option value="Felicidade" >Felicidade</option>

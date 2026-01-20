@@ -6,4 +6,6 @@ export const emocoes = {
   Motivação: { bg: "bg-rosa", border: "border-rosa", text: "text-rosa" },
   Tranquilidade: { bg: "bg-verde", border: "border-verde", text: "text-verde" },
   Medo: { bg: "bg-lilas", border: "border-lilas", text: "text-lilas" },
-};
+} as const;
+
+export type Emocao = keyof typeof emocoes;

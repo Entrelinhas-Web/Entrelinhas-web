@@ -1,11 +1,12 @@
 "use client"
 
 import Image from "next/image";
-import { emocoes } from "../page";
 import Form from "./form";
 import { updateDesabafo } from "@/src/services/storage";
 import { useState } from "react";
-import { desabafoObject } from "@/src/types/desabafo";
+import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
+import { useDesabafos } from "@/src/contexts/desabafosContext";
+import { emocoes } from "@/src/types/emocoes";
 
 interface PopUpProps {
   objeto: desabafoObject;
@@ -13,25 +14,30 @@ interface PopUpProps {
 }
 
 export default function PopUp({ objeto, onClose }: PopUpProps)  {
+    const { recarregar } = useDesabafos();
     const [ viewForm, setViewForm ] = useState(false);
-    const { bg, border, text } = emocoes[objeto.emocao];
+    const { border, text } = emocoes[objeto.emocao];
 
     const stars = Array(objeto.nivel).fill("").concat(Array(5 - objeto.nivel).fill("."));
 
-    async function editDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoObject) {
+    async function editDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoInput) {
         e.preventDefault();
 
         try {
-            await updateDesabafo({... desabafo, id: objeto.id});
+            await updateDesabafo(desabafo, objeto.id);
 
-            location.reload()
-        } catch (err: any) {
-            alert(err.message ?? "Erro ao editar desabafo.");
+            setViewForm(false);
+            onClose();
+            await recarregar();
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Erro ao editar desabafo.");
+
+            alert(message);
         }
     }
 
     async function onDelete(id: number) {
-        console.log("Remoção");
+        console.log(`Remoção de: ${id}`);
     }
 
     return (

@@ -1,11 +1,11 @@
 "use client"
 
-import { filter } from "@/src/utils/filter";
 import { useEffect } from "react";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
+import { filter } from "@/src/utils/filter";
 
 export default function FilterBar() {
-    const { filtros, setFiltros } = useDesabafos();
+    const { filtros, setFiltros, setInput, setCurrentPage } = useDesabafos();
 
     useEffect(() => {
         filter();
@@ -27,6 +27,8 @@ export default function FilterBar() {
             dataInicio: undefined,
             dataFim: undefined
         });
+        setInput("");
+        setCurrentPage(1);
     }
 
     return (

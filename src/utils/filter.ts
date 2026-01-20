@@ -6,20 +6,20 @@ export function filter() {
   if (!filterBtn || !filter || !closeBtn) return;
 
   function openFilter() {
-    filter.classList.remove("hidden");
+    filter?.classList.remove("hidden");
 
     setTimeout(() => {
-      filter.classList.remove("translate-x-full");
-      filter.classList.add("translate-x-0");
+      filter?.classList.remove("translate-x-full");
+      filter?.classList.add("translate-x-0");
     }, 10);
   }
 
   function closeFilter() {
-    filter.classList.add("translate-x-full");
-    filter.classList.remove("translate-x-0");
+    filter?.classList.add("translate-x-full");
+    filter?.classList.remove("translate-x-0");
     
     setTimeout(() => {
-      filter.classList.add("hidden");
+      filter?.classList.add("hidden");
     }, 300);
   }
 
@@ -30,9 +30,16 @@ export function filter() {
 
   closeBtn.addEventListener("click", closeFilter);
 
-  document.addEventListener("click", (e) => {
-    !filter.contains(e.target) &&
-      !filterBtn.contains(e.target) &&
+  document.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target;
+
+    if (!(target instanceof Node)) return;
+
+    if (
+      !filter.contains(target) &&
+      !filterBtn.contains(target)
+    ) {
       closeFilter();
+    }
   });
 }

@@ -31,6 +31,11 @@ interface DesabafosContextData {
   recarregar: () => Promise<void>;
 }
 
+interface ResGetDesabafos {
+  data: desabafoObject[];
+  qtdDesabafos: number;
+}
+
 const DesabafosContext = createContext<DesabafosContextData | null>(null);
 
 export function DesabafosProvider({ children }: { children: ReactNode }) {
@@ -42,7 +47,8 @@ export function DesabafosProvider({ children }: { children: ReactNode }) {
   const [pages, setPages] = useState(0);
 
   async function carregar(page = currentPage) {
-    const res = await getDesabafos(page);
+    const res: ResGetDesabafos = await getDesabafos();
+
     setRegistros(res.data || []);
     setPages(Math.ceil((res.qtdDesabafos || 0) / 10));
   }
@@ -78,6 +84,10 @@ export function DesabafosProvider({ children }: { children: ReactNode }) {
       return matchBusca && matchEmocao && matchDataInicio && matchDataFim;
     });
   }, [registros, input, filtros]);
+
+  useEffect(() => {
+    setPages(Math.ceil(filtrados.length / 10));
+  }, [filtrados]);
 
   return (
     <DesabafosContext.Provider

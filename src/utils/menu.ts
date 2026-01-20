@@ -6,20 +6,20 @@ export function menu() {
   if (!menuBtn || !sidebar || !closeBtn) return;
 
   function openSidebar() {
-    sidebar.classList.remove("hidden");
+    sidebar?.classList.remove("hidden");
 
     setTimeout(() => {
-      sidebar.classList.remove("translate-x-full");
-      sidebar.classList.add("translate-x-0");
+      sidebar?.classList.remove("translate-x-full");
+      sidebar?.classList.add("translate-x-0");
     }, 10);
   }
 
   function closeSidebar() {
-    sidebar.classList.add("translate-x-full");
-    sidebar.classList.remove("translate-x-0");
+    sidebar?.classList.add("translate-x-full");
+    sidebar?.classList.remove("translate-x-0");
 
     setTimeout(() => {
-      sidebar.classList.add("hidden");
+      sidebar?.classList.add("hidden");
     }, 300);
   }
 
@@ -30,9 +30,16 @@ export function menu() {
 
   closeBtn.addEventListener("click", closeSidebar);
 
-  document.addEventListener("click", (e) => {
-    !sidebar.contains(e.target) &&
-      !menuBtn.contains(e.target) &&
+  document.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target;
+
+    if (!(target instanceof Node)) return;
+
+    if (
+      !sidebar.contains(target) &&
+      !sidebar.contains(target)
+    ) {
       closeSidebar();
+    }
   });
 }

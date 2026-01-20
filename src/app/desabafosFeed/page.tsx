@@ -12,20 +12,14 @@ import { createDesabafo } from "@/src/services/storage";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
-import { desabafoObject } from "@/src/types/desabafo";
-
-export const emocoes = {
-  Felicidade: { bg: "bg-amarelo", border: "border-amarelo", text: "text-amarelo" },
-  Tristeza: { bg: "bg-azul", border: "border-azul", text: "text-azul" },
-  Raiva: { bg: "bg-vermelho", border: "border-vermelho", text: "text-vermelho" },
-  Ansiedade: { bg: "bg-laranja", border: "border-laranja", text: "text-laranja" },
-  Motivação: { bg: "bg-rosa", border: "border-rosa", text: "text-rosa" },
-  Tranquilidade: { bg: "bg-verde", border: "border-verde", text: "text-verde" },
-  Medo: { bg: "bg-lilas", border: "border-lilas", text: "text-lilas" },
-};
+import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
 
 export default function DesabafosFeed() {
-    const { registros, filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
+    const { filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
+
+    const start = (currentPage - 1) * 10;
+    const end = start + 10;
+
     const [ viewForm, setViewForm ] = useState(false);
     const [ popUpData, setPopUpData ] = useState<desabafoObject | null>(null);
 
@@ -54,14 +48,19 @@ export default function DesabafosFeed() {
         }
     }
 
-    async function addDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoObject) {
+    async function addDesabafo(e: React.FormEvent<HTMLFormElement>, desabafo: desabafoInput) {
         e.preventDefault();
 
         try {
             await createDesabafo(desabafo);
+            
+            setCurrentPage(1);
+            setViewForm(false);
             await recarregar();
-        } catch (err: any) {
-            alert(err.message ?? "Erro ao adicionar desabafo.");
+        } catch (err: unknown) {
+            const message = (err instanceof Error) ? (err.message) : ("Erro ao adicionar desabafo.");
+
+            alert(message);
         }
     }
 
@@ -74,7 +73,6 @@ export default function DesabafosFeed() {
 
                 <hr className="border-branco/60" />
 
-                {/* Sempre mostrar a searchBar, mesmo quando não há registros */}
                 <div className="search py-4">
                     <SearchBar />
                 </div>
@@ -88,7 +86,7 @@ export default function DesabafosFeed() {
                 <div className="">
                     <div className="cards flex flex-wrap items-center justify-center">
                         {filtrados.length > 0 ? (
-                            filtrados.map((registro) => (
+                            filtrados.slice(start, end).map((registro) => (
                                 <DesabafoCard 
                                     key={registro.id}
                                     objeto={desabafo(registro)}
@@ -166,7 +164,7 @@ export default function DesabafosFeed() {
 
                 <div className="fixed z-50 right-4 bottom-4">
                     <button 
-                        title="Editar"
+                        title="Adicionar desabafo"
                         className="hover:opacity-80 transition-opacity cursor-pointer"
                         onClick={() => setViewForm(true)}
                     >
