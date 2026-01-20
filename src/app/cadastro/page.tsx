@@ -20,7 +20,7 @@ export default function Cadastro() {
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = (ev) => setAvatar(ev.target.result);
+        reader.onload = (ev) => setAvatar(ev.target?.result);
         reader.readAsDataURL(file);
     };
 
