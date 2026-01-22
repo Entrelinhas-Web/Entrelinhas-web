@@ -13,9 +13,10 @@ import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
 import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
+import Link from "next/link";
 
 export default function DesabafosFeed() {
-    const { filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
+    const { registros, filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
 
     const start = (currentPage - 1) * 10;
     const end = start + 10;
@@ -83,7 +84,7 @@ export default function DesabafosFeed() {
                     </div>
                 )}
 
-                <div className="">
+                <div>
                     <div className="cards flex flex-wrap items-center justify-center">
                         {filtrados.length > 0 ? (
                             filtrados.slice(start, end).map((registro) => (
@@ -93,21 +94,27 @@ export default function DesabafosFeed() {
                                     onClick={() => setPopUpData(desabafo(registro))} 
                                 />
                             ))
-                        ) : (
-                            <p className="text-branco text-2xl p-10 text-center">
-                                Faça seu desabafo!
-                            </p>
-                        )}
+                        ) : (registros.length > 0 ? (
+                                <p className="text-branco text-2xl p-10 text-center">
+                                    Nenhum desabafo encontrado.
+                                </p>
+                            ) : (
+                                <p className="text-branco text-2xl p-10 text-center">
+                                    Faça seu desabafo!
+                                </p>
+                        ))}
                     </div>
 
                     {(pages > 0) && (
                         <div className="pagination flex flex-col justify-center items-center gap-5 p-10 text-sm lg:text-lg">
                             <div className="flex flex-wrap items-center">
                                 {(currentPage !== 1) ? (
-                                    <IoIosArrowBack 
-                                        className="cursor-pointer"
-                                        onClick={() => setCurrentPage(currentPage - 1)} 
-                                    />
+                                    <Link href={"#app"}>
+                                        <IoIosArrowBack 
+                                            className="cursor-pointer"
+                                            onClick={() => setCurrentPage(currentPage - 1)} 
+                                        />
+                                    </Link>
                                 ) : (
                                     <IoIosArrowBack 
                                         className="text-gray-500" 
@@ -119,30 +126,33 @@ export default function DesabafosFeed() {
                                         n === '...' ? (
                                             <p key={i} className="px-3 py-1 text-branco/70">...</p>
                                         ) : (
-                                            <button
-                                                key={i}
-                                                onClick={() => setCurrentPage(n as number)}
-                                                className={`
-                                                    px-2 py-1 rounded-md border text-sm font-medium cursor-pointer
-                                                    transition-all duration-200
-                                                    ${
-                                                        (n === currentPage)
-                                                        ? ("bg-roxo text-branco border-roxo cursor-default")
-                                                        : ("bg-transparent text-branco border-branco/40 hover:bg-branco/10")
-                                                    }`
-                                                }
-                                            >
-                                                {n}
-                                            </button>
+                                            <Link key={i} href={"#app"}>
+                                                <button
+                                                    onClick={() => setCurrentPage(n as number)}
+                                                    className={`
+                                                        px-2 py-1 rounded-md border text-sm font-medium cursor-pointer
+                                                        transition-all duration-200
+                                                        ${
+                                                            (n === currentPage)
+                                                            ? ("bg-roxo text-branco border-roxo cursor-default")
+                                                            : ("bg-transparent text-branco border-branco/40 hover:bg-branco/10")
+                                                        }`
+                                                    }
+                                                >
+                                                    {n}
+                                                </button>
+                                            </Link>
                                         )
                                     ))}
                                 </div>
 
                                 {(currentPage !== pages) ? (
-                                    <IoIosArrowForward 
-                                        className="cursor-pointer"
-                                        onClick={() => setCurrentPage(currentPage + 1)} 
-                                    />
+                                    <Link href={"#app"}>
+                                        <IoIosArrowForward 
+                                            className="cursor-pointer"
+                                            onClick={() => setCurrentPage(currentPage + 1)} 
+                                        />
+                                    </Link>
                                 ) : (
                                     <IoIosArrowForward 
                                         className="text-gray-500" 
