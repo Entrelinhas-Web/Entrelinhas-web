@@ -10,25 +10,35 @@ export default function Login() {
 
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [message, setMessage] = useState<string | null>(null);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setMessage(null);
+        setError(false);
+        setLoading(true);
 
         try {
             await storage.loginUser(email, password);
 
-            alert('Login realizado com sucesso!');
-
+            setError(false);
+            
             window.location.href = "/desabafosFeed";
+            return;
         } catch (err: unknown) {
             const message = (err instanceof Error) ? (err.message) : ("Email ou senha inválidos");
 
-            alert(message);
+            setMessage(message);
+            setError(true);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="font-pixel text-branco flex min-h-screen items-center justify-center">
+        <div className="font-pixel text-branco flex min-h-screen items-center justify-center flex-col">
             <div className="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"></div>
 
             {/* Header */}
@@ -77,12 +87,21 @@ export default function Login() {
                         />
                     </div>
 
+
+                    {/* Mensagem de erro */ }
+                    {message && (
+                    <div className="rounded border-2 px-3 py-2 text-[12px] border-vermelho bg-vermelho/20 text-vermelho">
+                        {message}
+                    </div>
+                    )}
+
                     {/* Botão */}
                     <button
-                        type="submit"
-                        className="bg-lilas border-lilas text-branco rounded-[5px] hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
+                    type="submit"
+                    disabled={loading}
+                    className="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas disabled:opacity-50 disabled:pointer-events-none"
                     >
-                        Entrar
+                        {loading ? "Entrando..." : "Entrar"}
                     </button>
                 </form>
 
