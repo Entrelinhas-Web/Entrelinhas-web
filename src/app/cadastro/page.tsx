@@ -14,6 +14,9 @@ export default function Cadastro() {
     const [ password, setPassword ] = useState("");
     const [ confirmPassword, setConfirmPassword ] = useState("");
     const [ avatar, setAvatar ] = useState("/avatar.jpg");
+    type Status = "idle" | "loading" | "error" | "success";
+    const [status, setStatus] = useState<Status>("idle");
+    const [message, setMessage] = useState<string | null>(null);
 
     const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -35,26 +38,42 @@ export default function Cadastro() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (password.length < 8)
-            return alert("Sua senha deve possuir no mínimo 8 caracteres!");
-        if (password !== confirmPassword)
-            return alert("As senhas não coincidem!");
+        if (status === "loading" || status === "success") return;
+
+        setMessage(null);
+        setStatus("loading");
+
+        if (password.length < 8) {
+            setMessage("Sua senha deve possuir no mínimo 8 caracteres!");
+            setStatus("error");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setMessage("As senhas não coincidem!");
+            setStatus("error");
+            return;
+        }
 
         try {
             await storage.createUser(username, email, password, avatar);
 
-            alert("Cadastro realizado com sucesso!");
+            setMessage("Cadastro realizado com sucesso! Redirecionando...");
+            setStatus("success");
 
-            window.location.href = "/login";
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 2500);
+
         } catch (err: unknown) {
-            const message = (err instanceof Error) ? (err.message) : ("Erro ao cadastrar");
-
-            alert(message);
+            const message = err instanceof Error ? err.message : "Erro ao cadastrar";
+            setMessage(message);
+            setStatus("error");
         }
     };
 
     return (
-        <div className="font-pixel text-branco flex min-h-screen items-center justify-center">
+        <div className="font-pixel text-branco flex flex-col min-h-screen items-center justify-center gap-4">
 
             <div className="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"></div>
 
@@ -66,6 +85,16 @@ export default function Cadastro() {
                     Login
                 </Link>
             </header>
+
+            {/* Mensagem de sucesso */ }
+            {status === "success" && (
+            <div
+                className={`rounded border-2 px-3 py-2 text-[16px] border-verde bg-verde/20 text-verde
+                }`}
+            >
+                {message}
+            </div>
+            )}
 
             <div
                 className="border-lilas shadow-pixel bg-roxo w-fit border-4 p-8  text-center space-y-6 rounded-lg lg:w-110"
@@ -162,12 +191,27 @@ export default function Cadastro() {
                         </label>
                     </div>
 
+                    {/* Mensagem de erro */ }
+                    {status === "error" && (
+                    <div
+                        className={`rounded border-2 px-3 py-2 text-[10px] border-vermelho bg-vermelho/20 text-vermelho
+                        }`}
+                    >
+                        {message}
+                    </div>
+                    )}
+
                     {/* Botão */}
                     <button
-                        type="submit"
-                        className="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas"
+                    type="submit"
+                    disabled={status === "loading" || status === "success"}
+                    className="bg-lilas border-lilas rounded-[5px] text-branco hover:bg-branco w-full border-2 py-2 mt-4 transition hover:-translate-y-0.5 hover:shadow-[0_2px_0_#1A1423] hover:text-lilas disabled:opacity-50 disabled:pointer-events-none"
                     >
-                        Cadastrar
+                        {status === "loading"
+                        ? "Cadastrando..."
+                        : status === "success"
+                        ? "Cadastro realizado"
+                        : "Cadastrar"}
                     </button>
                 </form>
             </div>
