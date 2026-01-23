@@ -41,11 +41,11 @@ export default function Cadastro() {
         setMessage(null);
         setStatus("loading");
 
-        //pelo menos 8 caracteres, pelo menos uma letra maiuscula e minuscula, pelo menos um num, pelo menos um caractere especial    
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        //pelo menos 8 caracteres, pelo menos uma letra maiuscula e minuscula, pelo menos um num    
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
         if (!passwordRegex.test(password)) {
-            setMessage("A senha deve ter 8+ caracteres, incluindo maiúsculas, números e símbolos.");
+            setMessage("A senha deve ter 8+ caracteres, incluindo maiúsculas e números");
             setStatus("error");
             return;
         }
