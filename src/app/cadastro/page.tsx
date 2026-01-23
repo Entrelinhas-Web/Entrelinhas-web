@@ -41,8 +41,11 @@ export default function Cadastro() {
         setMessage(null);
         setStatus("loading");
 
-        if (password.length < 8) {
-            setMessage("Sua senha deve possuir no mínimo 8 caracteres!");
+        //pelo menos 8 caracteres, pelo menos uma letra maiuscula e minuscula, pelo menos um num, pelo menos um caractere especial    
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+            setMessage("A senha deve ter 8+ caracteres, incluindo maiúsculas, números e símbolos.");
             setStatus("error");
             return;
         }
