@@ -154,7 +154,10 @@ export async function deleteDesabafo(id: number) {
 
     const { error } = await supabase
         .from("Desabafo")
-        .delete()
+        .update({
+            active: false,
+            deleted_at: new Date().toISOString(),
+        })
         .eq("id", id)
         .eq("id_usuario", id_usuario)
 
