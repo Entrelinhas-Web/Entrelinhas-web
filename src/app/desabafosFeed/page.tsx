@@ -53,10 +53,10 @@ export default function DesabafosFeed() {
         e.preventDefault();
 
         try {
-            await createDesabafo(desabafo);
-            
             setCurrentPage(1);
             setViewForm(false);
+            
+            await createDesabafo(desabafo);
             await recarregar();
         } catch (err: unknown) {
             const message = (err instanceof Error) ? (err.message) : ("Erro ao adicionar desabafo.");

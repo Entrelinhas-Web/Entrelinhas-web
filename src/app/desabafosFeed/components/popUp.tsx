@@ -24,10 +24,10 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
         e.preventDefault();
 
         try {
-            await updateDesabafo(desabafo, objeto.id);
-
             setViewForm(false);
             onClose();
+
+            await updateDesabafo(desabafo, objeto.id);
             await recarregar();
         } catch (err: unknown) {
             const message = (err instanceof Error) ? (err.message) : ("Erro ao editar desabafo.");
