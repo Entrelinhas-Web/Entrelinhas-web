@@ -5,7 +5,6 @@ import MenuBar from "@/src/components/menuBar";
 import FilterBar from "./components/filterBar";
 import Header from "@/src/components/header";
 import Form from "./components/form";
-import DesabafoCard from "./components/desabafoCard";
 import { useState } from "react";
 import PopUp from "./components/popUp";
 import { createDesabafo } from "@/src/services/storage";
@@ -14,6 +13,7 @@ import { IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
 import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
 import Link from "next/link";
+import DesabafoCard from "../../components/desabafoCard";
 
 export default function DesabafosFeed() {
     const { registros, filtrados, currentPage, setCurrentPage, pages, recarregar } = useDesabafos();
@@ -91,7 +91,8 @@ export default function DesabafosFeed() {
                                 <DesabafoCard 
                                     key={registro.id}
                                     objeto={desabafo(registro)}
-                                    onClick={() => setPopUpData(desabafo(registro))} 
+                                    onClick={() => setPopUpData(desabafo(registro))}
+                                    styleCard="w-[85%] lg:w-[60%]"
                                 />
                             ))
                         ) : (registros.length > 0 ? (

@@ -7,7 +7,7 @@ import { desabafoObject } from "@/src/types/desabafo";
 import Header from "@/src/components/header";
 import MenuBar from "@/src/components/menuBar";
 import ProfileSidebar, { UserProfile } from "./components/ProfileSidebar";
-import ActivityCard from "./components/ActivityCard";
+import DesabafoCard from "@/src/components/desabafoCard";
 
 export default function Perfil() {
   const [loading, setLoading] = useState(true);
@@ -112,9 +112,9 @@ export default function Perfil() {
                 {displayedActivities.length > 0 ? (
                   <>
                     {displayedActivities.map((item) => (
-                      <ActivityCard 
+                      <DesabafoCard 
                         key={item.id} 
-                        data={item}
+                        objeto={item}
                         onClick={() => console.log("Clicou no card", item.id)} 
                       />
                     ))}
