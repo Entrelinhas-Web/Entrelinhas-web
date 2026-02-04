@@ -106,6 +106,7 @@ export async function getDesabafos() {
         .from('Desabafo')
         .select('*', { count: 'exact' })
         .eq('id_usuario', id_usuario)
+        .eq('active', true)
         .order('created_at', { ascending: false })
 
     if (error) throw error
