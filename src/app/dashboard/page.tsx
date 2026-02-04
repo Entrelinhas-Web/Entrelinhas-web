@@ -5,19 +5,35 @@ import MenuBar from "@/src/components/menuBar";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
 import DashboardCard from "./components/cardDashboard";
 import { emocoes } from "@/src/types/emocoes"
+
 import { useEffect, useState } from "react";
 
-
-export default function Dashboard() {
-
-
+export default function DashboardPage() {
     const { registros } = useDesabafos();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (registros !== undefined) {
+            setLoading(false);
+        }
+    }, [registros]);
+
     const quant  = registros.length;
     const diferentes = new Set(registros.map((registro) => registro.emocao)).size;
 
+    
     function ContadorEmocoes(emocao:string){
         const valor = registros.filter(item => item.emocao === emocao).length;
         return valor;
+    }
+
+    if (loading) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-lilas mb-4"></div>
+                <span className="text-lilas text-lg font-semibold">Carregando dados...</span>
+            </div>
+        );
     }
 
     return (
@@ -26,43 +42,36 @@ export default function Dashboard() {
                 className="bg pointer-events-none fixed top-0 left-0 -z-10 h-full w-full"
             ></div>
 
-                <div id="app">
-                    <Header />
-
-                    <hr className="border-branco/60" />
-
-                    <div className="form m-4 flex flex-col items-center justify-center"></div>
-                    
-                </div>
-                    
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 p-8">
-                    <div className="bg-white rounded-lg shadow-md p-6">
-                        <p id="desabafos-registrados" className="text-3xl font-bold text-lilas mt-2 inline">{quant}</p>
-                        <h1 className="text-preto text-sm font-semibold uppercase inline">{quant==1 ? "Desabafo Registrado" : "Desabafos Registrados"}</h1>
-                    </div>
-
-                    <div className="bg-white rounded-lg shadow-md p-6">
-                        <p id="emocoes-registradas" className="text-3xl font-bold text-lilas mt-2 inline"><span>{diferentes}</span></p>
-                        <p className="text-preto text-sm font-semibold uppercase inline">{diferentes==1 ?"Emoção Diferente" : "Emoções Diferentes"}</p>
-                    </div>
-                </div>
-
-                
-
-
-            <div className="content flex flex-wrap items-center justify-center">
-
-                {
-                    Object.entries(emocoes).map(([chave, content]) => {
-                        const ce = ContadorEmocoes(chave);
-                        return ce > 0 
-                        ?  <DashboardCard key={chave} nome={chave} objeto={content} quantidade={ce}/>
-                        : null;                   
-                    })
-                }
-
+            <div id="app">
+                <Header />
+                <hr className="border-branco/60" />
+                <div className="form m-4 flex flex-col items-center justify-center"></div>
             </div>
-        
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 p-8">
+                <div className="bg-white rounded-lg shadow-md p-6">
+                    <p id="desabafos-registrados" className="text-3xl font-bold text-lilas mt-2 inline">{quant}</p>
+                    <h1 className="text-preto text-sm font-semibold uppercase inline">{quant==1 ? "Desabafo Registrado" : "Desabafos Registrados"}</h1>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                    <p id="emocoes-registradas" className="text-3xl font-bold text-lilas mt-2 inline"><span>{diferentes}</span></p>
+                    <p className="text-preto text-sm font-semibold uppercase inline">{diferentes==1 ?"Emoção Diferente" : "Emoções Diferentes"}</p>
+                </div>
+            </div>
+            <div className="content flex flex-wrap items-center justify-center">
+                {
+                    Object.entries(emocoes)
+                        .map(([chave, content]) => ({
+                            chave,
+                            content,
+                            quantidade: ContadorEmocoes(chave)
+                        }))
+                        .filter(item => item.quantidade > 0)
+                        .sort((a, b) => b.quantidade - a.quantidade)
+                        .map(item => (
+                            <DashboardCard key={item.chave} nome={item.chave} objeto={item.content} quantidade={item.quantidade} />
+                        ))
+                }
+            </div>
             <MenuBar />
         </>
     )
