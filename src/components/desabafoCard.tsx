@@ -1,12 +1,12 @@
 import { desabafoObject } from "@/src/types/desabafo";
 import { emocoes } from "@/src/types/emocoes";
 
-export default function DesabafoCard({objeto, onClick}: { objeto: desabafoObject; onClick: () => void}) {
+export default function DesabafoCard({objeto, onClick, styleCard = ""}: { objeto: desabafoObject; onClick: () => void; styleCard?: string; }) {
     const { bg, border, text } = emocoes[objeto.emocao];
 
     return (
         <div 
-            className="w-[85%] lg:w-[60%] p-4 gap-2"
+            className={`p-4 gap-2 ${styleCard}`}
             onClick={onClick}
         >
             <div className={`flex rounded-2xl border-2 ${border} overflow-hidden cursor-pointer hover:scale-105`}>

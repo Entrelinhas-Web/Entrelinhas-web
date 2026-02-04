@@ -11,6 +11,12 @@ export interface desabafoObject {
     qtdDesabafos?: number;
 }
 
+export interface emocaoParametro {
+    bg: string;
+    border: string;
+    text: string;
+}
+
 export interface desabafoInput {
   titulo: string;
   emocao: Emocao;

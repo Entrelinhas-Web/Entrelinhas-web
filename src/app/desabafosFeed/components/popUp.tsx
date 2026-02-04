@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Form from "./form";
-import { updateDesabafo } from "@/src/services/storage";
+import { updateDesabafo, deleteDesabafo } from "@/src/services/storage";
 import { useState } from "react";
 import { desabafoInput, desabafoObject } from "@/src/types/desabafo";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
@@ -24,10 +24,10 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
         e.preventDefault();
 
         try {
-            await updateDesabafo(desabafo, objeto.id);
-
             setViewForm(false);
             onClose();
+
+            await updateDesabafo(desabafo, objeto.id);
             await recarregar();
         } catch (err: unknown) {
             const message = (err instanceof Error) ? (err.message) : ("Erro ao editar desabafo.");
@@ -37,7 +37,15 @@ export default function PopUp({ objeto, onClose }: PopUpProps)  {
     }
 
     async function onDelete(id: number) {
-        console.log(`Remoção de: ${id}`);
+
+        try {
+            await deleteDesabafo(id);
+            onClose();
+            await recarregar();
+        } catch (err: unknown) {
+            console.error(err);
+            alert("Erro ao tentar remover o desabafo.");
+        }
     }
 
     return (
