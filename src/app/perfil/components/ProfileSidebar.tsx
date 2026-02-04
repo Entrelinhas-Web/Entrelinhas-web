@@ -21,7 +21,7 @@ export default function ProfileSidebar({ user }: ProfileSidebarProps) {
     try {
       await logOutUser();
       router.push("/");
-      router.refresh();
+      window.location.href = "/";
     } catch (error) {
       console.error("Erro ao sair:", error);
       alert("Erro ao tentar sair. Tente novamente.");
