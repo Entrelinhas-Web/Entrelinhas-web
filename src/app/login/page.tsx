@@ -22,7 +22,7 @@ export default function Login() {
 
             setError(false);
             
-            window.location.href = "/desabafosFeed";
+            window.location.href = "/perfil";
             return;
         } catch (err: unknown) {
             const message = (err instanceof Error) ? (err.message) : ("Email ou senha inválidos");
