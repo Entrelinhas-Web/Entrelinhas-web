@@ -5,8 +5,11 @@ import MenuBar from "@/src/components/menuBar";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
 import DashboardCard from "./components/cardDashboard";
 import { emocoes } from "@/src/types/emocoes"
+import { useEffect, useState } from "react";
+
 
 export default function Dashboard() {
+
 
     const { registros } = useDesabafos();
     const quant  = registros.length;
@@ -53,8 +56,8 @@ export default function Dashboard() {
                     Object.entries(emocoes).map(([chave, content]) => {
                         const ce = ContadorEmocoes(chave);
                         return ce > 0 
-                        ?  <DashboardCard nome={chave} objeto={content} quantidade={ce}/>
-                        : chave;                   
+                        ?  <DashboardCard key={chave} nome={chave} objeto={content} quantidade={ce}/>
+                        : null;                   
                     })
                 }
 
