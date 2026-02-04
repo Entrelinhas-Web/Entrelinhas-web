@@ -4,12 +4,18 @@ import Header from "@/src/components/header";
 import MenuBar from "@/src/components/menuBar";
 import { useDesabafos } from "@/src/contexts/desabafosContext";
 import DashboardCard from "./components/cardDashboard";
+import { emocoes } from "@/src/types/emocoes"
 
 export default function Dashboard() {
 
     const { registros } = useDesabafos();
     const quant  = registros.length;
     const diferentes = new Set(registros.map((registro) => registro.emocao)).size;
+
+    function ContadorEmocoes(emocao:string){
+        const valor = registros.filter(item => item.emocao === emocao).length;
+        return valor;
+    }
 
     return (
         <>
@@ -38,11 +44,21 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-            <div className="w-full pb-[4%] h-[500px] flex justify-center items-center">
-                <canvas id="graficoDashboard"></canvas>
-            </div>
+                
 
-            <div className="content flex flex-wrap items-center justify-center"></div>
+
+            <div className="content flex flex-wrap items-center justify-center">
+
+                {
+                    Object.entries(emocoes).map(([chave, content]) => {
+                        const ce = ContadorEmocoes(chave);
+                        return ce > 0 
+                        ?  <DashboardCard nome={chave} objeto={content} quantidade={ce}/>
+                        : chave;                   
+                    })
+                }
+
+            </div>
         
             <MenuBar />
         </>
