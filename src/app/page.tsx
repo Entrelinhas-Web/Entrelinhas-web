@@ -1,7 +1,36 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getPerfil } from "../services/storage";
+
+interface Perfil {
+  id: number;
+  nome: string;
+  email: string;
+  avatar: string;
+  qtdDesabafos: number;
+}
 
 export default function Home() {
+  const [ perfil, setPerfil ] = useState<Perfil | null>(null);
+
+  useEffect(() => {
+    getPerfil()
+      .then((data) => {
+        if (!data) {
+          setPerfil(null)
+          return
+        }
+
+        setPerfil(data)
+      })
+      .catch(() => {
+        setPerfil(null)
+      })
+  }, [])
+
   return (
     <div className="bg-background text-foreground font-pixel relative flex flex-col overflow-x-hidden">
 
@@ -26,7 +55,20 @@ export default function Home() {
 
             <nav id="mobile-nav" className="hidden absolute right-0 top-full mt-2 min-w-[200px] flex-col items-center gap-4 rounded-xl border-2 border-foreground bg-preto p-4 shadow-xl sm:static sm:mt-0 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:gap-8 sm:border-none sm:p-0 sm:shadow-none">
               <Link href="/desabafosFeed" className="text-foreground p-2 text-base no-underline transition-colors hover:text-gray-500 hover:opacity-80">Desabafos</Link>
-              <Link href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</Link>
+              
+              {(perfil) ? (
+                <Link href={"/perfil"} className=" rounded-full hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] transition-all duration-200">
+                  <Image
+                    src={perfil.avatar}
+                    alt="Perfil"
+                    width={1000000}
+                    height={1000000}
+                    className="h-auto w-[30px] mb-4 sm:w-[50px] max-w-full object-contain rounded-full"
+                  />
+                </Link>
+              ) : (
+                <Link href="/login" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-6 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:text-sm">Login</Link>
+              )}
             </nav>
           </header>
 
@@ -43,8 +85,8 @@ export default function Home() {
               Registre seus sentimentos e desabafos no Entrelinhas
             </div>
 
-            <Link href="/cadastro" className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
-              Registrar
+            <Link href={(perfil) ? ("/desabafosFeed") : ("/cadastro")} className="bg-branco text-preto font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
+              {(perfil) ? ("Desabafos") : ("Registrar")}
             </Link>
           </main>
 
@@ -101,7 +143,7 @@ export default function Home() {
             </div>
 
             <Link href="/desabafosFeed" className="text-lilas font-pixel cursor-pointer rounded-[20px] px-5 py-3 text-xs no-underline transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_var(--foreground)] sm:px-6 sm:py-3 sm:text-sm">
-                  Criar meu diário
+              {(perfil) ? ("Meu diário") : ("Criar meu diário")}
             </Link>
           </div>
         </footer>

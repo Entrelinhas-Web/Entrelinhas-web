@@ -66,7 +66,7 @@ async function getUsuarioAtual() {
     return usuario.id
 }
 
-async function getPerfil() {
+export async function getPerfil() {
     const { data: { session } } = await supabase.auth.getSession()
 
     if (!session) return null
@@ -79,7 +79,7 @@ async function getPerfil() {
 
     if (error) throw error
 
-    const { data: countDesabafos, error: countError } = await supabase
+    const { data, count, error: countError } = await supabase
         .from('Desabafo')
         .select('*', { count: 'exact', head: true })
         .eq('id_usuario', usuario.id)
@@ -88,7 +88,7 @@ async function getPerfil() {
 
     return {
         ...usuario,
-        qtdDesabafos: countDesabafos ?? 0
+        qtdDesabafos: count ?? 0
     }
 }
 
@@ -106,6 +106,7 @@ export async function getDesabafos() {
         .from('Desabafo')
         .select('*', { count: 'exact' })
         .eq('id_usuario', id_usuario)
+        .eq('active', true)
         .order('created_at', { ascending: false })
 
     if (error) throw error
@@ -154,7 +155,10 @@ export async function deleteDesabafo(id: number) {
 
     const { error } = await supabase
         .from("Desabafo")
-        .delete()
+        .update({
+            active: false,
+            deleted_at: new Date().toISOString(),
+        })
         .eq("id", id)
         .eq("id_usuario", id_usuario)
 
